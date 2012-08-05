@@ -1,6 +1,10 @@
 
 package studyprogress;
 
+/**
+ *  @author Antti Pekkarinen
+ */
+
 public class Main {
 
     /**
