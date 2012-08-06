@@ -44,4 +44,6 @@ public class ModuleTest {
         assertEquals(25.0f, module.getTotalCredits(), 0.001);
     }
     
+    
+    
 }

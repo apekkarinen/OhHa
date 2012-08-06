@@ -10,12 +10,14 @@ public class Course {
     
     private String name;
     private float creditpoints;
+    private int grade;
     
     
     
     public Course(String name, float creditpoints) {
         this.name = name;
         this.creditpoints = creditpoints;
+        this.grade = 0;
     }
     
     public String getName() {
