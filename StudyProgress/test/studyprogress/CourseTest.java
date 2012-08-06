@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author ausr
+ * @author Antti Pekkarinen
  */
 public class CourseTest {
     

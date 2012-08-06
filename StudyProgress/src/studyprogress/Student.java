@@ -3,7 +3,7 @@ package studyprogress;
 
 /**
  *
- * @author ausr
+ * @author Antti Pekkarinen
  */
 public class Student {
     
