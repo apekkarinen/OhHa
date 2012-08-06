@@ -46,4 +46,14 @@ public class CourseTest {
          Course course = new Course("Ohjelmoinnin harjoitustyö", 4);
          assertTrue(course.getName().equals("Ohjelmoinnin harjoitustyö"));
      }
+     @Test
+     public void constructorDefaultCoursegrade() {
+         Course course = new Course("Ohjelmoinnin harjoitustyö", 4);
+         assertEquals(0 , course.getGrade());
+     }
+     @Test
+     public void constructorSetCoursegrade() {
+         Course course = new Course("Ohjelmoinnin harjoitustyö", 4, 5);
+         assertEquals(5 , course.getGrade());
+     }
 }

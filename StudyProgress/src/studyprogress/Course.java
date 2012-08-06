@@ -20,12 +20,23 @@ public class Course {
         this.grade = 0;
     }
     
+    public Course(String name, float creditpoints, int grade) {
+        this.name = name;
+        this.creditpoints = creditpoints;
+        this.grade = grade;
+    }
+    
+    
     public String getName() {
         return this.name;
     }
     
     public float getCreditPoints() {
         return this.creditpoints;
+    }
+    
+    public int getGrade() {
+        return this.grade;
     }
     
 }
