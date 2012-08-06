@@ -10,12 +10,12 @@ import java.util.ArrayList;
 public class Module {
     
     private String name;
-    private float totalcreditsneeded;
+    private float totalcreditsrequired;
     private ArrayList<Course> courselist;
     
-    public Module(String name, float totalcreditsneeded) {
+    public Module(String name, float totalcreditsrequired) {
         this.name = name;
-        this.totalcreditsneeded = totalcreditsneeded;
+        this.totalcreditsrequired = totalcreditsrequired;
         this.courselist = new ArrayList<Course>();
     }
     
@@ -28,7 +28,7 @@ public class Module {
     }
     
     public float getTotalCredits() {
-        return this.totalcreditsneeded;
+        return this.totalcreditsrequired;
     }
     
 }
