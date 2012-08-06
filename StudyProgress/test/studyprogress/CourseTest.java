@@ -37,8 +37,13 @@ public class CourseTest {
     }
     
      @Test
-    public void constructorCreatesACourse() {
+    public void constructorCourseCredits() {
          Course course = new Course("Ohjelmoinnin harjoitustyö", 4);
          assertEquals(4, course.getCreditPoints(), 0.001);
+     }
+     @Test
+     public void constructorCourseName() {
+         Course course = new Course("Ohjelmoinnin harjoitustyö", 4);
+         assertTrue(course.getName().equals("Ohjelmoinnin harjoitustyö"));
      }
 }
