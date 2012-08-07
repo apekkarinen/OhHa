@@ -24,6 +24,11 @@ public class StudyProgressManager {
         userfilepath = "data/users.txt";
         userfile = new File(userfilepath);
         userdirectory = new File(userdirectorypath);
+        
+        if(!userDirectoryExists()) {
+            userdirectory.mkdir();
+        }
+        
         usernamelist = loadUserListFromFile();      
     }
     
@@ -81,6 +86,9 @@ public class StudyProgressManager {
         } catch (Exception e) {
             System.out.println("Virhe kirjoitettaessa käyttänimitiedostoa!");
         }
+    }
+    private boolean userDirectoryExists() {
+        return userdirectory.exists();
     }
 
 }
