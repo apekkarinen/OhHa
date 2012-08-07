@@ -26,7 +26,7 @@ public class StudyProgressManager {
         userfile = new File(userfilepath);
         userdirectory = new File(userdirectorypath);
         
-        if(!userDirectoryExists()) {
+        if(!userdirectory.exists()) {
             userdirectory.mkdir();
         }
         
@@ -90,9 +90,6 @@ public class StudyProgressManager {
         } catch (Exception e) {
             System.out.println("Virhe kirjoitettaessa käyttänimitiedostoa!");
         }
-    }
-    private boolean userDirectoryExists() {
-        return userdirectory.exists();
     }
 
 }
