@@ -28,15 +28,15 @@ public class Course {
     
     
     public String getName() {
-        return this.name;
+        return name;
     }
     
     public float getCreditPoints() {
-        return this.creditpoints;
+        return creditpoints;
     }
     
     public int getGrade() {
-        return this.grade;
+        return grade;
     }
     
     public String toString() {
