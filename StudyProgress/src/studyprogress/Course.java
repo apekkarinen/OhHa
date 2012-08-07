@@ -39,4 +39,8 @@ public class Course {
         return this.grade;
     }
     
+    public String toString() {
+        return name + "(" + creditpoints + " Op.): Arvosana: " + grade;
+    }
+    
 }

@@ -58,4 +58,9 @@ public class CourseTest {
          Course course = new Course("Ohjelmoinnin harjoitustyö", 4, 5);
          assertEquals(5 , course.getGrade());
      }
+     @Test
+     public void toStringCompare() {
+         
+         assertTrue(course.toString().equals("Ohjelmoinnin harjoitustyö(4.0 Op.): Arvosana: 0"));
+     }
 }
