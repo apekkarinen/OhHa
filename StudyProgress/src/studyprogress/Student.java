@@ -26,4 +26,8 @@ public class Student {
         modulelist.add(module);
     }
     
+    public int getNumberOfModules() {
+        return modulelist.size();
+    }
+    
 }
