@@ -75,6 +75,7 @@ public class StudyProgressManager {
         }
         return usernames;
     }
+    
     private void writeUserNameList() {
         String username;
         int userlistsize = usernamelist.size();
@@ -86,7 +87,6 @@ public class StudyProgressManager {
                 writer.println(username);             
             }
             writer.close();
-            
         } catch (Exception e) {
             System.out.println("Virhe kirjoitettaessa käyttänimitiedostoa!");
         }
