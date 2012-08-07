@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
  * @author Antti Pekkarinen
  */
 public class CourseTest {
+        Course course;
     
     public CourseTest() {
     }
@@ -30,6 +31,7 @@ public class CourseTest {
     
     @Before
     public void setUp() {
+        course = new Course("Ohjelmoinnin harjoitustyö", 4);
     }
     
     @After
@@ -38,17 +40,17 @@ public class CourseTest {
     
      @Test
     public void constructorCourseCredits() {
-         Course course = new Course("Ohjelmoinnin harjoitustyö", 4);
+         
          assertEquals(4, course.getCreditPoints(), 0.001);
      }
      @Test
      public void constructorCourseName() {
-         Course course = new Course("Ohjelmoinnin harjoitustyö", 4);
+         
          assertTrue(course.getName().equals("Ohjelmoinnin harjoitustyö"));
      }
      @Test
      public void constructorDefaultCoursegrade() {
-         Course course = new Course("Ohjelmoinnin harjoitustyö", 4);
+         
          assertEquals(0 , course.getGrade());
      }
      @Test
