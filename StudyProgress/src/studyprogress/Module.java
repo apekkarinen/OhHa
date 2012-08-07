@@ -24,14 +24,14 @@ public class Module {
     }
     
     public String getName() {
-        return this.name;
+        return name;
     }
     
     public float getTotalCredits() {
-        return this.totalcreditsrequired;
+        return totalcreditsrequired;
     }
     public int getNumberOfCourses() {
-        return this.courselist.size();
+        return courselist.size();
     }
     
 }
