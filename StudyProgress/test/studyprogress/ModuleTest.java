@@ -13,6 +13,7 @@ import static org.junit.Assert.*;
  * @author Antti Pekkarinen
  */
 public class ModuleTest {
+    Module module;
     
     public ModuleTest() {
     }
@@ -27,6 +28,7 @@ public class ModuleTest {
     
     @Before
     public void setUp() {
+        module = new Module("Perusopinnot", 25.0f);
     }
     
     @After
@@ -35,13 +37,23 @@ public class ModuleTest {
 
     @Test
     public void constructorName() {
-        Module module = new Module("Perusopinnot", 25.0f);
+        
         assertTrue(module.getName().equals("Perusopinnot"));
     }
     @Test
     public void constructorCreditPoints() {
-        Module module = new Module("Perusopinnot", 25.0f);
+        
         assertEquals(25.0f, module.getTotalCredits(), 0.001);
+    }
+    @Test
+    public void addCourseAndGetNumber() {
+        Course course = new Course("Ohjelmoinnin harjoitustyö", 4);
+        Course anothercourse = new Course("Ohjelmistojen mallintaminen", 4);
+        module.addCourse(course);
+        module.addCourse(anothercourse);
+        
+        assertEquals(2, module.getNumberOfCourses());
+        
     }
     
     

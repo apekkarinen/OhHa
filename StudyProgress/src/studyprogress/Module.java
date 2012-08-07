@@ -30,5 +30,8 @@ public class Module {
     public float getTotalCredits() {
         return this.totalcreditsrequired;
     }
+    public int getNumberOfCourses() {
+        return this.courselist.size();
+    }
     
 }
