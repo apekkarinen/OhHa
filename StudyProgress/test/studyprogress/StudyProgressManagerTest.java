@@ -47,4 +47,9 @@ public class StudyProgressManagerTest {
     public void loadUsersFalseLogin() {
         assertFalse(manager.logInUser("Pentti"));
     }
+    @Test
+    public void createUserAlreadyExists() {
+        assertFalse(manager.createNewUser("Erkki"));
+        
+    }
 }

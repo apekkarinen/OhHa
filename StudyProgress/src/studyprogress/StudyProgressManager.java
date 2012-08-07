@@ -16,7 +16,8 @@ public class StudyProgressManager {
     private String userdirectorypath;
     private File userfile;
     private File userdirectory;
-    private Scanner filescanner;
+
+
  
     public StudyProgressManager() {
         userdirectorypath = "data";
@@ -33,7 +34,7 @@ public class StudyProgressManager {
         
         if(userfile.exists()) {
             try {
-                filescanner = new Scanner(userfile, "UTF-8");
+                Scanner filescanner = new Scanner(userfile, "UTF-8");
                 
                 while(filescanner.hasNextLine()) {
                     username = filescanner.nextLine();
@@ -53,6 +54,32 @@ public class StudyProgressManager {
         }
         else {
             return false;
+        }
+    }
+    public boolean createNewUser(String username) {
+        if(usernamelist.contains(username)) {
+            return false;
+        }
+        else {
+            usernamelist.add(username);
+            writeUserNameList();
+            return true;
+        }
+    }
+    private void writeUserNameList() {
+        String username;
+        int userlistsize = usernamelist.size();
+        
+        try {
+            PrintWriter writer = new PrintWriter(userfile, "UTF-8");
+            for (int i = 0; i < userlistsize; i++) {
+                username = usernamelist.get(i);
+                writer.println(username);             
+            }
+            writer.close();
+            
+        } catch (Exception e) {
+            System.out.println("Virhe kirjoitettaessa käyttänimitiedostoa!");
         }
     }
 
