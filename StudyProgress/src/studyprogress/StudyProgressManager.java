@@ -12,6 +12,7 @@ public class StudyProgressManager {
     
     private ArrayList<String> usernamelist;
     private Student user;
+    private String username;
     private String userfilepath;
     private String userdirectorypath;
     private File userfile;
@@ -29,9 +30,31 @@ public class StudyProgressManager {
             userdirectory.mkdir();
         }
         
-        usernamelist = loadUserListFromFile();      
+        usernamelist = loadUserListFromFile();  
+        
     }
     
+
+    
+    public boolean logInUser(String username) {
+        if(usernamelist.contains(username)) {
+            this.username = username;
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+    public boolean createNewUser(String username) {
+        if(usernamelist.contains(username)) {
+            return false;
+        }
+        else {
+            usernamelist.add(username);
+            writeUserNameList();
+            return true;
+        }
+    }
     private ArrayList<String> loadUserListFromFile() {
         
         String username;
@@ -51,25 +74,6 @@ public class StudyProgressManager {
             }
         }
         return usernames;
-    }
-    
-    public boolean logInUser(String username) {
-        if(usernamelist.contains(username)) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    public boolean createNewUser(String username) {
-        if(usernamelist.contains(username)) {
-            return false;
-        }
-        else {
-            usernamelist.add(username);
-            writeUserNameList();
-            return true;
-        }
     }
     private void writeUserNameList() {
         String username;
