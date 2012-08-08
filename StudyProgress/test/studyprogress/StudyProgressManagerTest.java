@@ -40,16 +40,23 @@ public class StudyProgressManagerTest {
     }
     @Test
     public void loadUsersAndLogIn() {
-        assertTrue(manager.logInUser("Antti"));
+        assertNotNull(manager.logInUser("Antti"));
         
     }
     @Test
     public void loadUsersFalseLogin() {
-        assertFalse(manager.logInUser("Pentti"));
+        assertNull(manager.logInUser("Pentti"));
     }
     @Test
     public void createUserAlreadyExists() {
         assertFalse(manager.createNewUser("Erkki"));
+    }
+    @Test
+    public void createUserAndLogin() {
+        manager.createNewUser("Hessu");
+        manager.logInUser("Hessu");
         
     }
+        
+    
 }

@@ -11,7 +11,6 @@ import java.io.*;
 public class StudyProgressManager {
     
     private ArrayList<String> usernamelist;
-    private Student user;
     private String userfilepath;
     private String userdirectorypath;
     private File userfile;
@@ -35,13 +34,13 @@ public class StudyProgressManager {
     
 
     
-    public boolean logInUser(String username) {
+    public Student logInUser(String username) {
         if(usernamelist.contains(username)) {
-            this.user = new Student(username);
-            return true;
+            return new Student(username);
+            
         }
         else {
-            return false;
+            return null;
         }
     }
     public boolean createNewUser(String username) {
@@ -63,6 +62,8 @@ public class StudyProgressManager {
             return true;
         }
     }
+    
+
     private ArrayList<String> loadUserListFromFile() {
         
         String username;
