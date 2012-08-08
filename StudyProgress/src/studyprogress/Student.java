@@ -22,6 +22,15 @@ public class Student {
         this.modulelist = new ArrayList<Module>();
         studentdirectory = new File("data/"+name);
         modulesfile = new File("data/"+name+"/modules.txt");
+        if(!modulesfile.exists()) {
+            studentdirectory.mkdir();
+            try {
+                modulesfile.createNewFile();
+            } catch (Exception e) {
+                System.out.println("Opiskelijakansion luominen epäonnistui!");
+            }
+            
+        }
         loadStudentData();
     }
     
@@ -82,28 +91,30 @@ public class Student {
         int year;
         Module module;
         
-        try {
-            Scanner scanner = new Scanner(modulefile, "UTF-8");
-            modulecredits = Float.parseFloat(scanner.nextLine());
-            module = new Module(name, modulecredits);
-            
-            while(scanner.hasNextLine()) {
-                    coursename = scanner.nextLine();
-                    coursecredits = Float.parseFloat(scanner.nextLine());
-                    grade = Integer.parseInt(scanner.nextLine());
-                    semester = scanner.nextLine();
-                    year = Integer.parseInt(scanner.nextLine());
-                    module.addCourse(new Course(coursename,coursecredits,semester,year,grade));
-                }
-            return module;
-            
-        } catch (Exception e) {
-            System.out.println("Virhe luettaessa opintokokonaisuuksia!");
-            return null;
+        if(modulefile.exists()) {
+            try {
+                Scanner scanner = new Scanner(modulefile, "UTF-8");
+                modulecredits = Float.parseFloat(scanner.nextLine());
+                module = new Module(name, modulecredits);
+
+                while(scanner.hasNextLine()) {
+                        coursename = scanner.nextLine();
+                        coursecredits = Float.parseFloat(scanner.nextLine());
+                        semester = scanner.nextLine();
+                        year = Integer.parseInt(scanner.nextLine());
+                        grade = Integer.parseInt(scanner.nextLine());
+                        module.addCourse(new Course(coursename,coursecredits,semester,year,grade));
+                    }
+                return module;
+
+            } catch (Exception e) {
+                System.out.println("Virhe luettaessa opintokokonaisuuksia!");
+                return null;
+            }
         }
-        
-        
+        return null;
     }
+    
     private void writeModule(Module module) {
         File modulefile = new File("data/"+name+"/"+module.getName()+".txt");
         int numberofcourses = module.getNumberOfCourses();
@@ -121,7 +132,7 @@ public class Student {
             }
             writer.close();
         } catch (Exception e) {
-            System.out.println("Virhe opiskelijatietojen tallennukessa!");
+            System.out.println("Virhe opiskelijatietojen tallennuksessa!");
         }
         
     }

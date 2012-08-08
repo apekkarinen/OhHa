@@ -54,7 +54,13 @@ public class StudyProgressManagerTest {
     @Test
     public void createUserAndLogin() {
         manager.createNewUser("Hessu");
-        manager.logInUser("Hessu");
+        Student hessu = manager.logInUser("Hessu");
+        Module module = new Module("Perusopinnot", 25.0f);
+        module.addCourse(new Course("Ohjelmoinnin harjoitustyö", 4.0f, "syksy", 2012, 5));
+        hessu.addModule(module);
+        hessu.writeStudentData();
+        Student hessu_alter_ego = manager.logInUser("Hessu");
+        assertTrue(hessu_alter_ego.getNumberOfModules() > 1);
         
     }
         
