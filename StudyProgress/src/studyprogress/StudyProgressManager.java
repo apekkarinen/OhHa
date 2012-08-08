@@ -46,7 +46,7 @@ public class StudyProgressManager {
     }
     public boolean createNewUser(String username) {
         File newuserdatadirectory = new File("data/"+username);
-        
+        File modulesfile = new File("data/"+username+"/modules.txt");
         if(usernamelist.contains(username)) {
             return false;
         }
@@ -54,6 +54,12 @@ public class StudyProgressManager {
             usernamelist.add(username);
             writeUserNameList();
             newuserdatadirectory.mkdir();
+            try {
+                modulesfile.createNewFile();
+            } catch (Exception e) {
+                System.out.println("Käyttäjätietojen luominen ei onnistunut!");
+            }
+            
             return true;
         }
     }
