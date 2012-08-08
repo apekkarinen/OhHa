@@ -47,8 +47,8 @@ public class ModuleTest {
     }
     @Test
     public void addCourseAndGetNumber() {
-        Course course = new Course("Ohjelmoinnin harjoitustyö", 4);
-        Course anothercourse = new Course("Ohjelmistojen mallintaminen", 4);
+        Course course = new Course("Ohjelmoinnin harjoitustyö", 4, "syksy", 2012);
+        Course anothercourse = new Course("Ohjelmistojen mallintaminen", 4, "syksy", 2012);
         module.addCourse(course);
         module.addCourse(anothercourse);
         

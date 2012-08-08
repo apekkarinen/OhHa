@@ -31,7 +31,7 @@ public class CourseTest {
     
     @Before
     public void setUp() {
-        course = new Course("Ohjelmoinnin harjoitustyö", 4);
+        course = new Course("Ohjelmoinnin harjoitustyö", 4, "syksy", 2012);
     }
     
     @After
@@ -55,8 +55,8 @@ public class CourseTest {
      }
      @Test
      public void constructorSetCoursegrade() {
-         Course course = new Course("Ohjelmoinnin harjoitustyö", 4, 5);
-         assertEquals(5 , course.getGrade());
+         Course course2 = new Course("Ohjelmoinnin harjoitustyö", 4.0f, "syksy", 2012, 5);
+         assertEquals(5 , course2.getGrade());
      }
      @Test
      public void toStringCompare() {

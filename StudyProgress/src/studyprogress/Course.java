@@ -11,19 +11,26 @@ public class Course {
     private String name;
     private float creditpoints;
     private int grade;
+    private String semester;
+    private int year;
     
     
     
-    public Course(String name, float creditpoints) {
+    public Course(String name, float creditpoints, String semester, int year) {
         this.name = name;
         this.creditpoints = creditpoints;
         this.grade = 0;
+        this.semester = semester;
+        this.year=year;
     }
     
-    public Course(String name, float creditpoints, int grade) {
+    public Course(String name, float creditpoints, String semester, int year, int grade) {
         this.name = name;
         this.creditpoints = creditpoints;
+        this.semester = semester;
+        this.year = year;
         this.grade = grade;
+        
     }
     
     
