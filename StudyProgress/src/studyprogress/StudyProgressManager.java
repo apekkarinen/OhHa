@@ -12,7 +12,6 @@ public class StudyProgressManager {
     
     private ArrayList<String> usernamelist;
     private Student user;
-    private String username;
     private String userfilepath;
     private String userdirectorypath;
     private File userfile;
@@ -38,7 +37,7 @@ public class StudyProgressManager {
     
     public boolean logInUser(String username) {
         if(usernamelist.contains(username)) {
-            this.username = username;
+            this.user = new Student(username);
             return true;
         }
         else {
