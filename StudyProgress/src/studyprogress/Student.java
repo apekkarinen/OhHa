@@ -13,11 +13,15 @@ public class Student {
     
     private String name;
     private ArrayList<Module> modulelist;
+    private File studentdirectory;
+    private File modulesfile;
     
     
     public Student(String name) {
         this.name = name;
         this.modulelist = new ArrayList<Module>();
+        studentdirectory = new File("data/"+name);
+        modulesfile = new File("data/"+name+"/modules.txt");
         loadStudentData();
     }
     
@@ -39,8 +43,6 @@ public class Student {
     }
     
     private void loadStudentData() {
-        File studentdirectory = new File("data/"+name);
-        File modulesfile = new File("data/"+name+"/modules.txt");
         String modulename;
         try {
             Scanner scanner = new Scanner(modulesfile, "UTF-8");
