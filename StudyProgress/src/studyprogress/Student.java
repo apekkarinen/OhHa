@@ -59,11 +59,12 @@ public class Student {
     
     public void writeStudentData() {
         try {
-            PrintWriter writer = new PrintWriter(modulesfile, "UTF-8");
+            PrintWriter namewriter = new PrintWriter(modulesfile, "UTF-8");
             for (Module module : modulelist) {
-                writer.println(module.getName());
+                namewriter.println(module.getName());
                 writeModule(module);
             }
+            namewriter.close();
             
         } catch (Exception e) {
             System.out.println("Virhe opiskelijatietojen tallentamisessa!");
