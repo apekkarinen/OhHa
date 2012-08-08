@@ -45,12 +45,15 @@ public class StudyProgressManager {
         }
     }
     public boolean createNewUser(String username) {
+        File newuserdatadirectory = new File("data/"+username);
+        
         if(usernamelist.contains(username)) {
             return false;
         }
         else {
             usernamelist.add(username);
             writeUserNameList();
+            newuserdatadirectory.mkdir();
             return true;
         }
     }
