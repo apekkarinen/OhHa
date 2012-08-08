@@ -61,5 +61,8 @@ public class Student {
     private Module loadModule(String name, String filepath) {
         return null;
     }
+    private void writeModule(Module module) {
+        
+    }
     
 }
