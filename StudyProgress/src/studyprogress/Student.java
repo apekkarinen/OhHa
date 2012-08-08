@@ -18,6 +18,7 @@ public class Student {
     public Student(String name) {
         this.name = name;
         this.modulelist = new ArrayList<Module>();
+        loadStudentData();
     }
     
     public String getName() {
@@ -36,7 +37,7 @@ public class Student {
         return modulelist.size();
     }
     
-    public void loadStudentData() {
+    private void loadStudentData() {
         File studentdirectory = new File("data/"+name);
         File modulesfile = new File("data/"+name+"/modules.txt");
         String modulename;
@@ -47,6 +48,7 @@ public class Student {
                 addModule(loadModule(modulename, "data/"+name+"/"+modulename));
             }
         } catch (Exception e) {
+            System.out.println("Virhe ladattaessa opiskelijatietoja!");
         }
         
         

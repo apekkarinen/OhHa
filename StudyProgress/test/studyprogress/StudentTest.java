@@ -43,6 +43,11 @@ public class StudentTest {
         assertTrue(student.getName().equals("Olli Opiskelija"));
         
     }
+    @Test
+    public void createStudentWithNoData() {
+        assertEquals(0, student.getNumberOfModules());
+        
+    }
     
     @Test
     public void addModulesAndGetNumber() {
