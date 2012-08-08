@@ -58,6 +58,16 @@ public class Student {
     }
     
     public void writeStudentData() {
+        try {
+            PrintWriter writer = new PrintWriter(modulesfile, "UTF-8");
+            for (Module module : modulelist) {
+                writer.println(module.getName());
+                writeModule(module);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Virhe opiskelijatietojen tallentamisessa!");
+        }
         
     }
     
