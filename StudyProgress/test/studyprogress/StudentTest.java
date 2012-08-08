@@ -46,12 +46,10 @@ public class StudentTest {
     
     @Test
     public void addModulesAndGetNumber() {
-        Module module1 = new Module("Perusopinnot", 25.0f);
-        Module module2 = new Module("Aineopinnot", 25.0f);
-        Module module3 = new Module("Syventävät opinnot", 25.0f);
-        student.addModule(module1);
-        student.addModule(module2);
-        student.addModule(module3);
+        
+        student.addModule("Perusopinnot", 25.0f);
+        student.addModule("Aineopinnot", 25.0f);
+        student.addModule("Syventävät opinnot", 25.0f);
         assertEquals(3, student.getNumberOfModules());
     }
     

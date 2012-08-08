@@ -22,7 +22,8 @@ public class Student {
         return name;
     }
     
-    public void addModule(Module module) {
+    public void addModule(String name, float totalcredits) {
+        Module module = new Module(name,totalcredits);
         modulelist.add(module);
     }
     
