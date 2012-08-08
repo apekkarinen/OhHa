@@ -48,7 +48,7 @@ public class Student {
             Scanner scanner = new Scanner(modulesfile, "UTF-8");
             while(scanner.hasNextLine()) {
                 modulename = scanner.nextLine();
-                addModule(loadModule(modulename, "data/"+name+"/"+modulename));
+                addModule(loadModule(modulename, "data/"+name+"/"+modulename+".txt"));
             }
         } catch (Exception e) {
             System.out.println("Virhe ladattaessa opiskelijatietoja!");
@@ -105,6 +105,24 @@ public class Student {
         
     }
     private void writeModule(Module module) {
+        File modulefile = new File("data/"+name+"/"+module.getName()+".txt");
+        int numberofcourses = module.getNumberOfCourses();
+        Course course;
+        try {
+            PrintWriter writer = new PrintWriter(modulefile, "UTF-8");
+            writer.println(module.getTotalCredits());
+            for (int i = 0; i < numberofcourses ; i++) {
+                course = module.getCourse(i);
+                writer.println(course.getName());
+                writer.println(course.getCreditPoints());
+                writer.println(course.getSemester());
+                writer.println(course.getYear());
+                writer.println(course.getGrade());
+            }
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Virhe opiskelijatietojen tallennukessa!");
+        }
         
     }
     

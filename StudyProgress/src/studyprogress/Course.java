@@ -45,6 +45,13 @@ public class Course {
     public int getGrade() {
         return grade;
     }
+    public String getSemester()  {
+        return semester;
+    }
+    
+    public int getYear() {
+        return year;
+    }
     
     public String toString() {
         return name + "(" + creditpoints + " Op.): Arvosana: " + grade;

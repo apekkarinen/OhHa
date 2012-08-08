@@ -22,6 +22,9 @@ public class Module {
     public void addCourse(Course course) {
         courselist.add(course);
     }
+    public Course getCourse(int index) {
+        return courselist.get(index);
+    }
     
     public String getName() {
         return name;
