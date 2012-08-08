@@ -31,4 +31,16 @@ public class Student {
         return modulelist.size();
     }
     
+    public void loadStudentData() {
+        
+    }
+    
+    public void writeStudentData() {
+        
+    }
+    
+    private Module loadModule(String name, String filepath) {
+        
+    }
+    
 }
