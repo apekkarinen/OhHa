@@ -100,5 +100,15 @@ public class StudyProgressManager {
             System.out.println("Virhe kirjoitettaessa käyttänimitiedostoa!");
         }
     }
+    public static void deleteFile(String filepath) {
+        File file = new File(filepath);
+        if(file.exists()) {
+            try {
+                file.delete();
+            } catch (Exception e) {
+                System.out.println("Tiedoston poistaminen epäonnistui!");
+            }
+        }        
+    }
 
 }

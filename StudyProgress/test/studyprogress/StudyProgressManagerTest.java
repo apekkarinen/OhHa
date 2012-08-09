@@ -52,17 +52,28 @@ public class StudyProgressManagerTest {
         assertFalse(manager.createNewUser("Erkki"));
     }
     @Test
+    public void newUserHasNoModules() {
+      boolean success = manager.createNewUser("Liisa");
+      Student liisa = manager.logInUser("Liisa");
+      assertEquals(0,liisa.getNumberOfModules());
+    }
+    @Test
     public void createUserAndLogin() {
         manager.createNewUser("Hessu");
         Student hessu = manager.logInUser("Hessu");
-        Module module = new Module("Perusopinnot", 25.0f);
+        Module module = new Module("Tietojenkäsittelytieteen Perusopinnot", 25.0f);
+        Module module2 = new Module("Fysiikan Perusopinnot", 25.0f);
         module.addCourse(new Course("Ohjelmoinnin harjoitustyö", 4.0f, "syksy", 2012, 5));
+        module2.addCourse(new Course("Mekaniikka", 8.0f, "syksy", 2012, 5));
         hessu.addModule(module);
-        hessu.writeStudentData();
-        Student hessu_alter_ego = manager.logInUser("Hessu");
-        assertTrue(hessu_alter_ego.getNumberOfModules() > 1);
+        hessu.addModule(module2);
+        //hessu.writeStudentData();
+        hessu.deleteModule(0);
+        hessu.deleteModule(0);
+        assertEquals(0,hessu.getNumberOfModules());
         
     }
+    
         
     
 }

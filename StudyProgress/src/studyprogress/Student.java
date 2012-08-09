@@ -42,6 +42,14 @@ public class Student {
         Module module = new Module(name,totalcredits);
         modulelist.add(module);
     }
+    public void deleteModule(int index) {
+        String modulename = modulelist.get(index).getName();
+        String modulepath = "data/"+name+"/"+modulename+".txt";
+        StudyProgressManager.deleteFile(modulepath);
+        modulelist.remove(index);
+        writeStudentData();
+        loadStudentData();
+    }
     
     public void addModule(Module module) {
         modulelist.add(module);
@@ -53,6 +61,7 @@ public class Student {
     
     private void loadStudentData() {
         String modulename;
+        this.modulelist.clear();
         try {
             Scanner scanner = new Scanner(modulesfile, "UTF-8");
             while(scanner.hasNextLine()) {
@@ -68,6 +77,7 @@ public class Student {
     
     public void writeStudentData() {
         try {
+            StudyProgressManager.deleteFile("data/"+name+"/modules.txt");
             PrintWriter namewriter = new PrintWriter(modulesfile, "UTF-8");
             for (Module module : modulelist) {
                 namewriter.println(module.getName());
