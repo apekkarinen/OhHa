@@ -57,5 +57,17 @@ public class StudentTest {
         student.addModule("Syventävät opinnot", 25.0f);
         assertEquals(3, student.getNumberOfModules());
     }
+    @Test
+    public void addAndRemoveCourses() {
+        Course course = new Course("Tietorakenteet", 8.0f, "kevät", 2013);
+        student.addModule("Perusopinnot", 25.0f);
+        student.addModule("Aineopinnot", 25.0f);
+        student.addCourseToModule(1, course);
+        assertEquals(1,student.getModuleSize(1));
+        while(student.getNumberOfModules() > 0) {
+            student.deleteModule(0);
+        }
+          
+    }
     
 }

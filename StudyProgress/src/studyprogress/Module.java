@@ -36,5 +36,8 @@ public class Module {
     public int getNumberOfCourses() {
         return courselist.size();
     }
+    public void deleteCourse(int index) {
+        courselist.remove(index);
+    }
     
 }

@@ -42,6 +42,9 @@ public class Student {
         Module module = new Module(name,totalcredits);
         modulelist.add(module);
     }
+     public void addModule(Module module) {
+        modulelist.add(module);
+    }
     public void deleteModule(int index) {
         String modulename = modulelist.get(index).getName();
         String modulepath = "data/"+name+"/"+modulename+".txt";
@@ -51,8 +54,8 @@ public class Student {
         loadStudentData();
     }
     
-    public void addModule(Module module) {
-        modulelist.add(module);
+    public void addCourseToModule(int moduleindex, Course course) {
+        modulelist.get(moduleindex).addCourse(course);
     }
     
     public int getNumberOfModules() {
@@ -89,6 +92,13 @@ public class Student {
             System.out.println("Virhe opiskelijatietojen tallentamisessa!");
         }
         
+    }
+    public void deleteCourseFromModule(int moduleindex, int courseindex) {
+        modulelist.get(moduleindex).deleteCourse(courseindex);
+
+    }
+    public int getModuleSize(int moduleindex) {
+        return modulelist.get(moduleindex).getNumberOfCourses();
     }
     
     private Module loadModule(String name, String filepath) {
