@@ -39,5 +39,12 @@ public class Module {
     public void deleteCourse(int index) {
         courselist.remove(index);
     }
+    public String toString() {
+        String modulestring = "";
+        for(Course course : courselist) {
+            modulestring = modulestring + course.toString() +"\n";
+        }
+        return modulestring;
+    }
     
 }
