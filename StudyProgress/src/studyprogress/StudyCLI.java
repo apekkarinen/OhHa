@@ -37,12 +37,25 @@ public class StudyCLI {
                 if(user == null) {
                     promptForNewUserCreation(selection);
                 }
+                else {
+                   showMainMenu(); 
+                }
             }
         }
-        showMainMenu();
     }
     
     private void showMainMenu() {
+        String selection;
+        System.out.println("Tervetuloa, "+user.getName()+"!");
+        System.out.println("Sinulla on yhteensä "+user.getNumberOfModules()+ " opintokokonaisuutta.");
+        while(true) {
+            System.out.println("Päävalikko/Valitse toiminto:");
+            System.out.println("Poistu ohjelmasta/q");
+            selection = userinput.nextLine();
+            if(selection.equals("q")) {
+                break;
+        }
+        }
         
     }
     private void promptForNewUserCreation(String username) {
