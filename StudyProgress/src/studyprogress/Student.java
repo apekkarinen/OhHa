@@ -107,6 +107,13 @@ public class Student {
     public int getModuleSize(int moduleindex) {
         return modulelist.get(moduleindex).getNumberOfCourses();
     }
+    public String toString() {
+        String studentstring = "";
+        for(Module module : modulelist) {
+            studentstring = studentstring + module.getName() +":\n"+ module.toString();
+        }
+        return studentstring;
+    }
     
     private Module loadModule(String name, String filepath) {
         File modulefile = new File(filepath);
