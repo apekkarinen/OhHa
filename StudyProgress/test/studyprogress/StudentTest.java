@@ -68,6 +68,11 @@ public class StudentTest {
             student.deleteModule(0);
         }
           
+    }      
+    @Test
+    public void loginAndTestCourseNumber() {
+        Student student2  = new Student("Mikko Mallihenkilö");
+        assertEquals(0, student2.getTotalNumberOfCourses());
     }
     
 }

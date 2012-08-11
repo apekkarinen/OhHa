@@ -61,6 +61,13 @@ public class Student {
     public int getNumberOfModules() {
         return modulelist.size();
     }
+    public int getTotalNumberOfCourses() {
+        int sum = 0;
+        for (Module module : modulelist) {
+           sum = sum + module.getNumberOfCourses();
+        }
+        return sum;
+    }
     
     private void loadStudentData() {
         String modulename;

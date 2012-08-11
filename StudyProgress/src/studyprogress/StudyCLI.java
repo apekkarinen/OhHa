@@ -48,11 +48,13 @@ public class StudyCLI {
         String selection;
         System.out.println("Tervetuloa, "+user.getName()+"!");
         System.out.println("Sinulla on yhteensä "+user.getNumberOfModules()+ " opintokokonaisuutta.");
+        System.out.println("Sinulla on yhteensä "+user.getTotalNumberOfCourses() +" kurssia." );
         while(true) {
             System.out.println("Päävalikko/Valitse toiminto:");
             System.out.println("Poistu ohjelmasta/q");
             selection = userinput.nextLine();
             if(selection.equals("q")) {
+                user.writeStudentData();
                 break;
         }
         }
@@ -79,6 +81,7 @@ public class StudyCLI {
     private void showHelp(int index) {
         
     }
+    
    
     
     
