@@ -18,7 +18,7 @@ public class StudyCLI {
         this.userinput = new Scanner(System.in, "UTF-8");
     }
     
-    public void showLogin() {
+    public void showLogIn() {
         int helpindex = 0;
         String selection;
         while(user == null) {
@@ -39,6 +39,11 @@ public class StudyCLI {
                 }
             }
         }
+        showMainMenu();
+    }
+    
+    private void showMainMenu() {
+        
     }
     private void promptForNewUserCreation(String username) {
         String selection;
