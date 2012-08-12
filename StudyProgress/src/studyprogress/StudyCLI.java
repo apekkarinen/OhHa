@@ -114,6 +114,40 @@ public class StudyCLI {
             }
         }
     }
+    private void showEditModule() {
+        int moduleselection;
+        String actionselection;
+        while (true) {
+            System.out.println(user);
+            System.out.println("Valitse muokattavan opintokokonaisuuden numero: (0-"+user.getNumberOfModules()+") tai q poistuaksesi");
+            if(userinput.hasNextInt()) {
+                moduleselection = Integer.parseInt(userinput.nextLine());
+            }
+            else {
+                break;
+            }
+            System.out.println("Haluatko poistaa opintokokonaisuuden (po), lisätä kurssin(l) vai poistaa kurssin(pk)");
+            actionselection = userinput.nextLine();
+            if(actionselection.equals("po")) {
+                user.deleteModule(moduleselection);
+            }
+            else if(actionselection.equals("l")) {
+                showAddCourse(moduleselection);
+            }
+            else if(actionselection.equals("pk")) {
+                showDeleteCourse(moduleselection);
+            }
+            else {
+                System.out.println("Tuntematon valinta "+actionselection);
+            }
+        }
+    }
+    private void showDeleteCourse(int moduleindex) {
+        
+    }
+    private void showAddCourse(int moduleindex) {
+        
+    }
     
     private void promptForNewUserCreation(String username) {
         String selection;
