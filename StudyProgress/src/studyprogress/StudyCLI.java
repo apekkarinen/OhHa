@@ -51,12 +51,39 @@ public class StudyCLI {
         System.out.println("Sinulla on yhteensä "+user.getTotalNumberOfCourses() +" kurssia." );
         while(true) {
             System.out.println("Päävalikko/Valitse toiminto:");
-            System.out.println("Poistu ohjelmasta/q");
+            System.out.println("Poistu ohjelmasta/q | Tarkastele opintokokonaisuuksia/o | Näytä yhteenveto/y");
+            System.out.println("Lisää opintokokonaisuus/l | muokkaa opintokokonaisuuksia/m | käynnistä graafinen käyttöliittymä/g");
+ 
             selection = userinput.nextLine();
             if(selection.equals("q")) {
                 user.writeStudentData();
                 break;
+            }
+            else {
+                mainMenuAction(selection.toLowerCase());
+            }
         }
+        
+    }
+    private void mainMenuAction(String selection) {
+        
+        if(selection.equals("o")) {
+            
+        }
+        else if(selection.equals("y")) {
+            
+        }
+        else if(selection.equals("l")) {
+            
+        }
+        else if(selection.equals("m")) {
+            
+        }
+        else if(selection.equals("g")) {
+            
+        }
+        else {
+            System.out.println("Tuntematon komento '" +selection+"'");
         }
         
     }
