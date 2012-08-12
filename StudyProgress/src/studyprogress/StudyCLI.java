@@ -93,6 +93,27 @@ public class StudyCLI {
     private void showSummary() {
         
     }
+    private void showAddModule() {
+        while(true) {
+            String name;
+            float credits;
+            System.out.println("Uusi opintokokonaisuus: Anna kokonaisuuden nimi tai q poistuaksesi päävalikkoon");
+            name = userinput.nextLine();
+            if(name.equals("q")) {
+                break;
+            }
+            System.out.println("Anna kokonaisuuden laajuus opintopisteinä");
+            if(userinput.hasNextFloat()) {
+                credits = Float.parseFloat(userinput.nextLine());
+                user.addModule(name, credits);
+                System.out.println("Lisätty kokonaisuus " +name +" ("+credits+"Op)");
+            }
+            else {
+                System.out.println("Virheellinen laajuus, kokonaisuutta ei lisätty.");
+            }
+        }
+    }
+    
     private void promptForNewUserCreation(String username) {
         String selection;
         System.out.println("Käyttäjää nimeltä "+username+" ei löydy, haluatko luoda uuden käyttäjän tällä nimellä? (k/e)");
