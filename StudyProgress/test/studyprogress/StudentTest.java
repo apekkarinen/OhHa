@@ -74,9 +74,6 @@ public class StudentTest {
         Student student2  = new Student("Mikko Mallihenkilö");
         assertEquals(0, student2.getTotalNumberOfCourses());
     }
-    @Test
-    public void testEmptyStudentString() {
-        assertTrue(student.toString().equals(""));
-    }
+    
     
 }

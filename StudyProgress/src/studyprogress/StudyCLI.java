@@ -52,7 +52,7 @@ public class StudyCLI {
         while(true) {
             System.out.println("Päävalikko/Valitse toiminto:");
             System.out.println("Poistu ohjelmasta/q | Tarkastele opintokokonaisuuksia/o | Näytä yhteenveto/y");
-            System.out.println("Lisää opintokokonaisuus/l | muokkaa opintokokonaisuuksia/m | käynnistä graafinen käyttöliittymä/g");
+            System.out.println("Lisää opintokokonaisuus/l | Muokkaa opintokokonaisuuksia/m | Käynnistä graafinen käyttöliittymä/g");
  
             selection = userinput.nextLine();
             if(selection.equals("q")) {
@@ -68,7 +68,7 @@ public class StudyCLI {
     private void mainMenuAction(String selection) {
         
         if(selection.equals("o")) {
-            
+            showViewModules();
         }
         else if(selection.equals("y")) {
             
@@ -85,6 +85,12 @@ public class StudyCLI {
         else {
             System.out.println("Tuntematon komento '" +selection+"'");
         }
+        
+    }
+    private void showViewModules() {
+        System.out.println(user);
+    }
+    private void showSummary() {
         
     }
     private void promptForNewUserCreation(String username) {
