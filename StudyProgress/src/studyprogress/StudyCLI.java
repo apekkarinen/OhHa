@@ -74,6 +74,7 @@ public class StudyCLI {
             
         }
         else if(selection.equals("l")) {
+            showAddModule();
             
         }
         else if(selection.equals("m")) {
