@@ -108,9 +108,10 @@ public class Student {
         return modulelist.get(moduleindex).getNumberOfCourses();
     }
     public String toString() {
-        String studentstring = "Käyttäjä "+name+": \n"+"Opintokokonaisuudet: \n";
+        int index = 0;
+        String studentstring = "Käyttäjä "+name+", Opintokokonaisuudet: \n  numero    nimi\n";
         for(Module module : modulelist) {
-            studentstring = studentstring + module.getName() +":\n"+ module.toString();
+            studentstring = studentstring +"    ["+index +"] " + module.getName() +"\n"+ module.toString();
         }
         return studentstring;
     }
