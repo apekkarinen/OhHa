@@ -48,12 +48,9 @@ public class StudyCLI {
         String mainselection;
         boolean firstdisplay = true;
         System.out.println("Tervetuloa, "+user.getName()+"!");
-        System.out.println("Sinulla on yhteensä "+user.getNumberOfModules()+ " opintokokonaisuutta.");
-        System.out.println("Sinulla on yhteensä "+user.getTotalNumberOfCourses() +" kurssia." );
+        showSummary();
         while(true) {
-            if(!firstdisplay && userinput.hasNextLine()) {
-                userinput.nextLine();
-            }
+            userinput = new Scanner(System.in, "UTF-8");
             firstdisplay = false;
             System.out.println("Päävalikko/Valitse toiminto:");
             System.out.println("Poistu ohjelmasta/q | Tarkastele opintokokonaisuuksia/o | Näytä yhteenveto/y");
@@ -97,7 +94,8 @@ public class StudyCLI {
         System.out.println(user);
     }
     private void showSummary() {
-        
+        System.out.println("Sinulla on yhteensä "+user.getNumberOfModules()+ " opintokokonaisuutta.");
+        System.out.println("Sinulla on yhteensä "+user.getTotalNumberOfCourses() +" kurssia." ); 
     }
     private void showAddModule() {
         while(true) {
