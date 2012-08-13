@@ -67,6 +67,14 @@ public class ModuleTest {
         module.addCourse(anothercourse);
         assertEquals(4.5f, module.getModuleAverage(), 0.001);
     }
+    @Test
+    public void isGradeOverFive() {
+        Course course = new Course("Ohjelmoinnin harjoitustyö", 4, "syksy", 2012, 5);
+        Course anothercourse = new Course("Ohjelmistojen mallintaminen", 4, "syksy", 2012, 5);
+        module.addCourse(course);
+        module.addCourse(anothercourse);
+        assertEquals(5, module.getModuleGrade());
+    }
     
     
     
