@@ -107,6 +107,11 @@ public class Student {
     public int getModuleSize(int moduleindex) {
         return modulelist.get(moduleindex).getNumberOfCourses();
     }
+    
+    public String moduleToString(int moduleindex) {
+        return modulelist.get(moduleindex).toString();
+    }
+    
     public String toString() {
         int index = 0;
         String studentstring = "Käyttäjä "+name+", Opintokokonaisuudet: \n  numero    nimi\n";

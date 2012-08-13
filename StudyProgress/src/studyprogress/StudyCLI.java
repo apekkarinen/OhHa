@@ -143,7 +143,7 @@ public class StudyCLI {
         }
     }
     private void showDeleteCourse(int moduleindex) {
-        
+        System.out.println(user.moduleToString(moduleindex));
     }
     private void showAddCourse(int moduleindex) {
         

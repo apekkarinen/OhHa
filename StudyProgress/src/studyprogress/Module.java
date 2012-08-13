@@ -40,9 +40,10 @@ public class Module {
         courselist.remove(index);
     }
     public String toString() {
+        int index = 0;
         String modulestring = "";
         for(Course course : courselist) {
-            modulestring = modulestring + course.toString() +"\n";
+            modulestring = modulestring +"    [" + index +"]"+ course.toString() +"\n";
         }
         return modulestring;
     }
