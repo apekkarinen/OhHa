@@ -88,7 +88,26 @@ public class StudyCLI {
         
     }
     private void showViewModules() {
-        System.out.println(user);
+        int selection;
+        String input;
+        while(true) {
+            System.out.println(user);
+            System.out.println("Anna opintokokonaisuuden numero kurssilistausta varten tai q poistuaksesi");
+            if(userinput.hasNextInt()) {
+                selection = Integer.parseInt(userinput.nextLine());
+                System.out.println(user.moduleToString(selection));
+            }
+            else {
+                input = userinput.nextLine();
+                if(input.equals("q")) {
+                    break;
+                }
+                else {
+                    System.out.println("Tuntematon valinta!");
+                }
+            }
+            
+        }
     }
     private void showSummary() {
         System.out.println("Sinulla on yhteensä "+user.getNumberOfModules()+ " opintokokonaisuutta.");
