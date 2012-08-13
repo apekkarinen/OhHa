@@ -96,6 +96,8 @@ public class StudyCLI {
             if(userinput.hasNextInt()) {
                 selection = Integer.parseInt(userinput.nextLine());
                 System.out.println(user.moduleToString(selection));
+                System.out.println("Paina Enter palataksesi edelliseen valikkoon");
+                userinput.nextLine();
             }
             else {
                 input = userinput.nextLine();
