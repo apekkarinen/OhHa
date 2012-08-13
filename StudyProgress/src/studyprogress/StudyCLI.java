@@ -23,13 +23,10 @@ public class StudyCLI {
         String selection;
         while(user == null) {
             System.out.println("Tervetuloa opintojen seurantajärjestelmään!");
-            System.out.println("Kirjaudu sisään/luo uusi käyttäjä/näytä ohje/poistu (käyttäjänimi/h/q)");
+            System.out.println("Kirjaudu sisään tai luo uusi käyttäjä/poistu (käyttäjänimi/q)");
             selection = userinput.nextLine();
-            
-            if(selection.equals("h")) {
-                showHelp(helpindex);
-            }
-            else if (selection.equals("q")) {
+
+            if (selection.equals("q")) {
                 break;
             }
             else {
@@ -73,7 +70,7 @@ public class StudyCLI {
             showViewModules();
         }
         else if(selection.equals("y")) {
-            
+            showSummary();
         }
         else if(selection.equals("l")) {
             showAddModule();
@@ -208,9 +205,7 @@ public class StudyCLI {
         }
         
     }
-    private void showHelp(int index) {
-        
-    }
+
     
    
     
