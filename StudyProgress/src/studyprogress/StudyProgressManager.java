@@ -97,7 +97,7 @@ public class StudyProgressManager {
             }
             writer.close();
         } catch (Exception e) {
-            System.out.println("Virhe kirjoitettaessa käyttänimitiedostoa!");
+            System.out.println("Virhe kirjoitettaessa käyttäjänimitiedostoa!");
         }
     }
     public static void deleteFile(String filepath) {

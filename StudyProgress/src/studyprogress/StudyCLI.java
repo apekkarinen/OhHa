@@ -157,7 +157,7 @@ public class StudyCLI {
             else {
                 break;
             }
-            System.out.println("Haluatko poistaa opintokokonaisuuden (po), lisätä kurssin(l) vai poistaa kurssin(pk)");
+            System.out.println("Haluatko poistaa opintokokonaisuuden (po), lisätä kurssin (l) vai poistaa kurssin (pk)?");
             actionselection = userinput.nextLine();
             if(actionselection.equals("po")) {
                 user.deleteModule(moduleselection);
