@@ -44,14 +44,15 @@ public class StudyCLI {
     private void showMainMenu() {
         String mainselection;
         boolean firstdisplay = true;
+        System.out.println();
         System.out.println("Tervetuloa, "+user.getName()+"!");
-        showSummary();
+        System.out.println();
         while(true) {
             userinput = new Scanner(System.in, "UTF-8");
             firstdisplay = false;
-            System.out.println("Päävalikko/Valitse toiminto:");
-            System.out.println("Poistu ohjelmasta/q | Tarkastele opintokokonaisuuksia/o | Näytä yhteenveto/y");
-            System.out.println("Lisää opintokokonaisuus/l | Muokkaa opintokokonaisuuksia/m | Käynnistä graafinen käyttöliittymä/g");
+            System.out.println("        //----------Päävalikko/Valitse toiminto:---------->>");
+            System.out.println("Poistu ohjelmasta (q) | Tarkastele opintokokonaisuuksia (o) | Näytä yhteenveto (y)");
+            System.out.println("Lisää opintokokonaisuus (l) | Muokkaa opintokokonaisuuksia (m) | Käynnistä graafinen käyttöliittymä (g)");
  
             mainselection = userinput.nextLine();
             if(mainselection.equals("q")) {
@@ -112,8 +113,14 @@ public class StudyCLI {
         }
     }
     private void showSummary() {
+        System.out.println();
+        System.out.println("Käyttäjä "+user.getName()+": Yhteenveto");
+        System.out.println();
+        System.out.println(user);
         System.out.println("Sinulla on yhteensä "+user.getNumberOfModules()+ " opintokokonaisuutta.");
-        System.out.println("Sinulla on yhteensä "+user.getTotalNumberOfCourses() +" kurssia." ); 
+        System.out.println("Sinulla on yhteensä "+user.getTotalNumberOfCourses() +" kurssia." );
+        System.out.println("Paina enter palataksesi edelliseen valikkoon");
+        userinput.nextLine();
     }
     private void showAddModule() {
         while(true) {
