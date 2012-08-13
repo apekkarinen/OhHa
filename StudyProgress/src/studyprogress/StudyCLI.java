@@ -45,22 +45,27 @@ public class StudyCLI {
     }
     
     private void showMainMenu() {
-        String selection;
+        String mainselection;
+        boolean firstdisplay = true;
         System.out.println("Tervetuloa, "+user.getName()+"!");
         System.out.println("Sinulla on yhteensä "+user.getNumberOfModules()+ " opintokokonaisuutta.");
         System.out.println("Sinulla on yhteensä "+user.getTotalNumberOfCourses() +" kurssia." );
         while(true) {
+            if(!firstdisplay && userinput.hasNextLine()) {
+                userinput.nextLine();
+            }
+            firstdisplay = false;
             System.out.println("Päävalikko/Valitse toiminto:");
             System.out.println("Poistu ohjelmasta/q | Tarkastele opintokokonaisuuksia/o | Näytä yhteenveto/y");
             System.out.println("Lisää opintokokonaisuus/l | Muokkaa opintokokonaisuuksia/m | Käynnistä graafinen käyttöliittymä/g");
  
-            selection = userinput.nextLine();
-            if(selection.equals("q")) {
+            mainselection = userinput.nextLine();
+            if(mainselection.equals("q")) {
                 user.writeStudentData();
                 break;
             }
             else {
-                mainMenuAction(selection.toLowerCase());
+                mainMenuAction(mainselection.toLowerCase());
             }
         }
         
@@ -78,7 +83,7 @@ public class StudyCLI {
             
         }
         else if(selection.equals("m")) {
-            
+            showEditModule();
         }
         else if(selection.equals("g")) {
             
@@ -143,10 +148,48 @@ public class StudyCLI {
         }
     }
     private void showDeleteCourse(int moduleindex) {
+        int selection;
         System.out.println(user.moduleToString(moduleindex));
+        System.out.println("Minkä kurssin haluat poistaa? (numero 0-"+user.getModuleSize(moduleindex) +")");
+        if(userinput.hasNextInt()) {
+            selection = Integer.parseInt(userinput.nextLine());
+            user.deleteCourseFromModule(moduleindex, selection);
+            System.out.println("Poistettiin kurssi numero "+selection+".");
+        }
+        else {
+            System.out.println("Virheellinen valinta, kurssia ei poistettu!");
+        }
+        
     }
     private void showAddCourse(int moduleindex) {
+        String name = "";
+        float credits = -1.0f;
+        String semester = "";
+        int year = -1;
+        int grade = 0;
+        System.out.println("Anna kurssin nimi:");
+        name = userinput.nextLine();
+        System.out.println("Anna kurssin opintopistelaajuus:");
+        if(userinput.hasNextFloat()) {
+            credits = Float.parseFloat(userinput.nextLine());
+        }
+        System.out.println("Anna kurssin lukukausi (syksy/kevät):");
+        semester = userinput.nextLine();
+        System.out.println("Anna kurssin lukuvuosi:");
+        if(userinput.hasNextInt()) {
+            year = Integer.parseInt(userinput.nextLine());
+        }
+        System.out.println("Anna kurssin arvosana, (0-5, tyhjä rivi = 0):");
+        if(userinput.hasNextInt()) {
+            grade = Integer.parseInt(userinput.nextLine());
+        }
         
+        if(!name.equals("") && !semester.equals("") && credits > 0.0f && year > 0 && grade >= 0) {
+            user.addCourseToModule(moduleindex, new Course (name, credits, semester, year, grade));
+        }
+        else {
+            System.out.println("Virheellisiä arvoja kurssin tiedoissa, luonti epäonnistui!");
+        }
     }
     
     private void promptForNewUserCreation(String username) {

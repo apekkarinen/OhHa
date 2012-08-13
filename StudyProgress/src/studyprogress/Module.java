@@ -43,7 +43,7 @@ public class Module {
         int index = 0;
         String modulestring = "";
         for(Course course : courselist) {
-            modulestring = modulestring +"    [" + index +"]"+ course.toString() +"\n";
+            modulestring = modulestring +"      [" + index +"]  "+ course.toString() +"\n";
         }
         return modulestring;
     }

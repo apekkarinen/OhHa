@@ -44,6 +44,8 @@ public class Student {
     }
      public void addModule(Module module) {
         modulelist.add(module);
+        writeStudentData();
+        
     }
     public void deleteModule(int index) {
         String modulename = modulelist.get(index).getName();
@@ -51,11 +53,12 @@ public class Student {
         StudyProgressManager.deleteFile(modulepath);
         modulelist.remove(index);
         writeStudentData();
-        loadStudentData();
+        
     }
     
     public void addCourseToModule(int moduleindex, Course course) {
         modulelist.get(moduleindex).addCourse(course);
+        writeStudentData();
     }
     
     public int getNumberOfModules() {
