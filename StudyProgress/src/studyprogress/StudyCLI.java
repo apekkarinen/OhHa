@@ -117,6 +117,7 @@ public class StudyCLI {
         System.out.println("Käyttäjä "+user.getName()+": Yhteenveto");
         System.out.println();
         System.out.println(user);
+        System.out.println();
         System.out.println("Sinulla on yhteensä "+user.getNumberOfModules()+ " opintokokonaisuutta.");
         System.out.println("Sinulla on yhteensä "+user.getTotalNumberOfCourses() +" kurssia." );
         System.out.println("Paina enter palataksesi edelliseen valikkoon");
