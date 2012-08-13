@@ -113,14 +113,14 @@ public class Student {
     
     public String moduleToString(int moduleindex) {
         Module module = modulelist.get(moduleindex);
-        return module.getName() + " (keskiarvo "+module.getModuleAverage()+")\n" +module.toString();
+        return module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")\n" +module.toString();
     }
     
     public String toString() {
         int index = 0;
         String studentstring = "Käyttäjä "+name+", Opintokokonaisuudet: \n  numero    nimi\n";
         for(Module module : modulelist) {
-            studentstring = studentstring +"    ["+index +"] " + module.getName() + " (keskiarvo "+module.getModuleAverage() +")";
+            studentstring = studentstring +"    ["+index +"] " + module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")";
         }
         return studentstring;
     }

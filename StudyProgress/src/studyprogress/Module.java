@@ -53,6 +53,16 @@ public class Module {
             return (((float)sum) / ((float)coursesfinished));
         }
     }
+    public int getModuleGrade() {
+        int grade = (int)(Math.ceil(getModuleAverage() + 0.5) + 0.1);
+        
+        if(grade > 5) {
+            return 5;
+        }
+        else {
+            return grade;
+        }
+    }
     public void deleteCourse(int index) {
         courselist.remove(index);
     }
