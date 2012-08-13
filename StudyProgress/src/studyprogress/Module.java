@@ -36,6 +36,23 @@ public class Module {
     public int getNumberOfCourses() {
         return courselist.size();
     }
+    public float getModuleAverage() {
+        int sum = 0;
+        int coursesfinished = 0;
+        int totalnumberofcourses = courselist.size();
+        for (Course course : courselist) {
+            if(course.getGrade() > 0) {
+                sum = sum + course.getGrade();
+                coursesfinished++;
+            }
+        }
+        if(coursesfinished == 0) {
+            return 0.0f;
+        }
+        else {
+            return (((float)sum) / ((float)coursesfinished));
+        }
+    }
     public void deleteCourse(int index) {
         courselist.remove(index);
     }

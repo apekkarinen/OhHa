@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
  */
 public class ModuleTest {
     Module module;
-    
+
     public ModuleTest() {
     }
     
@@ -54,6 +54,18 @@ public class ModuleTest {
         
         assertEquals(2, module.getNumberOfCourses());
         
+    }
+    @Test
+    public void testAverageWithZeroCourses() {
+        assertEquals(0, module.getModuleAverage(), 0.001);
+    }
+    @Test
+    public void testAverage() {
+        Course course = new Course("Ohjelmoinnin harjoitustyö", 4, "syksy", 2012, 5);
+        Course anothercourse = new Course("Ohjelmistojen mallintaminen", 4, "syksy", 2012, 4);
+        module.addCourse(course);
+        module.addCourse(anothercourse);
+        assertEquals(4.5f, module.getModuleAverage(), 0.001);
     }
     
     
