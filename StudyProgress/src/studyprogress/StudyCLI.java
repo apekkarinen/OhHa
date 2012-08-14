@@ -2,7 +2,7 @@
 package studyprogress;
 
 /**
- * StudyCLI is the command line interface-class fort StudyProgressManager.
+ * The command line interface-class fort StudyProgressManager.
  *
  * @author Antti Pekkarinen
  */

@@ -2,7 +2,7 @@
 package studyprogress;
 
 /**
- *Student is the class representing an university student, the user of this software.
+ *The class representing an university student, the user of this software.
  * Every university course belongs to a module, so the Student class contains a list of
  * Module-objects.
  * 
