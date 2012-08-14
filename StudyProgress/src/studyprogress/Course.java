@@ -3,6 +3,8 @@ package studyprogress;
 
 /**
  *
+ * Course is a class containing the key data describing a single university course.
+ * 
  * @author Antti Pekkarinen
  */
 

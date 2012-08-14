@@ -4,8 +4,13 @@ package studyprogress;
 import java.util.ArrayList;
 
 /**
+ *Module is a class containing the key data describing an university
+ * study module, such as Basic Studies in Computer Science. A study module
+ * consists of different courses, so the Module class contains a list of Course-objects.
  *
+ * 
  * @author Antti Pekkarinen
+ * @see Course
  */
 public class Module {
     

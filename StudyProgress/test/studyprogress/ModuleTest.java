@@ -10,7 +10,9 @@ import static org.junit.Assert.*;
 
 /**
  *
+ * 
  * @author Antti Pekkarinen
+ *
  */
 public class ModuleTest {
     Module module;

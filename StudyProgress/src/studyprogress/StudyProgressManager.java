@@ -2,7 +2,9 @@
 package studyprogress;
 
 /**
- *
+ *StudyProgressManager is a class containing the basic operations of the
+ * StudyProgress-application, such as logging in and creating a user.
+ * 
  * @author Antti Pekkarinen
  */
 import java.util.*;
