@@ -70,12 +70,12 @@ public class ModuleTest {
         assertEquals(4.5f, module.getModuleAverage(), 0.001);
     }
     @Test
-    public void testGrade() {
-        Course course = new Course("Ohjelmoinnin harjoitustyö", 4, "syksy", 2012, 3);
-        Course anothercourse = new Course("Ohjelmistojen mallintaminen", 4, "syksy", 2012, 3);
+    public void testGradeOne() {
+        Course course = new Course("Ohjelmoinnin harjoitustyö", 4, "syksy", 2012, 1);
+        Course anothercourse = new Course("Ohjelmistojen mallintaminen", 4, "syksy", 2012, 1);
         module.addCourse(course);
         module.addCourse(anothercourse);
-        assertEquals(3, module.getModuleGrade());
+        assertEquals(1, module.getModuleGrade());
     }
     @Test
     public void isGradeOverFive() {

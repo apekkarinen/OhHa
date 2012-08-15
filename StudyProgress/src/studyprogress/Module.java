@@ -20,8 +20,8 @@ public class Module {
     
     /**
      * Class constructor.
-     * @param name Name of this Module, usually basic, intermediate or advanced studies of a subject
-     * @param totalcreditsrequired Total credit points needed for completing this Module
+     * @param name Name of this Module, usually basic, intermediate or advanced studies of a subject.
+     * @param totalcreditsrequired Total credit points needed for completing this Module.
      */
     
     public Module(String name, float totalcreditsrequired) {
@@ -31,7 +31,7 @@ public class Module {
     }
     /**
      * Adds a given Course to this Module.
-     * @param course The Course to add
+     * @param course The Course to add.
      */
     
     public void addCourse(Course course) {
@@ -40,8 +40,8 @@ public class Module {
     
     /**
      * Search a Course belonging to this Module by index.
-     * @param index Index of the Course, integer in range [0,module size - 1]
-     * @return The Course specified by index parameter
+     * @param index Index of the Course, integer in range [0,module size - 1].
+     * @return The Course specified by index parameter.
      */
      
     public Course getCourse(int index) {
@@ -49,7 +49,7 @@ public class Module {
     }
     /**
      * 
-     * @return The name of this Module
+     * @return The name of this Module.
      */
     
     public String getName() {
@@ -57,7 +57,7 @@ public class Module {
     }
     /**
      * 
-     * @return Total credits needed for completing this module
+     * @return Total credits needed for completing this module.
      */
     
     public float getTotalCredits() {
@@ -65,7 +65,7 @@ public class Module {
     }
     /**
      * 
-     * @return Total number of courses in this Module
+     * @return Total number of courses in this Module.
      */
     public int getNumberOfCourses() {
         return courselist.size();
@@ -73,7 +73,7 @@ public class Module {
     /**
      * Calculates the current grade average of this Module. Courses with a grade of 0
      * are treated as unfinished and therefore left out from this calculation.
-     * @return Average grade of all finished Courses in this Module
+     * @return Average grade of all finished Courses in this Module.
      */
     public float getModuleAverage() {
         int sum = 0;
@@ -93,11 +93,11 @@ public class Module {
         }
     }
     /**
-     * Calculates the current final grade of this module. The final grade is
+     * Calculates the current overall grade of this module. The grade is
      * an integer in range [1,5]. This method uses the following formula for calculating the grade:
-     * grade = (int)(Math.ceil(getModuleAverage() + 0.5) + 0.1)
-     * Note that the final grade cannot be greater than five
-     * @return 
+     * grade = (int)(Math.ceil(getModuleAverage() - 0.5) + 0.1)
+     * Note that the final grade cannot be greater than five.
+     * @return The overall grade of this Module.
      */
     public int getModuleGrade() {
         int grade = (int)(Math.ceil(getModuleAverage() - 0.5) + 0.1);
@@ -109,9 +109,18 @@ public class Module {
             return grade;
         }
     }
+    /**
+     * Deletes a Course specified by index from this Module.
+     * @param index Index of the Course to delete, in range [0, module size - 1].
+     */
     public void deleteCourse(int index) {
         courselist.remove(index);
     }
+    /**
+     * Returns a String representation of this Module, in other words 
+     * returns a listing of Courses contained in this Module.
+     * @return A String representation of this Module.
+     */
     public String toString() {
         int index = 0;
         String modulestring = "";

@@ -20,10 +20,10 @@ public class Course {
      * Course class constructor, sets course grade to zero.
      * If you want to create an unfinished course, use this constructor.
      * 
-     * @param name Course name
-     * @param creditpoints Credit points awarded for the course
-     * @param semester The semester during which the course is completed (or during which an unfinished course is started)
-     * @param year The year during which the course is completed (or during which an unfinished course is started)
+     * @param name Course name.
+     * @param creditpoints Credit points awarded for the course.
+     * @param semester The semester during which the course is completed (or during which an unfinished course is started).
+     * @param year The year during which the course is completed (or during which an unfinished course is started).
      */
     
     
@@ -37,10 +37,10 @@ public class Course {
     
     /**
      * Course class alternative constructor, sets course grade to a given integer value from 0 to 5.
-     * @param name Course name
-     * @param creditpoints Credit points awarded for the Course
-     * @param semester The semester during which this Course is completed (or during which an unfinished Course is started)
-     * @param year The year during which this Course is completed (or during which an unfinished Course is started)
+     * @param name Course name.
+     * @param creditpoints Credit points awarded for the Course.
+     * @param semester The semester during which this Course is completed (or during which an unfinished Course is started).
+     * @param year The year during which this Course is completed (or during which an unfinished Course is started).
      * @param grade The grade awarded for this Course. Integer in range [0,5].
      */
     
@@ -59,7 +59,7 @@ public class Course {
     /**
      * 
      * 
-     * @return The name of this Course
+     * @return The name of this Course.
      */
     
     public String getName() {
@@ -67,7 +67,7 @@ public class Course {
     }
     /**
      * 
-     * @return The credit points awarded from this Course
+     * @return The credit points awarded from this Course.
      */
     
     public float getCreditPoints() {
@@ -77,7 +77,7 @@ public class Course {
     /**
      * Returns the grade of this course, always in range [0,5].
      * 
-     * @return The grade of this Course
+     * @return The grade of this Course.
      */
     
     public int getGrade() {
@@ -86,7 +86,7 @@ public class Course {
     
     /**
      * 
-     * @return The semester during which this Course is completed (or during which an unfinished Course is started)
+     * @return The semester during which this Course is completed (or during which an unfinished Course is started).
      */
     
     public String getSemester()  {
@@ -95,7 +95,7 @@ public class Course {
     
     /**
      * 
-     * @return The year during which this Course is completed (or during which an unfinished Course is started)
+     * @return The year during which this Course is completed (or during which an unfinished Course is started).
      */
     
     public int getYear() {
@@ -105,7 +105,7 @@ public class Course {
      * Returns a String representation of this Course-object containing course name,
      * credit points and grade.
      * 
-     * @return A String representation of this Course
+     * @return A String representation of this Course.
      *
      */
     
