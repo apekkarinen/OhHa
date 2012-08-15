@@ -18,29 +18,63 @@ public class Module {
     private float totalcreditsrequired;
     private ArrayList<Course> courselist;
     
+    /**
+     * Class constructor.
+     * @param name Name of this Module, usually basic, intermediate or advanced studies of a subject
+     * @param totalcreditsrequired Total credit points needed for completing this Module
+     */
+    
     public Module(String name, float totalcreditsrequired) {
         this.name = name;
         this.totalcreditsrequired = totalcreditsrequired;
         this.courselist = new ArrayList<Course>();
     }
+    /**
+     * Adds a given Course to this Module.
+     * @param course The Course to add
+     */
     
     public void addCourse(Course course) {
         courselist.add(course);
     }
+    
+    /**
+     * Search a Course belonging to this Module by index.
+     * @param index Index of the Course, integer in range [0,module size - 1]
+     * @return The Course specified by index parameter
+     */
+     
     public Course getCourse(int index) {
         return courselist.get(index);
     }
+    /**
+     * 
+     * @return The name of this Module
+     */
     
     public String getName() {
         return name;
     }
+    /**
+     * 
+     * @return Total credits needed for completing this module
+     */
     
     public float getTotalCredits() {
         return totalcreditsrequired;
     }
+    /**
+     * 
+     * @return Total number of courses in this Module
+     */
     public int getNumberOfCourses() {
         return courselist.size();
     }
+    /**
+     * Calculates the current grade average of this Module. Courses with a grade of 0
+     * are treated as unfinished and therefore left out from this calculation.
+     * @return Average grade of all finished Courses in this Module
+     */
     public float getModuleAverage() {
         int sum = 0;
         int coursesfinished = 0;
@@ -58,8 +92,15 @@ public class Module {
             return (((float)sum) / ((float)coursesfinished));
         }
     }
+    /**
+     * Calculates the current final grade of this module. The final grade is
+     * an integer in range [1,5]. This method uses the following formula for calculating the grade:
+     * grade = (int)(Math.ceil(getModuleAverage() + 0.5) + 0.1)
+     * Note that the final grade cannot be greater than five
+     * @return 
+     */
     public int getModuleGrade() {
-        int grade = (int)(Math.ceil(getModuleAverage() + 0.5) + 0.1);
+        int grade = (int)(Math.ceil(getModuleAverage() - 0.5) + 0.1);
         
         if(grade > 5) {
             return 5;

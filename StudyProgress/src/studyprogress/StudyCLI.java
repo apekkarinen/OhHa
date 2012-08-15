@@ -200,8 +200,22 @@ public class StudyCLI {
         if(userinput.hasNextFloat()) {
             credits = Float.parseFloat(userinput.nextLine());
         }
-        System.out.println("Anna kurssin lukukausi (syksy/kevät):");
+        
+        while(!(semester.equals("syksy") || semester.equals("kevät")) ) {
+        System.out.println("Anna kurssin lukukausi (s = syksy, k = kevät:");
         semester = userinput.nextLine();
+        
+        if(semester.equals("s")) {
+            semester = "syksy";
+        }
+        else if(semester.equals("k")) {
+            semester = "kevät";
+        }
+        else {
+            System.out.println("Tuntematon valinta '" +semester+"'!");
+        }
+        
+        }
         System.out.println("Anna kurssin lukuvuosi:");
         if(userinput.hasNextInt()) {
             year = Integer.parseInt(userinput.nextLine());
