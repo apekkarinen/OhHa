@@ -25,7 +25,7 @@ public class StudyGUI implements Runnable {
     
     public void run() {
         
-        while(user == null) {
+        if(user == null) {
             displayLogin();
         }
         displayMainMenu();
@@ -50,6 +50,7 @@ public class StudyGUI implements Runnable {
         JButton createbutton = new JButton("Luo uusi käyttäjä");
         buttons.add(loginbutton);
         buttons.add(createbutton);
+        loginbutton.addActionListener(new LoginButtonListener(this, manager, user, login, userinput, helptext));
         
         base.add(userinput);
         base.add(helptext);
@@ -59,10 +60,6 @@ public class StudyGUI implements Runnable {
         login.pack();
  
         login.setVisible(true);
-    }
-    
-    public void displayCreateNewUser() {
-        
     }
     
     public void displayMainMenu() {

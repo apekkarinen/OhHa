@@ -1,6 +1,8 @@
 
 package studyprogress;
 
+import javax.swing.SwingUtilities;
+
 /**
  *  @author Antti Pekkarinen
  */
@@ -12,7 +14,9 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        StudyCLI cli = new StudyCLI(new StudyProgressManager());
-        cli.showLogIn();
+       /* StudyCLI cli = new StudyCLI(new StudyProgressManager());
+        cli.showLogIn();*/
+        StudyGUI gui = new StudyGUI(new StudyProgressManager());
+        SwingUtilities.invokeLater(gui);
     }
 }
