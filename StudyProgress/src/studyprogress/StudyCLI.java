@@ -7,6 +7,7 @@ package studyprogress;
  * @author Antti Pekkarinen
  */
 import java.util.*;
+import javax.swing.SwingUtilities;
 
 public class StudyCLI {
     private StudyProgressManager manager;
@@ -82,6 +83,8 @@ public class StudyCLI {
             showEditModule();
         }
         else if(selection.equals("g")) {
+            StudyGUI gui = new StudyGUI(manager,user);
+            SwingUtilities.invokeLater(gui);
             
         }
         else {
