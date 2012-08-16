@@ -65,14 +65,23 @@ public class StudyGUI implements Runnable {
     
     public void displayMainMenu(Student user) {
         this.user = user;
-        JFrame mainmenu = new JFrame("Main Menu: Kirjautunut käyttäjänä "+user.getName());
+        JFrame mainmenu = new JFrame("Main Menu: Kirjautunut käyttäjänä "+this.user.getName());
         mainmenu.setPreferredSize(new Dimension(800,600));
         Container base = mainmenu.getContentPane();
+        base.setLayout(new FlowLayout());
+        
+        Container summary = new Container();
+        summary.setLayout(new BoxLayout(summary, BoxLayout.Y_AXIS));
+        Container modules = new Container();
+        modules.setLayout(new BoxLayout(modules, BoxLayout.Y_AXIS));
+        
         
         mainmenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainmenu.pack();
         mainmenu.setVisible(true);
     }
+    
+   
     
     
     
