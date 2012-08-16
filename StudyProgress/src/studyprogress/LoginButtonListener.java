@@ -34,7 +34,7 @@ public class LoginButtonListener implements ActionListener {
             }
             else {
                 source.dispose();
-                gui.displayMainMenu();
+                gui.displayMainMenu(user);
             }
         }
         

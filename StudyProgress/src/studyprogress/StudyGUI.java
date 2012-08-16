@@ -28,8 +28,9 @@ public class StudyGUI implements Runnable {
         if(user == null) {
             displayLogin();
         }
-        displayMainMenu();
-        
+        if(user != null) {
+            displayMainMenu(user);
+        }
     }
     
     public void displayLogin() {
@@ -62,8 +63,15 @@ public class StudyGUI implements Runnable {
         login.setVisible(true);
     }
     
-    public void displayMainMenu() {
+    public void displayMainMenu(Student user) {
+        this.user = user;
+        JFrame mainmenu = new JFrame("Main Menu: Kirjautunut käyttäjänä "+user.getName());
+        mainmenu.setPreferredSize(new Dimension(800,600));
+        Container base = mainmenu.getContentPane();
         
+        mainmenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        mainmenu.pack();
+        mainmenu.setVisible(true);
     }
     
     
