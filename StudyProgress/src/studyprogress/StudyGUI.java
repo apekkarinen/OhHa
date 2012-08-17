@@ -52,6 +52,7 @@ public class StudyGUI implements Runnable {
         buttons.add(loginbutton);
         buttons.add(createbutton);
         loginbutton.addActionListener(new LoginButtonListener(this, manager, user, login, userinput, helptext));
+        createbutton.addActionListener(new LoginButtonListener(this, manager, user, login, userinput, helptext));
         
         base.add(userinput);
         base.add(helptext);
@@ -76,11 +77,25 @@ public class StudyGUI implements Runnable {
         modules.setLayout(new BoxLayout(modules, BoxLayout.Y_AXIS));
         JList modulelist = new JList(user.modulesToStringArray());
         modulelist.setLayoutOrientation(JList.VERTICAL);
+        Container modulebuttons = new Container();
+        modulebuttons.setLayout(new FlowLayout());
+        JButton add = new JButton("Lisää valmis");
+        JButton addcustom = new JButton("Lisää oma");
+        JButton edit = new JButton("muokkaa");
+        JButton delete = new JButton("poista");
+        
+        modulebuttons.add(add);
+        modulebuttons.add(addcustom);
+        modulebuttons.add(edit);
+        modulebuttons.add(delete);
+        
         Container moduledata = new Container();
         JLabel moduletext = new JLabel("Placeholder for module data");
         moduledata.setLayout(new BoxLayout(moduledata,BoxLayout.Y_AXIS));
+        
         moduledata.add(moduletext);
         modules.add(modulelist);
+        modules.add(modulebuttons);
         modules.add(moduledata);
         
         JLabel summarytext = new JLabel("Placeholder for summary");
