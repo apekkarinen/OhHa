@@ -74,6 +74,10 @@ public class StudyGUI implements Runnable {
         summary.setLayout(new BoxLayout(summary, BoxLayout.Y_AXIS));
         Container modules = new Container();
         modules.setLayout(new BoxLayout(modules, BoxLayout.Y_AXIS));
+        JList modulelist = new JList();
+        
+        mainmenu.add(summary);
+        mainmenu.add(modules);
         
         
         mainmenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);

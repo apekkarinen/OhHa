@@ -121,6 +121,16 @@ public class Student {
         return module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")\n" +module.toString();
     }
     
+    public String[] modulesToStringArray() {
+        int size = modulelist.size();
+        String[] modules = new String[size];
+        for (int i = 0; i < size; i++) {
+            modules[i] = moduleToString(i);
+        }
+        return modules;
+        
+    }
+    
     public String toString() {
         int index = 0;
         String studentstring = "Käyttäjä "+name+", Opintokokonaisuudet: \n  numero    nimi\n";
