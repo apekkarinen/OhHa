@@ -1,6 +1,7 @@
 
 package studyprogress;
-
+import java.util.*;
+import java.io.*;
 /**
  *The class representing an university student, the user of this software.
  * Every university course belongs to a module, so the Student class contains a list of
@@ -11,8 +12,7 @@ package studyprogress;
  * @author Antti Pekkarinen
  */
 
-import java.util.*;
-import java.io.*;
+
 
 public class Student {
     
@@ -21,6 +21,10 @@ public class Student {
     private File studentdirectory;
     private File modulesfile;
     
+    /**
+     * Class constructor.
+     * @param name The name of this Student.
+     */
     
     public Student(String name) {
         this.name = name;
@@ -39,19 +43,42 @@ public class Student {
         loadStudentData();
     }
     
+    /**
+     * 
+     * @return The name of this Student.
+     */
+    
     public String getName() {
         return name;
     }
     
+    /**
+     * Constructs a Module with specified parameters and adds it to this Student's module list.
+     * @param name Name of the Module to add.
+     * @param totalcredits Total credit points needed for completing the Module.
+     */
+    
     public void addModule(String name, float totalcredits) {
         Module module = new Module(name,totalcredits);
         modulelist.add(module);
+        writeStudentData();
     }
+    /**
+     * Adds a specified Module directly to this Student's Module list.
+     * Saves Student data to disk after adding the Module.
+     * @param module The Module to add to this Student's Module list.
+     */
      public void addModule(Module module) {
         modulelist.add(module);
         writeStudentData();
-        
     }
+     
+     /**
+      * Deletes a Module based on list index from this Student's Module list.
+      * Saves Student data to disk after deletion.
+      * @param index List index of the Module to delete. Range: Integer in [0, number of Modules -1]
+      */
+     
     public void deleteModule(int index) {
         String modulename = modulelist.get(index).getName();
         String modulepath = "data/"+name+"/"+modulename+".txt";
@@ -61,14 +88,31 @@ public class Student {
         
     }
     
+    /**
+     * Adds a Course to the specified Module of this Student. Module specified by list index.
+     * Saves Student data to after adding the Course.
+     * @param moduleindex List index of the module to add the Course to. Range: Integer in [0, number of Modules -1]
+     * @param course The Course to add.
+     */
+    
     public void addCourseToModule(int moduleindex, Course course) {
         modulelist.get(moduleindex).addCourse(course);
         writeStudentData();
     }
+    /**
+     *
+     * @return Number of Modules belonging to this Student.
+     */
     
     public int getNumberOfModules() {
         return modulelist.size();
     }
+    /**
+     * Returns the total number of Courses belonging to all Modules of this Student,
+     * including all unfinished Courses.
+     * @return Total number of this Student's Courses.
+     */
+    
     public int getTotalNumberOfCourses() {
         int sum = 0;
         for (Module module : modulelist) {
@@ -76,8 +120,12 @@ public class Student {
         }
         return sum;
     }
-    
-    private void loadStudentData() {
+    /**
+     * Loads Student data from disk. Loaded data includes all Modules
+     * and Courses of this Student.
+     */
+ 
+    public void loadStudentData() {
         String modulename;
         this.modulelist.clear();
         try {
@@ -92,6 +140,11 @@ public class Student {
         
         
     }
+    
+    /**
+     * Writes Student data to disk. Written data includes all Modules
+     * and Courses of this Student.
+     */
     
     public void writeStudentData() {
         try {
@@ -108,18 +161,43 @@ public class Student {
         }
         
     }
+    
+    /**
+     * Deletes a Course specified by list index from a Module also specified by list index.
+     * @param moduleindex Index of the Module to delete from. Range: Integer in [0, number of Modules -1]
+     * @param courseindex Index of the Course to delete. Range: Integer in [0, number of Courses in Module -1]
+     */
+    
     public void deleteCourseFromModule(int moduleindex, int courseindex) {
         modulelist.get(moduleindex).deleteCourse(courseindex);
 
     }
+    /**
+     * Gets the number of Courses in the Module specified by list index.
+     * @param moduleindex The index of the specified Module.  Range: Integer in [0, number of Modules -1]
+     * @return Number of Courses in the specified Module.
+     */
     public int getModuleSize(int moduleindex) {
         return modulelist.get(moduleindex).getNumberOfCourses();
     }
+    /**
+     * Returns a String representation of the specified Module of this Student.
+     * This representation includes all Courses of the Module.
+     * @param moduleindex List index of the Module. Range: Integer in [0, number of Modules -1]
+     * @return A String representation of the specified Module.
+     */
+    
     
     public String moduleToString(int moduleindex) {
         Module module = modulelist.get(moduleindex);
         return module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")\n" +module.toString();
     }
+    
+    /**
+     * Returns a String array of short String representations of all the Modules belonging to this Student.
+     * These representations do not include Course names.
+     * @return A String array of short String representations of this Student's Modules.
+     */
     
     public String[] modulesToStringArray() {
         int size = modulelist.size();
@@ -132,6 +210,12 @@ public class Student {
         return modules;
         
     }
+    
+    /**
+     * Returns a String representation of this Student including short summaries of all Modules.
+     * This summary does not include Course names.
+     * @return A String representation of this Student.
+     */
     
     public String toString() {
         int index = 0;
