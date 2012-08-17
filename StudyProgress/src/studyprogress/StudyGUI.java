@@ -68,17 +68,27 @@ public class StudyGUI implements Runnable {
         JFrame mainmenu = new JFrame("Main Menu: Kirjautunut käyttäjänä "+this.user.getName());
         mainmenu.setPreferredSize(new Dimension(800,600));
         Container base = mainmenu.getContentPane();
-        base.setLayout(new FlowLayout());
         
         Container summary = new Container();
         summary.setLayout(new BoxLayout(summary, BoxLayout.Y_AXIS));
+        
         Container modules = new Container();
         modules.setLayout(new BoxLayout(modules, BoxLayout.Y_AXIS));
-        JList modulelist = new JList();
+        JList modulelist = new JList(user.modulesToStringArray());
+        modulelist.setLayoutOrientation(JList.VERTICAL);
+        Container moduledata = new Container();
+        JLabel moduletext = new JLabel("Placeholder for module data");
+        moduledata.setLayout(new BoxLayout(moduledata,BoxLayout.Y_AXIS));
+        moduledata.add(moduletext);
+        modules.add(modulelist);
+        modules.add(moduledata);
         
-        mainmenu.add(summary);
-        mainmenu.add(modules);
+        JLabel summarytext = new JLabel("Placeholder for summary");
+        summary.add(summarytext);
         
+        base.add(summary, BorderLayout.LINE_START);
+        base.add(modules,BorderLayout.LINE_END);
+
         
         mainmenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainmenu.pack();

@@ -123,9 +123,11 @@ public class Student {
     
     public String[] modulesToStringArray() {
         int size = modulelist.size();
+        Module module;
         String[] modules = new String[size];
         for (int i = 0; i < size; i++) {
-            modules[i] = moduleToString(i);
+            module = modulelist.get(i);
+            modules[i] = module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")";
         }
         return modules;
         
