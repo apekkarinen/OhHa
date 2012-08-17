@@ -77,6 +77,9 @@ public class StudyGUI implements Runnable {
         modules.setLayout(new BoxLayout(modules, BoxLayout.Y_AXIS));
         JList modulelist = new JList(user.modulesToStringArray());
         modulelist.setLayoutOrientation(JList.VERTICAL);
+        JScrollPane scroller = new JScrollPane(modulelist);
+        scroller.setPreferredSize(new Dimension(250, 80));
+        
         Container modulebuttons = new Container();
         modulebuttons.setLayout(new FlowLayout());
         JButton add = new JButton("Lisää valmis");
@@ -94,7 +97,7 @@ public class StudyGUI implements Runnable {
         moduledata.setLayout(new BoxLayout(moduledata,BoxLayout.Y_AXIS));
         
         moduledata.add(moduletext);
-        modules.add(modulelist);
+        modules.add(scroller);
         modules.add(modulebuttons);
         modules.add(moduledata);
         
