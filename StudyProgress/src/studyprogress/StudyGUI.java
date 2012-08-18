@@ -85,14 +85,11 @@ public class StudyGUI implements Runnable {
         JLabel moduleinfo = new JLabel("Kokonaisuuden kurssit");
         moduleinfo.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        JList modulelist = new JList(user.modulesToStringArray());
-        modulelist.setLayoutOrientation(JList.VERTICAL);
-        modulelist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        JList modulelist = createList(user.modulesToStringArray());
         JScrollPane modulescroller = new JScrollPane(modulelist);
         modulescroller.setPreferredSize(new Dimension(160, 40));
         
-        JList courselist = new JList();
-        courselist.setLayoutOrientation(JList.VERTICAL);
+        JList courselist = createList(null);
         ModuleListListener modulelistener = new ModuleListListener(manager, user, this, moduleinfo);
         modulelist.addListSelectionListener(modulelistener);
         JScrollPane coursescroller = new JScrollPane(courselist);
@@ -143,6 +140,20 @@ public class StudyGUI implements Runnable {
     
     public int getSelectedModule() {
         return selectedmoduleindex;
+    }
+    
+    private JList createList(Object[] data) {
+        if(data != null) {
+            JList returnlist = new JList(data);
+            returnlist.setLayoutOrientation(JList.VERTICAL);
+            returnlist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            return returnlist;
+        }
+        else {
+            return new JList();
+        }
+        
+        
     }
     
    
