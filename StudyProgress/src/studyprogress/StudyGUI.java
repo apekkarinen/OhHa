@@ -101,7 +101,7 @@ public class StudyGUI implements Runnable {
         JButton add = new JButton("Lisää valmis");
         JButton addcustom = new JButton("Lisää oma");
         JButton delete = new JButton("Poista");
-        delete.addActionListener(buttonlistener);
+        addModuleButtonListeners(buttonlistener, add, addcustom, delete);
         
         modulebuttons.add(add);
         modulebuttons.add(addcustom);
@@ -124,8 +124,10 @@ public class StudyGUI implements Runnable {
         mainmenu.pack();
         mainmenu.setVisible(true);
     }
-    private void addMainMenuModuleListeners(JButton add, JButton addcustom, JButton edit, JButton delete, JList Modulelist) {
-        
+    private void addModuleButtonListeners(MainButtonListener buttonlistener, JButton add, JButton addcustom, JButton delete) {
+        delete.addActionListener(buttonlistener);
+        add.addActionListener(buttonlistener);
+        addcustom.addActionListener(buttonlistener);
     }
    
     public void setSelectedModule(int index) {
