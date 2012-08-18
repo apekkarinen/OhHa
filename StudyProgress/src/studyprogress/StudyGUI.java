@@ -82,6 +82,9 @@ public class StudyGUI implements Runnable {
         JLabel modulelisttext = new JLabel("Lisää, poista ja muokkaa opintokokonaisuuksia");
         modulelisttext.setAlignmentX(Component.CENTER_ALIGNMENT);
         
+        JLabel moduleinfo = new JLabel("Kokonaisuuden kurssit");
+        moduleinfo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
         JList modulelist = new JList(user.modulesToStringArray());
         modulelist.setLayoutOrientation(JList.VERTICAL);
         modulelist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -90,15 +93,21 @@ public class StudyGUI implements Runnable {
         
         JList courselist = new JList();
         courselist.setLayoutOrientation(JList.VERTICAL);
+        ModuleListListener modulelistener = new ModuleListListener(manager, user, this, moduleinfo);
+        modulelist.addListSelectionListener(modulelistener);
         JScrollPane coursescroller = new JScrollPane(courselist);
         coursescroller.setPreferredSize(new Dimension(160, 120));
         
         Container modulebuttons = new Container();
+        MainButtonListener buttonlistener = new MainButtonListener(manager, user, this, modulelist);
         modulebuttons.setLayout(new FlowLayout());
         JButton add = new JButton("Lisää valmis");
         JButton addcustom = new JButton("Lisää oma");
         JButton edit = new JButton("Muokkaa");
         JButton delete = new JButton("Poista");
+        delete.addActionListener(buttonlistener);
+        
+
         
         modulebuttons.add(add);
         modulebuttons.add(addcustom);
@@ -108,6 +117,7 @@ public class StudyGUI implements Runnable {
         modules.add(modulelisttext);
         modules.add(modulescroller);
         modules.add(modulebuttons);
+        modules.add(moduleinfo);
         modules.add(coursescroller);
         
         JLabel summarytext = new JLabel("Placeholder for summary");
@@ -126,10 +136,15 @@ public class StudyGUI implements Runnable {
     }
    
     public void setSelectedModule(int index) {
-        if (index > 0) {
+        if (index >= 0) {
             selectedmoduleindex = index;   
         }
     }
+    
+    public int getSelectedModule() {
+        return selectedmoduleindex;
+    }
+    
    
     
     

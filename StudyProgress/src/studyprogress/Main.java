@@ -14,9 +14,7 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       /* StudyCLI cli = new StudyCLI(new StudyProgressManager());
-        cli.showLogIn();*/
-        StudyGUI gui = new StudyGUI(new StudyProgressManager());
-        SwingUtilities.invokeLater(gui);
+       StudyCLI cli = new StudyCLI(new StudyProgressManager());
+        cli.showLogIn();
     }
 }

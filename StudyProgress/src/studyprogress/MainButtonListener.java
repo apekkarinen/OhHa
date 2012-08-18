@@ -11,17 +11,20 @@ import java.util.ArrayList;
 public class MainButtonListener implements ActionListener {
     private StudyProgressManager manager;
     private Student user;
-    private JFrame source;
+
     private StudyGUI gui;
+    private JList modules;
     
-    public MainButtonListener(StudyProgressManager manager, Student user, JFrame source,StudyGUI gui) {
+    public MainButtonListener(StudyProgressManager manager, Student user, StudyGUI gui, JList modules) {
         this.manager = manager;
         this.user = user;
-        this.source = source;
         this.gui = gui;
+        this.modules = modules;
     }
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
+        int index = gui.getSelectedModule();
+        
         if(buttonlabel.equals("Lisää valmis")) {
             
         }
@@ -32,7 +35,10 @@ public class MainButtonListener implements ActionListener {
             
         }
         else if(buttonlabel.equals("Poista")) {
-            
+            if(index >= 0) {
+                user.deleteModule(index);
+                modules.setListData(user.modulesToStringArray());
+            }
         }
         else {
             
