@@ -12,15 +12,18 @@ public class StudyGUI implements Runnable {
     
     private StudyProgressManager manager;
     private Student user;
+    private int selectedmoduleindex;
     
     public StudyGUI(StudyProgressManager manager) {
         this.manager = manager;
         this.user = null;
+        this.selectedmoduleindex = -1;
     }
     
     public StudyGUI(StudyProgressManager manager, Student user) {
         this.manager = manager;
         this.user = user;
+        this.selectedmoduleindex = -1;
     }
     
     public void run() {
@@ -121,7 +124,12 @@ public class StudyGUI implements Runnable {
     private void addMainMenuModuleListeners(JButton add, JButton addcustom, JButton edit, JButton delete, JList Modulelist) {
         
     }
-    
+   
+    public void setSelectedModule(int index) {
+        if (index > 0) {
+            selectedmoduleindex = index;   
+        }
+    }
    
     
     

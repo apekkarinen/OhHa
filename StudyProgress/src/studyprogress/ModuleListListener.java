@@ -1,9 +1,13 @@
 
 package studyprogress;
 
+import javax.swing.*;
 import javax.swing.event.*;
 import javax.swing.table.*;
+
+import java.util.*;
 import java.awt.*;
+import java.awt.event.*;
 
 /**
  *
@@ -21,6 +25,9 @@ public class ModuleListListener implements ListSelectionListener {
     }
     
     public void valueChanged(ListSelectionEvent e) {
+        int selectedindex = e.getFirstIndex();
+        gui.setSelectedModule(selectedindex);
+        
         
     }
 }
