@@ -31,9 +31,6 @@ public class MainButtonListener implements ActionListener {
         else if(buttonlabel.equals("Lisää oma")) {
             
         }
-        else if(buttonlabel.equals("Muokkaa")) {
-            
-        }
         else if(buttonlabel.equals("Poista")) {
             if(index >= 0) {
                 user.deleteModule(index);

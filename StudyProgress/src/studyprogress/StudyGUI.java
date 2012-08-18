@@ -100,15 +100,11 @@ public class StudyGUI implements Runnable {
         modulebuttons.setLayout(new FlowLayout());
         JButton add = new JButton("Lisää valmis");
         JButton addcustom = new JButton("Lisää oma");
-        JButton edit = new JButton("Muokkaa");
         JButton delete = new JButton("Poista");
         delete.addActionListener(buttonlistener);
         
-
-        
         modulebuttons.add(add);
         modulebuttons.add(addcustom);
-        modulebuttons.add(edit);
         modulebuttons.add(delete);
         
         modules.add(modulelisttext);
