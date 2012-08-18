@@ -21,7 +21,22 @@ public class MainButtonListener implements ActionListener {
         this.gui = gui;
     }
     public void actionPerformed(ActionEvent e) {
-        
+        String buttonlabel = ((JButton)e.getSource()).getText();
+        if(buttonlabel.equals("Lisää valmis")) {
+            
+        }
+        else if(buttonlabel.equals("Lisää oma")) {
+            
+        }
+        else if(buttonlabel.equals("Muokkaa")) {
+            
+        }
+        else if(buttonlabel.equals("Poista")) {
+            
+        }
+        else {
+            
+        }
     }
     
 }
