@@ -154,7 +154,7 @@ public class StudyCLI {
         String actionselection;
         while (true) {
             System.out.println(user);
-            System.out.println("Valitse muokattavan opintokokonaisuuden numero: (0-"+user.getNumberOfModules()+") tai q poistuaksesi");
+            System.out.println("Valitse muokattavan opintokokonaisuuden numero: (0-"+(user.getNumberOfModules() - 1) +") tai q poistuaksesi");
             if(userinput.hasNextInt()) {
                 moduleselection = Integer.parseInt(userinput.nextLine());
             }

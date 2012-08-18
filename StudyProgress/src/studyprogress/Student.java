@@ -246,7 +246,8 @@ public class Student {
         int index = 0;
         String studentstring = "Käyttäjä "+name+", Opintokokonaisuudet: \n  numero    nimi\n";
         for(Module module : modulelist) {
-            studentstring = studentstring +"    ["+index +"] " + module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")";
+            studentstring = studentstring +"    ["+index +"] " + module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")\n";
+            index++;
         }
         return studentstring;
     }
