@@ -78,7 +78,7 @@ public class StudyGUI implements Runnable {
         JList modulelist = new JList(user.modulesToStringArray());
         modulelist.setLayoutOrientation(JList.VERTICAL);
         JScrollPane scroller = new JScrollPane(modulelist);
-        scroller.setPreferredSize(new Dimension(250, 80));
+        scroller.setPreferredSize(new Dimension(160, 80));
         
         Container modulebuttons = new Container();
         modulebuttons.setLayout(new FlowLayout());
@@ -111,6 +111,9 @@ public class StudyGUI implements Runnable {
         mainmenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         mainmenu.pack();
         mainmenu.setVisible(true);
+    }
+    private void addMainMenuModuleListeners(JButton add, JButton addcustom, JButton edit, JButton delete, JList Modulelist) {
+        
     }
     
    
