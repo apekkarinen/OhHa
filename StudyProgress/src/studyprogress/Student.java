@@ -202,12 +202,31 @@ public class Student {
     public String[] modulesToStringArray() {
         int size = modulelist.size();
         Module module;
-        String[] modules = new String[size];
-        for (int i = 0; i < size; i++) {
-            module = modulelist.get(i);
-            modules[i] = module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")";
+        if(size > 0) {
+            String[] modules = new String[size];
+            for (int i = 0; i < size; i++) {
+                module = modulelist.get(i);
+                modules[i] = module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")";
+            }
+            return modules;
         }
-        return modules;
+        else {
+            return null;
+        }
+    }
+    public String[] moduleCoursesToStringArray(int moduleindex) {
+        Module module = modulelist.get(moduleindex);
+        int size = module.getNumberOfCourses();
+        if(size >0) {
+           String[] returnarray = new String[size];
+            for (int i = 0; i < size; i++) {
+               returnarray[i] = module.getCourse(i).toString();
+            }
+            return returnarray; 
+        }
+        else {
+            return null;
+        }
         
     }
     
