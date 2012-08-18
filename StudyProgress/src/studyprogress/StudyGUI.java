@@ -81,6 +81,7 @@ public class StudyGUI implements Runnable {
         
         JList modulelist = new JList(user.modulesToStringArray());
         modulelist.setLayoutOrientation(JList.VERTICAL);
+        modulelist.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         JScrollPane modulescroller = new JScrollPane(modulelist);
         modulescroller.setPreferredSize(new Dimension(160, 40));
         
