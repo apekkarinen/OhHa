@@ -66,7 +66,7 @@ public class StudyGUI implements Runnable {
     
     public void displayMainMenu(Student user) {
         this.user = user;
-        JFrame mainmenu = new JFrame("Main Menu: Kirjautunut käyttäjänä "+this.user.getName());
+        JFrame mainmenu = new JFrame("Päävalikko: Kirjautunut käyttäjänä "+this.user.getName());
         mainmenu.setPreferredSize(new Dimension(800,600));
         Container base = mainmenu.getContentPane();
         
@@ -75,10 +75,19 @@ public class StudyGUI implements Runnable {
         
         Container modules = new Container();
         modules.setLayout(new BoxLayout(modules, BoxLayout.Y_AXIS));
+        
+        JLabel modulelisttext = new JLabel("Lisää, poista ja muokkaa opintokokonaisuuksia");
+        modulelisttext.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
         JList modulelist = new JList(user.modulesToStringArray());
         modulelist.setLayoutOrientation(JList.VERTICAL);
-        JScrollPane scroller = new JScrollPane(modulelist);
-        scroller.setPreferredSize(new Dimension(160, 80));
+        JScrollPane modulescroller = new JScrollPane(modulelist);
+        modulescroller.setPreferredSize(new Dimension(160, 40));
+        
+        JList courselist = new JList();
+        courselist.setLayoutOrientation(JList.VERTICAL);
+        JScrollPane coursescroller = new JScrollPane(courselist);
+        coursescroller.setPreferredSize(new Dimension(160, 120));
         
         Container modulebuttons = new Container();
         modulebuttons.setLayout(new FlowLayout());
@@ -92,14 +101,10 @@ public class StudyGUI implements Runnable {
         modulebuttons.add(edit);
         modulebuttons.add(delete);
         
-        Container moduledata = new Container();
-        JLabel moduletext = new JLabel("Placeholder for module data");
-        moduledata.setLayout(new BoxLayout(moduledata,BoxLayout.Y_AXIS));
-        
-        moduledata.add(moduletext);
-        modules.add(scroller);
+        modules.add(modulelisttext);
+        modules.add(modulescroller);
         modules.add(modulebuttons);
-        modules.add(moduledata);
+        modules.add(coursescroller);
         
         JLabel summarytext = new JLabel("Placeholder for summary");
         summary.add(summarytext);
