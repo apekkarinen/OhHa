@@ -89,8 +89,8 @@ public class StudyGUI implements Runnable {
         JScrollPane modulescroller = new JScrollPane(modulelist);
         modulescroller.setPreferredSize(new Dimension(160, 40));
         
-        JList courselist = createList(null);
-        ModuleListListener modulelistener = new ModuleListListener(manager, user, this, moduleinfo);
+        JList courselist = createList(user.moduleCoursesToStringArray(this.getSelectedModule()));
+        ModuleListListener modulelistener = new ModuleListListener(manager, user, this, moduleinfo, courselist);
         modulelist.addListSelectionListener(modulelistener);
         JScrollPane coursescroller = new JScrollPane(courselist);
         coursescroller.setPreferredSize(new Dimension(160, 120));

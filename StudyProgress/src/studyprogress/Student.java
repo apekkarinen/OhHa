@@ -215,19 +215,25 @@ public class Student {
         }
     }
     public String[] moduleCoursesToStringArray(int moduleindex) {
-        Module module = modulelist.get(moduleindex);
-        int size = module.getNumberOfCourses();
-        if(size >0) {
-           String[] returnarray = new String[size];
-            for (int i = 0; i < size; i++) {
-               returnarray[i] = module.getCourse(i).toString();
+        try {
+        Module module = modulelist.get(moduleindex);          
+
+            int size = module.getNumberOfCourses();
+            if(size >0) {
+               String[] returnarray = new String[size];
+                for (int i = 0; i < size; i++) {
+                   returnarray[i] = module.getCourse(i).toString();
+                }
+                return returnarray; 
             }
-            return returnarray; 
+            else {
+                return null;
+
+            }
+        } catch(Exception e) {
+            String[] empty = {"Ei kursseja"};
+            return empty;
         }
-        else {
-            return null;
-        }
-        
     }
     
     /**

@@ -18,18 +18,22 @@ public class ModuleListListener implements ListSelectionListener {
     private Student user;
     private StudyGUI gui;
     private JLabel info;
+    private JList courses;
     
-    public ModuleListListener(StudyProgressManager manager, Student user, StudyGUI gui, JLabel info) {
+    public ModuleListListener(StudyProgressManager manager, Student user, StudyGUI gui, JLabel info, JList courses) {
         this.manager = manager;
         this.user = user;
         this.gui = gui;
         this.info = info;
+        this.courses = courses;
     }
     
     public void valueChanged(ListSelectionEvent e) {
         JList list = (JList)e.getSource();
         int selectedindex  = list.getSelectedIndex();
         gui.setSelectedModule(selectedindex);
+        courses.setListData(user.moduleCoursesToStringArray(selectedindex));
+        
         
     }
 }
