@@ -177,12 +177,38 @@ public class StudyGUI implements Runnable {
         
         JLabel info = createCenteredLabel("Syötä kurssin tiedot:");
         
+        JLabel nameinfo = createCenteredLabel("Nimi");
         JTextField name = createCenteredTextField(160, 25);
+        JLabel creditinfo = createCenteredLabel("Opintopistelaajuus");
         JTextField credits = createCenteredTextField(40, 25);
+        JLabel yearinfo = createCenteredLabel("Vuosi");
         JTextField year = createCenteredTextField(40, 25);
+        JLabel gradeinfo = createCenteredLabel("Arvosana");
         JTextField grade = createCenteredTextField(40, 25);
-       
-
+        JLabel semesterinfo = createCenteredLabel("Lukukausi");
+        Container radiobuttons = new Container();
+        radiobuttons.setLayout(new FlowLayout());
+        JRadioButton fall = new JRadioButton("syksy");
+        JRadioButton spring = new JRadioButton("kevät");
+        ButtonGroup semester = new ButtonGroup();
+        
+        semester.add(fall);
+        semester.add(spring);
+        radiobuttons.add(fall);
+        radiobuttons.add(spring);
+        base.add(info);
+        base.add(nameinfo);
+        base.add(name);
+        base.add(creditinfo);
+        base.add(credits);
+        base.add(yearinfo);
+        base.add(year);
+        base.add(gradeinfo);
+        base.add(grade);
+        base.add(semesterinfo);
+        base.add(radiobuttons);
+        createframe.pack();
+        createframe.setVisible(true);
 
     }
     
@@ -214,9 +240,8 @@ public class StudyGUI implements Runnable {
            label.setAlignmentX(Component.CENTER_ALIGNMENT);
            return label;
         }
-        
-    }
-    
+
+}
    
     
     

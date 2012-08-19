@@ -44,7 +44,7 @@ public class MainButtonListener implements ActionListener {
             
         }
         else if(buttonlabel.equals("Lisää oma kurssi")) {
-            
+            gui.displayCreateCustomCourse(courses);
         }
         
         else if(buttonlabel.equals("Poista kurssi")) {
