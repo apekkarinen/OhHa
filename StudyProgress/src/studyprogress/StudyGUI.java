@@ -169,7 +169,7 @@ public class StudyGUI implements Runnable {
         createframe.pack();
         createframe.setVisible(true);
     }
-    public void displayCreateCustomCourse(JList courses) {
+    public void displayCreateCustomCourse(JList courses, JList modules) {
         JFrame createframe = new JFrame("Luo oma kurssi");
         createframe.setPreferredSize(new Dimension(440,300));
         Container base = createframe.getContentPane();
@@ -189,13 +189,17 @@ public class StudyGUI implements Runnable {
         Container radiobuttons = new Container();
         radiobuttons.setLayout(new FlowLayout());
         JRadioButton fall = new JRadioButton("syksy");
+        fall.setActionCommand("syksy");
         JRadioButton spring = new JRadioButton("kevät");
+        spring.setActionCommand("kevät");
         ButtonGroup semester = new ButtonGroup();
         JLabel alert = createCenteredLabel("");
         Container buttons = new Container();
         buttons.setLayout(new FlowLayout());
         JButton add = new JButton("Luo kurssi");
+        add.addActionListener(new CreateCustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester ));
         JButton cancel = new JButton("Peruuta");
+        cancel.addActionListener(new CreateCustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester ));
         
         buttons.add(add);
         buttons.add(cancel);

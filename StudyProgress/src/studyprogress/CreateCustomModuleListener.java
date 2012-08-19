@@ -15,6 +15,7 @@ public class CreateCustomModuleListener implements ActionListener {
     private JLabel info;
     private JList modules;
     private JFrame source;
+    
     public CreateCustomModuleListener(JFrame source, Student user, StudyGUI gui, JTextField name, JTextField credits, JLabel info, JList modules) {
         this.user = user;
         this.gui = gui;
