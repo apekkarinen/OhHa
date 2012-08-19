@@ -149,16 +149,14 @@ public class StudyGUI implements Runnable {
         createframe.setPreferredSize(new Dimension(520,160));
         Container base = createframe.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
-        JLabel info = new JLabel("Syötä kokonaisuuden tiedot:");
-        info.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel info = createCenteredLabel("Syötä kokonaisuuden tiedot:");
         
         JTextField name = createCenteredTextField(160,25);
         JTextField credits = createCenteredTextField(40,25);
         
-        JLabel nameinfo = new JLabel("Kokonaisuuden nimi");
-        nameinfo.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JLabel creditsinfo = new JLabel("Kokonaisuuden opintopistelaajuus");
-        creditsinfo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel nameinfo = createCenteredLabel("Kokonaisuuden nimi");
+        JLabel creditsinfo = createCenteredLabel("Kokonaisuuden opintopistelaajuus");
+        
         JButton create = new JButton("Luo kokonaisuus");
         create.setAlignmentX(Component.CENTER_ALIGNMENT);
         create.addActionListener(new CreateCustomModuleListener(createframe, user, this, name, credits, info, modules));
@@ -176,8 +174,8 @@ public class StudyGUI implements Runnable {
         createframe.setPreferredSize(new Dimension(520,160));
         Container base = createframe.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
-        JLabel info = new JLabel("Syötä kurssin tiedot:");
-        info.setAlignmentX(Component.CENTER_ALIGNMENT);
+        
+        JLabel info = createCenteredLabel("Syötä kurssin tiedot:");
         
         JTextField name = createCenteredTextField(160, 25);
         JTextField credits = createCenteredTextField(40, 25);
@@ -199,13 +197,23 @@ public class StudyGUI implements Runnable {
             return new JList();
         }
     }
-        private JTextField createCenteredTextField(int maxwidth, int maxheigth) {
+        private JTextField createCenteredTextField(int maxwidth, int maxheight) {
            JTextField field =  new JTextField();
            field.setAlignmentX(Component.CENTER_ALIGNMENT);
-           field.setMaximumSize(new Dimension(maxwidth, maxheigth));
-           return field;
+           if(maxwidth > 0 && maxheight > 0) {
+            field.setMaximumSize(new Dimension(maxwidth, maxheight));
+            return field;
+           }
+           else {
+               field.setMaximumSize(new Dimension(160, 25));
+               return field;
+           }
         }
-        
+        private JLabel createCenteredLabel(String text) {
+           JLabel label = new JLabel(text);
+           label.setAlignmentX(Component.CENTER_ALIGNMENT);
+           return label;
+        }
         
     }
     
