@@ -95,12 +95,12 @@ public class Module {
     /**
      * Calculates the current overall grade of this module. The grade is
      * an integer in range [1,5]. This method uses the following formula for calculating the grade:
-     * grade = (int)(Math.ceil(getModuleAverage() - 0.5) + 0.1)
+     * grade = (int)(Math.ceil(getModuleAverage() - 0.4999) + 0.1)
      * Note that the final grade cannot be greater than five.
      * @return The overall grade of this Module.
      */
     public int getModuleGrade() {
-        int grade = (int)(Math.ceil(getModuleAverage() - 0.5) + 0.1);
+        int grade = (int)(Math.ceil(getModuleAverage() - 0.4999) + 0.1);
         
         if(grade > 5) {
             return 5;

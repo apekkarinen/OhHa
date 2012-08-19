@@ -34,7 +34,18 @@ public class CreateCustomModuleListener implements ActionListener {
             modules.setListData(user.modulesToStringArray());
         }
     }
-    private boolean checkModuleData(String name, String credits) {
-        return true;
+    private boolean checkModuleData(String name, String creditstring) {
+        float credits = -1.0f;
+        try {
+            credits = Float.parseFloat(creditstring);
+        } catch (Exception e) {
+            return false;
+        }
+        if(credits > 0) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
