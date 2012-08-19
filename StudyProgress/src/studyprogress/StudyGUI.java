@@ -122,7 +122,10 @@ public class StudyGUI implements Runnable {
         modules.add(coursebuttons);
         
         JLabel summarytext = new JLabel("Placeholder for summary");
+        JButton save = new JButton("Tallenna");
+        save.addActionListener(new MainButtonListener(manager, user, this, modulelist, courselist));
         summary.add(summarytext);
+        summary.add(save);
         
         base.add(summary, BorderLayout.LINE_START);
         base.add(modules,BorderLayout.LINE_END);

@@ -142,6 +142,7 @@ public class StudyCLI {
             if(userinput.hasNextFloat()) {
                 credits = Float.parseFloat(userinput.nextLine());
                 user.addModule(input, credits);
+                user.writeStudentData();
                 System.out.println("Lisätty kokonaisuus " +input +" ("+credits+"Op)");
             }
             else {
@@ -165,6 +166,7 @@ public class StudyCLI {
             actionselection = userinput.nextLine();
             if(actionselection.equals("po")) {
                 user.deleteModule(moduleselection);
+                user.writeStudentData();
             }
             else if(actionselection.equals("l")) {
                 showAddCourse(moduleselection);
@@ -185,6 +187,7 @@ public class StudyCLI {
             selection = Integer.parseInt(userinput.nextLine());
             user.deleteCourseFromModule(moduleindex, selection);
             System.out.println("Poistettiin kurssi numero "+selection+".");
+            user.writeStudentData();
         }
         else {
             System.out.println("Virheellinen valinta, kurssia ei poistettu!");
@@ -230,6 +233,7 @@ public class StudyCLI {
         
         if(!name.equals("") && !semester.equals("") && credits > 0.0f && year > 0 && grade >= 0) {
             user.addCourseToModule(moduleindex, new Course (name, credits, semester, year, grade));
+            user.writeStudentData();
         }
         else {
             System.out.println("Virheellisiä arvoja kurssin tiedoissa, luonti epäonnistui!");

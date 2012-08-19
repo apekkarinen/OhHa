@@ -48,7 +48,7 @@ public class MainButtonListener implements ActionListener {
         }
         
         else if(buttonlabel.equals("Poista kurssi")) {
-            if(courseindex >= 0) {
+            if(courseindex >= 0 && user.getModuleSize(moduleindex) > 0) {
                 user.deleteCourseFromModule(moduleindex, courseindex);
                 modules.setListData(user.modulesToStringArray());
                 courses.setListData(user.moduleCoursesToStringArray(moduleindex));
@@ -56,7 +56,7 @@ public class MainButtonListener implements ActionListener {
         }
         
         else {
-            
+            user.writeStudentData();
         }
     }
     
