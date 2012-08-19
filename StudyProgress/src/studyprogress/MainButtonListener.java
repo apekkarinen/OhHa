@@ -14,16 +14,19 @@ public class MainButtonListener implements ActionListener {
 
     private StudyGUI gui;
     private JList modules;
+    private JList courses;
     
-    public MainButtonListener(StudyProgressManager manager, Student user, StudyGUI gui, JList modules) {
+    public MainButtonListener(StudyProgressManager manager, Student user, StudyGUI gui, JList modules, JList courses) {
         this.manager = manager;
         this.user = user;
         this.gui = gui;
         this.modules = modules;
+        this.courses = courses;
     }
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
-        int index = gui.getSelectedModule();
+        int moduleindex = modules.getSelectedIndex();
+        int courseindex = courses.getSelectedIndex();
         
         if(buttonlabel.equals("Lisää valmis")) {
             
@@ -32,11 +35,26 @@ public class MainButtonListener implements ActionListener {
             
         }
         else if(buttonlabel.equals("Poista")) {
-            if(index >= 0) {
-                user.deleteModule(index);
+            if(moduleindex >= 0) {
+                user.deleteModule(moduleindex);
                 modules.setListData(user.modulesToStringArray());
             }
         }
+        else if(buttonlabel.equals("Lisää valmis kurssi")) {
+            
+        }
+        else if(buttonlabel.equals("Lisää oma kurssi")) {
+            
+        }
+        
+        else if(buttonlabel.equals("Poista kurssi")) {
+            if(courseindex >= 0) {
+                user.deleteCourseFromModule(moduleindex, courseindex);
+                modules.setListData(user.modulesToStringArray());
+                courses.setListData(user.moduleCoursesToStringArray(moduleindex));
+            }
+        }
+        
         else {
             
         }

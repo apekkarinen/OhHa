@@ -31,7 +31,6 @@ public class ModuleListListener implements ListSelectionListener {
     public void valueChanged(ListSelectionEvent e) {
         JList list = (JList)e.getSource();
         int selectedindex  = list.getSelectedIndex();
-        gui.setSelectedModule(selectedindex);
         courses.setListData(user.moduleCoursesToStringArray(selectedindex));
         
         
