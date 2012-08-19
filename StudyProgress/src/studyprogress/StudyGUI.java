@@ -141,6 +141,36 @@ public class StudyGUI implements Runnable {
         deletecourse.addActionListener(buttonlistener);
     }
     
+    public void displayCreateCustomModule(JList modules) {
+        JFrame createframe = new JFrame("Luo oma opintokokonaisuus");
+        createframe.setPreferredSize(new Dimension(520,160));
+        Container base = createframe.getContentPane();
+        base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
+        JLabel info = new JLabel("Syötä kokonaisuuden tiedot:");
+        info.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JTextField name = new JTextField();
+        name.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JTextField credits = new JTextField();
+        credits.setAlignmentX(Component.CENTER_ALIGNMENT);
+        name.setMaximumSize(new Dimension(160, 25));
+        credits.setMaximumSize(new Dimension(40, 25));
+        JLabel nameinfo = new JLabel("Kokonaisuuden nimi");
+        nameinfo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel creditsinfo = new JLabel("Kokonaisuuden opintopistelaajuus");
+        creditsinfo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JButton create = new JButton("Luo kokonaisuus");
+        create.setAlignmentX(Component.CENTER_ALIGNMENT);
+        create.addActionListener(new CreateCustomModuleListener(user, this, name, credits, info, modules));
+        base.add(info);
+        base.add(nameinfo);
+        base.add(name);
+        base.add(creditsinfo);
+        base.add(credits);
+        base.add(create);
+        createframe.pack();
+        createframe.setVisible(true);
+    }
+    
     private JList createList(Object[] data) {
         if(data != null) {
             JList returnlist = new JList(data);

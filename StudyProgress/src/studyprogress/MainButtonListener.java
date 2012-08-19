@@ -32,7 +32,7 @@ public class MainButtonListener implements ActionListener {
             
         }
         else if(buttonlabel.equals("Lisää oma")) {
-            
+            gui.displayCreateCustomModule(modules);
         }
         else if(buttonlabel.equals("Poista")) {
             if(moduleindex >= 0) {
