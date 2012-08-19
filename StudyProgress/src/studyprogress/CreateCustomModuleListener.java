@@ -14,14 +14,15 @@ public class CreateCustomModuleListener implements ActionListener {
     private JTextField credits;
     private JLabel info;
     private JList modules;
-    
-    public CreateCustomModuleListener(Student user, StudyGUI gui, JTextField name, JTextField credits, JLabel info, JList modules) {
+    private JFrame source;
+    public CreateCustomModuleListener(JFrame source, Student user, StudyGUI gui, JTextField name, JTextField credits, JLabel info, JList modules) {
         this.user = user;
         this.gui = gui;
         this.name = name;
         this.credits = credits;
         this.info = info;
         this.modules = modules;
+        this.source = source;
     }
     public void actionPerformed(ActionEvent e) {
         String namestring = name.getText();
@@ -32,6 +33,7 @@ public class CreateCustomModuleListener implements ActionListener {
         else {
             user.addModule(namestring, Float.parseFloat(creditstring));
             modules.setListData(user.modulesToStringArray());
+            source.dispose();
         }
     }
     private boolean checkModuleData(String name, String creditstring) {
