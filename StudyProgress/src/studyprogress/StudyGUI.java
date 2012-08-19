@@ -171,11 +171,11 @@ public class StudyGUI implements Runnable {
     }
     public void displayCreateCustomCourse(JList courses) {
         JFrame createframe = new JFrame("Luo oma kurssi");
-        createframe.setPreferredSize(new Dimension(520,160));
+        createframe.setPreferredSize(new Dimension(440,300));
         Container base = createframe.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
         
-        JLabel info = createCenteredLabel("Syötä kurssin tiedot:");
+        JLabel info = createCenteredLabel("Syötä kurssin tiedot:\n ");
         
         JLabel nameinfo = createCenteredLabel("Nimi");
         JTextField name = createCenteredTextField(160, 25);
@@ -191,7 +191,14 @@ public class StudyGUI implements Runnable {
         JRadioButton fall = new JRadioButton("syksy");
         JRadioButton spring = new JRadioButton("kevät");
         ButtonGroup semester = new ButtonGroup();
+        JLabel alert = createCenteredLabel("");
+        Container buttons = new Container();
+        buttons.setLayout(new FlowLayout());
+        JButton add = new JButton("Luo kurssi");
+        JButton cancel = new JButton("Peruuta");
         
+        buttons.add(add);
+        buttons.add(cancel);
         semester.add(fall);
         semester.add(spring);
         radiobuttons.add(fall);
@@ -207,6 +214,8 @@ public class StudyGUI implements Runnable {
         base.add(grade);
         base.add(semesterinfo);
         base.add(radiobuttons);
+        base.add(alert);
+        base.add(buttons);
         createframe.pack();
         createframe.setVisible(true);
 
