@@ -2,6 +2,7 @@
 package studyprogress;
 import java.util.*;
 import java.io.*;
+
 /**
  *The class representing an university student, the user of this software.
  * Every university course belongs to a module, so the Student class contains a list of
@@ -329,6 +330,7 @@ public class Student {
                 }
             }
         }
+        Collections.sort(semesterlist);
     }
     
     private int semesterListContains(int year, String semesterstring) {

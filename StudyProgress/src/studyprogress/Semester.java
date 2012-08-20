@@ -5,7 +5,7 @@ package studyprogress;
  *
  * @author ausr
  */
-public class Semester {
+public class Semester implements Comparable<Semester> {
     private int year;
     private int semester;
     private int numberofcourses;
@@ -59,6 +59,23 @@ public class Semester {
         if(credits > 0) {
             this.totalcredits += credits;
             this.numberofcourses++;
+        }
+    }
+    public int compareTo(Semester semester) {
+        if(this.year < semester.year) {
+            return -1;
+        }
+        else if(this.year > semester.year) {
+            return 1;
+        }
+        else if((this.year == semester.year) && (this.semester < semester.semester)) {
+            return -1;
+        }
+        else if((this.year == semester.year) &&(this.semester > semester.semester)) {
+            return 1;
+        }
+        else {
+            return 0;
         }
     }
     
