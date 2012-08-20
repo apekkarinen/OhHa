@@ -42,7 +42,6 @@ public class SemesterTest {
         Student user = new Student("Milla");
         user.addModule("Tietojenkäsittelytieteen perusopinnot", 25.0f);
         user.addCourseToModule(0, new Course("Ohjelmoinnin perusteet", 5.0f, "syksy", 2012, 4));
-        user.createSemesterList();
         assertEquals(1, user.getNumberOfSemesters());
     }
 }

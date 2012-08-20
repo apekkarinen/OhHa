@@ -65,6 +65,7 @@ public class Student {
     public void addModule(String name, float totalcredits) {
         Module module = new Module(name,totalcredits);
         modulelist.add(module);
+        createSemesterList();
     }
     /**
      * Adds a specified Module directly to this Student's Module list.
@@ -73,6 +74,7 @@ public class Student {
      */
      public void addModule(Module module) {
         modulelist.add(module);
+        createSemesterList();
     }
      
      /**
@@ -85,7 +87,8 @@ public class Student {
         String modulename = modulelist.get(index).getName();
         String modulepath = "data/"+name+"/"+modulename+".txt";
         StudyProgressManager.deleteFile(modulepath);
-        modulelist.remove(index);     
+        modulelist.remove(index);
+        createSemesterList();
     }
     
     /**
@@ -97,6 +100,7 @@ public class Student {
     
     public void addCourseToModule(int moduleindex, Course course) {
         modulelist.get(moduleindex).addCourse(course);
+        createSemesterList();
     }
     /**
      *
@@ -169,6 +173,7 @@ public class Student {
     
     public void deleteCourseFromModule(int moduleindex, int courseindex) {
         modulelist.get(moduleindex).deleteCourse(courseindex);
+        createSemesterList();
 
     }
     /**
