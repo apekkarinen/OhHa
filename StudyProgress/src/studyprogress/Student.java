@@ -90,6 +90,17 @@ public class Student {
         modulelist.remove(index);
         createSemesterList();
     }
+    public float getAverageCreditsPerSemester() {
+        float sum = getTotalCreditsCompleted();
+        int numberofsemesters = this.getNumberOfSemesters();
+        if(numberofsemesters != 0) {
+            return (sum /(float) numberofsemesters);
+        }
+        else {
+            return 0.0f;
+        }
+        
+    }
     
     /**
      * Adds a Course to the specified Module of this Student. Module specified by list index.
@@ -122,6 +133,31 @@ public class Student {
            sum = sum + module.getNumberOfCourses();
         }
         return sum;
+    }
+    public float getTotalCreditsCompleted() {
+        float sum = 0.0f;
+        for(Module module : modulelist) {
+            sum += module.getTotalCreditsCompleted();
+        }
+        return sum;
+    }
+    public float getTotalCreditsRemaining() {
+        float required = 0.0f;
+        float completed = getTotalCreditsCompleted();
+        for(Module module : modulelist) {
+            required += module.getTotalCredits();
+        }
+        return required - completed;
+    }
+    public float semestersToGo() {
+        float remaining = getTotalCreditsRemaining();
+        float pace = getAverageCreditsPerSemester();
+        if(pace > 0.01) {
+            return remaining / pace;
+        }
+        else {
+            return -1.0f;
+        }
     }
     /**
      * Loads Student data from disk. Loaded data includes all Modules

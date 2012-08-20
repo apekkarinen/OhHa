@@ -70,6 +70,13 @@ public class Module {
     public int getNumberOfCourses() {
         return courselist.size();
     }
+    public float getTotalCreditsCompleted() {
+        float sum = 0.0f;
+        for(Course course : courselist) {
+            sum += course.getCreditPoints();
+        }
+        return sum;
+    }
     /**
      * Calculates the current grade average of this Module. Courses with a grade of 0
      * are treated as unfinished and therefore left out from this calculation.

@@ -1,11 +1,1 @@
-35.0
-Fysiikan mittausmenetelmät I
-5.0
-syksy
-2012
-4
-Termofysiikka
-8.0
-syksy
-2012
-5
+70.0
