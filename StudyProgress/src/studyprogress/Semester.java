@@ -55,5 +55,11 @@ public class Semester {
     public int getNumberOfCourses() {
         return numberofcourses;
     }
+    public void addCourse(float credits) {
+        if(credits > 0) {
+            this.totalcredits += credits;
+            this.numberofcourses++;
+        }
+    }
     
 }

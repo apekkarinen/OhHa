@@ -304,5 +304,54 @@ public class Student {
         }
         
     }
+    private void createSemesterList() {
+        int year;
+        String semesterstring;
+        int semester;
+        int semesterindex;
+        for(Module module : modulelist) {
+            int size = module.getNumberOfCourses();
+            for (int i = 0; i < size; i++) {
+                Course course = module.getCourse(i);
+                year = course.getYear();
+                semesterstring = course.getSemester();
+                semesterindex = semesterListContains(year, semesterstring);
+                
+                if(semesterindex >= 0) {
+                    semesterlist.get(semesterindex).addCourse(course.getCreditPoints());
+                }
+                else {
+                    semesterlist.add(new Semester(year, semesterstring, 1, course.getCreditPoints()));
+                }
+            }
+        }
+    }
+    private int semesterListContains(int year, String semesterstring) {
+        int listyear;
+        int listsemester;
+        int semester;
+        int index = 0;
+        
+        if(semesterstring.equals("syksy")) {
+            semester = Semester.FALL;
+        }
+        else if(semesterstring.equals("kevät")) {
+            semester = Semester.SPRING;
+        }
+        else {
+            semester = -1;
+        }
+        
+        for(Semester testsemester : semesterlist) {
+            listyear = testsemester.getYear();
+            listsemester = testsemester.getSemester();
+            if(listyear == year && listsemester == semester) {
+                return index;
+            }
+            index++;
+        }
+        return -1;
+             
+    }
     
 }
