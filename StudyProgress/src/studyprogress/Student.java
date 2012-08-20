@@ -18,6 +18,7 @@ public class Student {
     
     private String name;
     private ArrayList<Module> modulelist;
+    private ArrayList<Semester> semesterlist;
     private File studentdirectory;
     private File modulesfile;
     
