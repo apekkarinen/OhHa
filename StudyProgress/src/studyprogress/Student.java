@@ -29,6 +29,7 @@ public class Student {
     
     public Student(String name) {
         this.name = name;
+        this.semesterlist = new ArrayList<Semester>();
         this.modulelist = new ArrayList<Module>();
         studentdirectory = new File("data/"+name);
         modulesfile = new File("data/"+name+"/modules.txt");
@@ -42,6 +43,7 @@ public class Student {
             
         }
         loadStudentData();
+        createSemesterList();
     }
     
     /**
@@ -183,7 +185,9 @@ public class Student {
      * @return A String representation of the specified Module.
      */
     
-    
+    public int getNumberOfSemesters() {
+        return semesterlist.size();
+    }
     public String moduleToString(int moduleindex) {
         Module module = modulelist.get(moduleindex);
         return module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")\n" +module.toString();
@@ -304,7 +308,7 @@ public class Student {
         }
         
     }
-    private void createSemesterList() {
+    public void createSemesterList() {
         int year;
         String semesterstring;
         int semester;
@@ -326,6 +330,7 @@ public class Student {
             }
         }
     }
+    
     private int semesterListContains(int year, String semesterstring) {
         int listyear;
         int listsemester;
