@@ -26,7 +26,12 @@ public class Module {
     
     public Module(String name, float totalcreditsrequired) {
         this.name = name;
-        this.totalcreditsrequired = totalcreditsrequired;
+        if(totalcreditsrequired > 0) {
+            this.totalcreditsrequired = totalcreditsrequired;
+        }
+        else {
+            this.totalcreditsrequired = 0.0f;
+        }
         this.courselist = new ArrayList<Course>();
     }
     /**
@@ -78,25 +83,27 @@ public class Module {
         return sum;
     }
     /**
-     * Calculates the current grade average of this Module. Courses with a grade of 0
+     * Calculates the current credit point weighted grade average of this Module. Courses with a grade of 0
      * are treated as unfinished and therefore left out from this calculation.
-     * @return Average grade of all finished Courses in this Module.
+     * @return Average credit point weighted grade of all finished Courses in this Module.
      */
     public float getModuleAverage() {
-        int sum = 0;
+        float sum = 0.0f;
         int coursesfinished = 0;
-        int totalnumberofcourses = courselist.size();
         for (Course course : courselist) {
             if(course.getGrade() > 0) {
-                sum = sum + course.getGrade();
+                sum = sum + (course.getGrade() * course.getCreditPoints());
                 coursesfinished++;
             }
         }
         if(coursesfinished == 0) {
             return 0.0f;
         }
+        else if(getTotalCreditsCompleted() < 0.5) {
+            return 0.0f;
+        }
         else {
-            return (((float)sum) / ((float)coursesfinished));
+            return (sum / getTotalCreditsCompleted());
         }
     }
     /**
