@@ -3,6 +3,7 @@ package studyprogress;
 import javax.swing.*;
 import java.awt.event.*;
 import java.util.ArrayList;
+import java.awt.*;
 /**
  *
  * @author ausr
@@ -15,13 +16,15 @@ public class MainButtonListener implements ActionListener {
     private StudyGUI gui;
     private JList modules;
     private JList courses;
+    private Container summary;
     
-    public MainButtonListener(StudyProgressManager manager, Student user, StudyGUI gui, JList modules, JList courses) {
+    public MainButtonListener(StudyProgressManager manager, Student user, StudyGUI gui, JList modules, JList courses, Container summary) {
         this.manager = manager;
         this.user = user;
         this.gui = gui;
         this.modules = modules;
         this.courses = courses;
+        this.summary = summary;
     }
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
@@ -32,19 +35,20 @@ public class MainButtonListener implements ActionListener {
             
         }
         else if(buttonlabel.equals("Lisää oma")) {
-            gui.displayCreateCustomModule(modules);
+            gui.displayCreateCustomModule(modules,summary);
         }
         else if(buttonlabel.equals("Poista")) {
             if(moduleindex >= 0) {
                 user.deleteModule(moduleindex);
                 modules.setListData(user.modulesToStringArray());
+                gui.updateSummaryComponents(summary.getComponents());
             }
         }
         else if(buttonlabel.equals("Lisää valmis kurssi")) {
             
         }
         else if(buttonlabel.equals("Lisää oma kurssi")) {
-            gui.displayCreateCustomCourse(courses, modules);
+            gui.displayCreateCustomCourse(courses, modules,summary);
         }
         
         else if(buttonlabel.equals("Poista kurssi")) {
@@ -52,6 +56,7 @@ public class MainButtonListener implements ActionListener {
                 user.deleteCourseFromModule(moduleindex, courseindex);
                 modules.setListData(user.modulesToStringArray());
                 courses.setListData(user.moduleCoursesToStringArray(moduleindex));
+                gui.updateSummaryComponents(summary.getComponents());
             }
         }
         

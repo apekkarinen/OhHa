@@ -2,6 +2,7 @@
 package studyprogress;
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 
 /**
  *
@@ -15,8 +16,9 @@ public class CreateCustomModuleListener implements ActionListener {
     private JLabel info;
     private JList modules;
     private JFrame source;
+    private Container summary;
     
-    public CreateCustomModuleListener(JFrame source, Student user, StudyGUI gui, JTextField name, JTextField credits, JLabel info, JList modules) {
+    public CreateCustomModuleListener(JFrame source, Student user, StudyGUI gui, JTextField name, JTextField credits, JLabel info, JList modules, Container summary) {
         this.user = user;
         this.gui = gui;
         this.name = name;
@@ -24,6 +26,7 @@ public class CreateCustomModuleListener implements ActionListener {
         this.info = info;
         this.modules = modules;
         this.source = source;
+        this.summary = summary;
     }
     public void actionPerformed(ActionEvent e) {
         String namestring = name.getText();
@@ -34,6 +37,7 @@ public class CreateCustomModuleListener implements ActionListener {
         else {
             user.addModule(namestring, Float.parseFloat(creditstring));
             modules.setListData(user.modulesToStringArray());
+            gui.updateSummaryComponents(summary.getComponents());
             source.dispose();
         }
     }

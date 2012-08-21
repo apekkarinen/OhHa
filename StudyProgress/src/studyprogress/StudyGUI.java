@@ -67,20 +67,16 @@ public class StudyGUI implements Runnable {
     public void displayMainMenu(Student user) {
         this.user = user;
         JFrame mainmenu = new JFrame("Päävalikko: Kirjautunut käyttäjänä "+this.user.getName());
-        mainmenu.setPreferredSize(new Dimension(800,600));
+        mainmenu.setPreferredSize(new Dimension(900,600));
         Container base = mainmenu.getContentPane();
         
-        Container summary = new Container();
-        summary.setLayout(new BoxLayout(summary, BoxLayout.Y_AXIS));
+        Container summary = drawSummary(this, user);
         
         Container modules = new Container();
         modules.setLayout(new BoxLayout(modules, BoxLayout.Y_AXIS));
         
-        JLabel modulelisttext = new JLabel("Lisää, poista ja muokkaa opintokokonaisuuksia");
-        modulelisttext.setAlignmentX(Component.CENTER_ALIGNMENT);
-        
-        JLabel moduleinfo = new JLabel("Kokonaisuuden kurssit");
-        moduleinfo.setAlignmentX(Component.CENTER_ALIGNMENT);
+        JLabel modulelisttext = createCenteredLabel("Lisää, poista ja muokkaa opintokokonaisuuksia",0,0);
+        JLabel moduleinfo = createCenteredLabel("Kokonaisuuden kurssit",0,0);
         
         JList modulelist = createList(user.modulesToStringArray());
         JScrollPane modulescroller = new JScrollPane(modulelist);
@@ -93,7 +89,7 @@ public class StudyGUI implements Runnable {
         coursescroller.setPreferredSize(new Dimension(160, 120));
         
         Container modulebuttons = new Container();
-        MainButtonListener buttonlistener = new MainButtonListener(manager, user, this, modulelist, courselist);
+        MainButtonListener buttonlistener = new MainButtonListener(manager, user, this, modulelist, courselist, summary);
         modulebuttons.setLayout(new FlowLayout());
         JButton add = new JButton("Lisää valmis");
         JButton addcustom = new JButton("Lisää oma");
@@ -123,7 +119,7 @@ public class StudyGUI implements Runnable {
         
         JLabel summarytext = new JLabel("Placeholder for summary");
         JButton save = new JButton("Tallenna");
-        save.addActionListener(new MainButtonListener(manager, user, this, modulelist, courselist));
+        save.addActionListener(new MainButtonListener(manager, user, this, modulelist, courselist, summary));
         summary.add(summarytext);
         summary.add(save);
         
@@ -144,22 +140,22 @@ public class StudyGUI implements Runnable {
         deletecourse.addActionListener(buttonlistener);
     }
     
-    public void displayCreateCustomModule(JList modules) {
+    public void displayCreateCustomModule(JList modules, Container summary) {
         JFrame createframe = new JFrame("Luo oma opintokokonaisuus");
         createframe.setPreferredSize(new Dimension(520,160));
         Container base = createframe.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
-        JLabel info = createCenteredLabel("Syötä kokonaisuuden tiedot:");
+        JLabel info = createCenteredLabel("Syötä kokonaisuuden tiedot:",0,0);
         
         JTextField name = createCenteredTextField(160,25);
         JTextField credits = createCenteredTextField(40,25);
         
-        JLabel nameinfo = createCenteredLabel("Kokonaisuuden nimi");
-        JLabel creditsinfo = createCenteredLabel("Kokonaisuuden opintopistelaajuus");
+        JLabel nameinfo = createCenteredLabel("Kokonaisuuden nimi",0,0);
+        JLabel creditsinfo = createCenteredLabel("Kokonaisuuden opintopistelaajuus",0,0);
         
         JButton create = new JButton("Luo kokonaisuus");
         create.setAlignmentX(Component.CENTER_ALIGNMENT);
-        create.addActionListener(new CreateCustomModuleListener(createframe, user, this, name, credits, info, modules));
+        create.addActionListener(new CreateCustomModuleListener(createframe, user, this, name, credits, info, modules, summary));
         base.add(info);
         base.add(nameinfo);
         base.add(name);
@@ -169,23 +165,23 @@ public class StudyGUI implements Runnable {
         createframe.pack();
         createframe.setVisible(true);
     }
-    public void displayCreateCustomCourse(JList courses, JList modules) {
+    public void displayCreateCustomCourse(JList courses, JList modules, Container summary) {
         JFrame createframe = new JFrame("Luo oma kurssi");
         createframe.setPreferredSize(new Dimension(440,300));
         Container base = createframe.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
         
-        JLabel info = createCenteredLabel("Syötä kurssin tiedot:\n ");
+        JLabel info = createCenteredLabel("Syötä kurssin tiedot:\n ",0,0);
         
-        JLabel nameinfo = createCenteredLabel("Nimi");
+        JLabel nameinfo = createCenteredLabel("Nimi",0,0);
         JTextField name = createCenteredTextField(160, 25);
-        JLabel creditinfo = createCenteredLabel("Opintopistelaajuus");
+        JLabel creditinfo = createCenteredLabel("Opintopistelaajuus",0,0);
         JTextField credits = createCenteredTextField(40, 25);
-        JLabel yearinfo = createCenteredLabel("Vuosi");
+        JLabel yearinfo = createCenteredLabel("Vuosi",0,0);
         JTextField year = createCenteredTextField(40, 25);
-        JLabel gradeinfo = createCenteredLabel("Arvosana");
+        JLabel gradeinfo = createCenteredLabel("Arvosana",0,0);
         JTextField grade = createCenteredTextField(40, 25);
-        JLabel semesterinfo = createCenteredLabel("Lukukausi");
+        JLabel semesterinfo = createCenteredLabel("Lukukausi",0,0);
         Container radiobuttons = new Container();
         radiobuttons.setLayout(new FlowLayout());
         JRadioButton fall = new JRadioButton("syksy");
@@ -193,13 +189,13 @@ public class StudyGUI implements Runnable {
         JRadioButton spring = new JRadioButton("kevät");
         spring.setActionCommand("kevät");
         ButtonGroup semester = new ButtonGroup();
-        JLabel alert = createCenteredLabel("");
+        JLabel alert = createCenteredLabel("",0,0);
         Container buttons = new Container();
         buttons.setLayout(new FlowLayout());
         JButton add = new JButton("Luo kurssi");
-        add.addActionListener(new CreateCustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester ));
+        add.addActionListener(new CreateCustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester,summary ));
         JButton cancel = new JButton("Peruuta");
-        cancel.addActionListener(new CreateCustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester ));
+        cancel.addActionListener(new CreateCustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester,summary ));
         
         buttons.add(add);
         buttons.add(cancel);
@@ -223,6 +219,35 @@ public class StudyGUI implements Runnable {
         createframe.pack();
         createframe.setVisible(true);
 
+    }
+    public Container drawSummary(StudyGUI gui, Student user) {
+        Container summary = new Container();
+        summary.setLayout(new BoxLayout(summary, BoxLayout.Y_AXIS));
+        JLabel username = new JLabel ("Yhteenveto: Käyttäjä "+user.getName());
+        JLabel modulesummary = new JLabel("Sinulla on yhteensä "+user.getNumberOfModules()+" opintokokonaisuutta.");
+        JLabel coursesummary = new JLabel("Sinulla on yhteensä "+user.getTotalNumberOfCourses()+" kurssia.");
+        JLabel semestersummary = new JLabel("Olet opiskellut "+user.getNumberOfSemesters()+" lukukautta.");
+        JLabel creditsleftsummary = new JLabel("Sinun on vielä kerättävä "+user.getTotalCreditsRemaining()+ " op valmistuaksesi.");
+        JLabel pacesummary = new JLabel("Olet kerännyt keskimäärin "+user.getAverageCreditsPerSemester()+ " op per lukukausi.");
+        JLabel graduationestimate = new JLabel("Nykyisellä opiskelutahdillasi valmistut "+Math.ceil(user.semestersToGo()) +" lukukaudessa");
+        summary.add(username);
+        summary.add(modulesummary);
+        summary.add(coursesummary);
+        summary.add(semestersummary);
+        summary.add(creditsleftsummary);
+        summary.add(pacesummary);
+        summary.add(graduationestimate);
+        summary.setMaximumSize(new Dimension(50,10));
+        return summary;
+}
+    public void updateSummaryComponents(Component[] components) {
+        ((JLabel)components[0]).setText("Yhteenveto: Käyttäjä "+user.getName());
+        ((JLabel)components[1]).setText("Sinulla on yhteensä "+user.getNumberOfModules()+" opintokokonaisuutta.");
+        ((JLabel)components[2]).setText("Sinulla on yhteensä "+user.getTotalNumberOfCourses()+" kurssia.");
+        ((JLabel)components[3]).setText("Olet opiskellut "+user.getNumberOfSemesters()+" lukukautta.");
+        ((JLabel)components[4]).setText("Sinun on vielä kerättävä "+user.getTotalCreditsRemaining()+ " op valmistuaksesi.");
+        ((JLabel)components[5]).setText("Olet kerännyt keskimäärin "+user.getAverageCreditsPerSemester()+ " op per lukukausi.");
+        ((JLabel)components[6]).setText("Nykyisellä opiskelutahdillasi valmistut "+Math.ceil(user.semestersToGo()) +" lukukaudessa");
     }
     
     private JList createList(Object[] data) {
@@ -248,9 +273,12 @@ public class StudyGUI implements Runnable {
                return field;
            }
         }
-        private JLabel createCenteredLabel(String text) {
+        private JLabel createCenteredLabel(String text, int maxwidth, int maxheight) {
            JLabel label = new JLabel(text);
            label.setAlignmentX(Component.CENTER_ALIGNMENT);
+           if(maxheight > 0 && maxwidth > 0) {
+               label.setMaximumSize(new Dimension(maxwidth, maxheight));
+           }
            return label;
         }
 

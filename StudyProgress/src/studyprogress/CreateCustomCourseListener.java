@@ -5,6 +5,7 @@
 package studyprogress;
 import javax.swing.*;
 import java.awt.event.*;
+import java.awt.*;
 /**
  *
  * @author ausr
@@ -20,8 +21,9 @@ public class CreateCustomCourseListener implements ActionListener {
     private JTextField grade;
     private ButtonGroup semester;
     private JFrame source;
+    private Container summary;
     
-    public CreateCustomCourseListener(JFrame source, Student user, StudyGUI gui, JList modules, JList courses, JTextField name, JTextField credits, JTextField year, JTextField grade, ButtonGroup semester) {
+    public CreateCustomCourseListener(JFrame source, Student user, StudyGUI gui, JList modules, JList courses, JTextField name, JTextField credits, JTextField year, JTextField grade, ButtonGroup semester, Container summary) {
         this.user = user;
         this.gui = gui;
         this.modules = modules;
@@ -32,6 +34,7 @@ public class CreateCustomCourseListener implements ActionListener {
         this.grade = grade;
         this.semester = semester;
         this.source = source;
+        this.summary = summary;
     }
     
     public void actionPerformed(ActionEvent e) {
@@ -52,6 +55,7 @@ public class CreateCustomCourseListener implements ActionListener {
                 user.addCourseToModule(moduleindex, new Course(namestring, credits, semesterstring, year, grade ));
                 courses.setListData(user.moduleCoursesToStringArray(moduleindex));
                 modules.setListData(user.modulesToStringArray());
+                gui.updateSummaryComponents(summary.getComponents());
                 source.dispose();
                 
             }
