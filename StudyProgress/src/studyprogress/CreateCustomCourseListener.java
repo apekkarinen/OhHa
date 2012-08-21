@@ -55,7 +55,7 @@ public class CreateCustomCourseListener implements ActionListener {
                 user.addCourseToModule(moduleindex, new Course(namestring, credits, semesterstring, year, grade ));
                 courses.setListData(user.moduleCoursesToStringArray(moduleindex));
                 modules.setListData(user.modulesToStringArray());
-                gui.updateSummaryComponents(summary.getComponents());
+                gui.updateSummary(summary.getComponent(0));
                 source.dispose();
                 
             }

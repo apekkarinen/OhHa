@@ -223,31 +223,22 @@ public class StudyGUI implements Runnable {
     public Container drawSummary(StudyGUI gui, Student user) {
         Container summary = new Container();
         summary.setLayout(new BoxLayout(summary, BoxLayout.Y_AXIS));
-        JLabel username = new JLabel ("Yhteenveto: Käyttäjä "+user.getName());
-        JLabel modulesummary = new JLabel("Sinulla on yhteensä "+user.getNumberOfModules()+" opintokokonaisuutta.");
-        JLabel coursesummary = new JLabel("Sinulla on yhteensä "+user.getTotalNumberOfCourses()+" kurssia.");
-        JLabel semestersummary = new JLabel("Olet opiskellut "+user.getNumberOfSemesters()+" lukukautta.");
-        JLabel creditsleftsummary = new JLabel("Sinun on vielä kerättävä "+user.getTotalCreditsRemaining()+ " op valmistuaksesi.");
-        JLabel pacesummary = new JLabel("Olet kerännyt keskimäärin "+user.getAverageCreditsPerSemester()+ " op per lukukausi.");
-        JLabel graduationestimate = new JLabel("Nykyisellä opiskelutahdillasi valmistut "+Math.ceil(user.semestersToGo()) +" lukukaudessa");
-        summary.add(username);
-        summary.add(modulesummary);
-        summary.add(coursesummary);
-        summary.add(semestersummary);
-        summary.add(creditsleftsummary);
-        summary.add(pacesummary);
-        summary.add(graduationestimate);
-        summary.setMaximumSize(new Dimension(50,10));
+        JTextArea summarytext = new JTextArea(getSummaryText());
+        summary.add(summarytext);
         return summary;
 }
-    public void updateSummaryComponents(Component[] components) {
-        ((JLabel)components[0]).setText("Yhteenveto: Käyttäjä "+user.getName());
-        ((JLabel)components[1]).setText("Sinulla on yhteensä "+user.getNumberOfModules()+" opintokokonaisuutta.");
-        ((JLabel)components[2]).setText("Sinulla on yhteensä "+user.getTotalNumberOfCourses()+" kurssia.");
-        ((JLabel)components[3]).setText("Olet opiskellut "+user.getNumberOfSemesters()+" lukukautta.");
-        ((JLabel)components[4]).setText("Sinun on vielä kerättävä "+user.getTotalCreditsRemaining()+ " op valmistuaksesi.");
-        ((JLabel)components[5]).setText("Olet kerännyt keskimäärin "+user.getAverageCreditsPerSemester()+ " op per lukukausi.");
-        ((JLabel)components[6]).setText("Nykyisellä opiskelutahdillasi valmistut "+Math.ceil(user.semestersToGo()) +" lukukaudessa");
+    public void updateSummary(Component component) {
+        ((JTextArea)component).setText(getSummaryText());
+    }
+    private String getSummaryText() {
+        String username = "Yhteenveto: Käyttäjä "+user.getName();
+        String modulesummary = "Sinulla on yhteensä "+user.getNumberOfModules()+" opintokokonaisuutta.";
+        String coursesummary = "Sinulla on yhteensä "+user.getTotalNumberOfCourses()+" kurssia.";
+        String semestersummary = "Olet opiskellut "+user.getNumberOfSemesters()+" lukukautta.";
+        String creditsleftsummary = "Sinun on vielä kerättävä "+user.getTotalCreditsRemaining()+ " op valmistuaksesi.";
+        String pacesummary = "Olet kerännyt keskimäärin "+user.getAverageCreditsPerSemester()+ " op per lukukausi.";
+        String graduationestimate = "Nykyisellä opiskelutahdillasi valmistut "+Math.ceil(user.semestersToGo()) +" lukukaudessa";
+        return username+"\n\n"+modulesummary+"\n"+coursesummary+"\n"+semestersummary+"\n\n"+creditsleftsummary+"\n"+pacesummary+"\n"+graduationestimate;
     }
     
     private JList createList(Object[] data) {

@@ -41,7 +41,7 @@ public class MainButtonListener implements ActionListener {
             if(moduleindex >= 0) {
                 user.deleteModule(moduleindex);
                 modules.setListData(user.modulesToStringArray());
-                gui.updateSummaryComponents(summary.getComponents());
+                gui.updateSummary(summary.getComponent(0));
             }
         }
         else if(buttonlabel.equals("Lisää valmis kurssi")) {
@@ -56,7 +56,7 @@ public class MainButtonListener implements ActionListener {
                 user.deleteCourseFromModule(moduleindex, courseindex);
                 modules.setListData(user.modulesToStringArray());
                 courses.setListData(user.moduleCoursesToStringArray(moduleindex));
-                gui.updateSummaryComponents(summary.getComponents());
+                gui.updateSummary(summary.getComponent(0));
             }
         }
         
