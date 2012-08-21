@@ -117,23 +117,10 @@ public class StudyCLI {
         }
     }
     private void showSummary() {
-        float graduationestimate = user.semestersToGo();
         System.out.println();
-        System.out.println("Käyttäjä "+user.getName()+": Yhteenveto");
-        System.out.println();
+        System.out.println(user.getSummaryText());
+        System.out.println("");
         System.out.println(user);
-        System.out.println();
-        System.out.println("Sinulla on yhteensä "+user.getNumberOfModules()+ " opintokokonaisuutta.");
-        System.out.println("Sinulla on yhteensä "+user.getTotalNumberOfCourses() +" kurssia." );
-        System.out.println("Olet opiskellut "+user.getNumberOfSemesters()+" lukukauden ajan.");
-        System.out.println("Sinun on suoritettava vielä "+user.getTotalCreditsRemaining()+" opintopistettä valmistuaksesi.");
-        System.out.println("Olet suorittanut keskimäärin "+user.getAverageCreditsPerSemester()+" opintopistettä lukukaudessa.");
-        if(graduationestimate < 0) {
-            System.out.println("Joko etenet opinnoissasi hyvin hitaasti tai opintopistemääräsi on 0");
-        }
-        else {
-            System.out.println("Tällä vauhdilla valmistut "+graduationestimate+ " (eli "+(int)Math.ceil(graduationestimate)+ " ) lukukaudessa.");
-        }
         System.out.println("Paina enter palataksesi edelliseen valikkoon");
         userinput.nextLine();
     }

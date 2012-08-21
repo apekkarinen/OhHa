@@ -116,15 +116,13 @@ public class StudyGUI implements Runnable {
         modules.add(moduleinfo);
         modules.add(coursescroller);
         modules.add(coursebuttons);
-        
-        JLabel summarytext = new JLabel("Placeholder for summary");
+
         JButton save = new JButton("Tallenna");
         save.addActionListener(new MainButtonListener(manager, user, this, modulelist, courselist, summary));
-        summary.add(summarytext);
-        summary.add(save);
-        
+        modules.add(save);
         base.add(summary, BorderLayout.LINE_START);
         base.add(modules,BorderLayout.LINE_END);
+
 
         
         mainmenu.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
@@ -223,22 +221,12 @@ public class StudyGUI implements Runnable {
     public Container drawSummary(StudyGUI gui, Student user) {
         Container summary = new Container();
         summary.setLayout(new BoxLayout(summary, BoxLayout.Y_AXIS));
-        JTextArea summarytext = new JTextArea(getSummaryText());
+        JTextArea summarytext = new JTextArea(user.getSummaryText());
         summary.add(summarytext);
         return summary;
 }
     public void updateSummary(Component component) {
-        ((JTextArea)component).setText(getSummaryText());
-    }
-    private String getSummaryText() {
-        String username = "Yhteenveto: Käyttäjä "+user.getName();
-        String modulesummary = "Sinulla on yhteensä "+user.getNumberOfModules()+" opintokokonaisuutta.";
-        String coursesummary = "Sinulla on yhteensä "+user.getTotalNumberOfCourses()+" kurssia.";
-        String semestersummary = "Olet opiskellut "+user.getNumberOfSemesters()+" lukukautta.";
-        String creditsleftsummary = "Sinun on vielä kerättävä "+user.getTotalCreditsRemaining()+ " op valmistuaksesi.";
-        String pacesummary = "Olet kerännyt keskimäärin "+user.getAverageCreditsPerSemester()+ " op per lukukausi.";
-        String graduationestimate = "Nykyisellä opiskelutahdillasi valmistut "+Math.ceil(user.semestersToGo()) +" lukukaudessa";
-        return username+"\n\n"+modulesummary+"\n"+coursesummary+"\n"+semestersummary+"\n\n"+creditsleftsummary+"\n"+pacesummary+"\n"+graduationestimate;
+        ((JTextArea)component).setText(user.getSummaryText());
     }
     
     private JList createList(Object[] data) {

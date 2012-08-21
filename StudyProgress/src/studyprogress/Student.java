@@ -294,6 +294,16 @@ public class Student {
         }
         return studentstring;
     }
+    public String getSummaryText() {
+        String username = "Yhteenveto: Käyttäjä "+name;
+        String modulesummary = "Sinulla on yhteensä "+this.getNumberOfModules()+" opintokokonaisuutta.";
+        String coursesummary = "Sinulla on yhteensä "+this.getTotalNumberOfCourses()+" kurssia.";
+        String semestersummary = "Olet opiskellut "+this.getNumberOfSemesters()+" lukukautta.";
+        String creditsleftsummary = "Sinun on vielä kerättävä "+this.getTotalCreditsRemaining()+ " op valmistuaksesi.";
+        String pacesummary = "Olet kerännyt keskimäärin "+this.getAverageCreditsPerSemester()+ " op per lukukausi.";
+        String graduationestimate = "Nykyisellä opiskelutahdillasi valmistut "+Math.ceil(this.semestersToGo()) +" lukukaudessa";
+        return username+"\n\n"+modulesummary+"\n"+coursesummary+"\n"+semestersummary+"\n\n"+creditsleftsummary+"\n"+pacesummary+"\n"+graduationestimate;
+    }
     
     private Module loadModule(String name, String filepath) {
         File modulefile = new File(filepath);
