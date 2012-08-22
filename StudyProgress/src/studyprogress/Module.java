@@ -140,6 +140,7 @@ public class Module {
         String modulestring = "";
         for(Course course : courselist) {
             modulestring = modulestring +"      [" + index +"]  "+ course.toString() +"\n";
+            index++;
         }
         return modulestring;
     }
