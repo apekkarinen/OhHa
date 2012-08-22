@@ -35,13 +35,23 @@ public class SemesterTableModel extends AbstractTableModel {
     }
 
     public Object getValueAt(int row, int column) {
-        return data[row][column];
+        try {
+            return data[row][column];
+        } catch (Exception e) {
+            return "";
+        }
     }
     public Class getColumnClass(int column) {
         return getValueAt(0, column).getClass();
     }
     public void setData(Object[][] data) {
-        this.data = data;
-        this.fireTableDataChanged();
+        try {
+            this.data = data;
+            this.fireTableStructureChanged();
+            this.fireTableDataChanged();
+        }
+        catch (Exception e) {
+            
+        }
     }
 }

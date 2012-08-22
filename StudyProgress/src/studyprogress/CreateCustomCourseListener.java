@@ -45,17 +45,26 @@ public class CreateCustomCourseListener implements ActionListener {
         String creditstring = credits.getText();
         String yearstring = year.getText();
         String gradestring = grade.getText();
-        String semesterstring = ((ButtonModel)semester.getSelection()).getActionCommand();
+        String semesterstring;
+        try {
+            semesterstring = ((ButtonModel)semester.getSelection()).getActionCommand();
+        } catch (Exception notselected) {
+            semesterstring = null;
+        }
         
         if(buttonlabel.equals("Luo kurssi")) {
             if(checkCourseData(creditstring, yearstring, gradestring, semesterstring)) {
                 float credits = Float.parseFloat(creditstring);
                 int year = Integer.parseInt(yearstring);
                 int grade = Integer.parseInt(gradestring);
-                user.addCourseToModule(moduleindex, new Course(namestring, credits, semesterstring, year, grade ));
-                courses.setListData(user.moduleCoursesToStringArray(moduleindex));
-                modules.setListData(user.modulesToStringArray());
-                gui.updateSummary(summary.getComponent(0),summary.getComponent(2));
+                try {
+                    user.addCourseToModule(moduleindex, new Course(namestring, credits, semesterstring, year, grade ));
+                    modules.setListData(user.modulesToStringArray());
+                    courses.setListData(user.moduleCoursesToStringArray(moduleindex));
+                    gui.updateSummary(summary.getComponent(0),summary.getComponent(2));
+                } catch (Exception ex) {
+                    System.out.println("Virhe kurssin luomisessa");
+                }
                 source.dispose();
                 
             }
@@ -71,6 +80,9 @@ public class CreateCustomCourseListener implements ActionListener {
             Integer.parseInt(grade);
             Float.parseFloat(credits);
         } catch (Exception e) {
+            return false;
+        }        
+        if(semester == null) {
             return false;
         }
         if(!(semester.equals("syksy") || semester.equals("kevät"))) {
