@@ -235,8 +235,9 @@ public class StudyGUI implements Runnable {
         summary.add(semesterscroller);
         return summary;
 }
-    public void updateSummary(Component component) {
-        ((JTextArea)component).setText(user.getSummaryText());
+    public void updateSummary(Component text, Component scroller) {
+        ((JTextArea)text).setText(user.getSummaryText());
+        ((SemesterTableModel)((JTable)((JViewport)((JScrollPane)scroller).getComponent(0)).getView()).getModel()).setData(user.createSemesterArray());
     }
     
     private JList createList(Object[] data) {
