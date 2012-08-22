@@ -219,10 +219,20 @@ public class StudyGUI implements Runnable {
 
     }
     public Container drawSummary(StudyGUI gui, Student user) {
+        String[] columnnames = {"lukukausi", "kurssien määrä","opintopisteet"};
         Container summary = new Container();
         summary.setLayout(new BoxLayout(summary, BoxLayout.Y_AXIS));
+        
         JTextArea summarytext = new JTextArea(user.getSummaryText());
+        summarytext.setMaximumSize(new Dimension(350,250));
+        
+        JLabel semesterinfo = createCenteredLabel("Lukukausien tiedot",0,0);
+        JTable semestertable = new JTable(new SemesterTableModel(user.createSemesterArray(), columnnames));
+        JScrollPane semesterscroller = new JScrollPane(semestertable);
+        semesterscroller.setMaximumSize(new Dimension(350,300));
         summary.add(summarytext);
+        summary.add(semesterinfo);
+        summary.add(semesterscroller);
         return summary;
 }
     public void updateSummary(Component component) {

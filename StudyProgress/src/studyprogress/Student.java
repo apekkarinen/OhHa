@@ -301,7 +301,7 @@ public class Student {
         String semestersummary = "Olet opiskellut "+this.getNumberOfSemesters()+" lukukautta.";
         String creditsleftsummary = "Sinun on vielä kerättävä "+this.getTotalCreditsRemaining()+ " op valmistuaksesi.";
         String pacesummary = "Olet kerännyt keskimäärin "+this.getAverageCreditsPerSemester()+ " op per lukukausi.";
-        String graduationestimate = "Nykyisellä opiskelutahdillasi valmistut "+Math.ceil(this.semestersToGo()) +" lukukaudessa";
+        String graduationestimate = "Nykyisellä opiskelutahdillasi valmistut "+(int)Math.ceil(this.semestersToGo()) +" lukukaudessa";
         return username+"\n\n"+modulesummary+"\n"+coursesummary+"\n"+semestersummary+"\n\n"+creditsleftsummary+"\n"+pacesummary+"\n"+graduationestimate;
     }
     
@@ -382,6 +382,17 @@ public class Student {
             }
         }
         Collections.sort(semesterlist);
+    }
+    public String[][] createSemesterArray() {
+        int numberofsemesters = this.getNumberOfSemesters();
+        String[][] semesters = new String[numberofsemesters][3];
+        for (int i = 0; i < numberofsemesters; i++) {
+            Semester semester = semesterlist.get(i);
+            semesters[i][0] = semester.getSemesterString() +" "+semester.getYear();
+            semesters[i][1] = ""+semester.getNumberOfCourses();
+            semesters[i][2] = ""+semester.getTotalCredits();
+        }
+        return semesters;
     }
     
     private int semesterListContains(int year, String semesterstring) {

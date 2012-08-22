@@ -49,6 +49,14 @@ public class Semester implements Comparable<Semester> {
     public int getSemester() {
         return semester;
     }
+    public String getSemesterString() {
+        if(this.semester == 0) {
+            return "syksy";
+        }
+        else {
+            return "kevät";
+        }
+    }
     public float getTotalCredits() {
         return totalcredits;
     }
