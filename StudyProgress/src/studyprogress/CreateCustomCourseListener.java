@@ -62,6 +62,7 @@ public class CreateCustomCourseListener implements ActionListener {
                     modules.setListData(user.modulesToStringArray());
                     courses.setListData(user.moduleCoursesToStringArray(moduleindex));
                     gui.updateSummary(summary.getComponent(0),summary.getComponent(2));
+                    modules.setSelectedIndex(moduleindex);
                 } catch (Exception ex) {
                     System.out.println("Virhe kurssin luomisessa");
                 }
