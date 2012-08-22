@@ -254,7 +254,8 @@ public class Student {
                 return modules;
             }
             else {
-                return null;
+                String[] empty = {""};
+                return empty;
             }
         } catch (Exception e) {
             String[] empty = {""};

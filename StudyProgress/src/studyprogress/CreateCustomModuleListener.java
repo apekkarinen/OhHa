@@ -38,6 +38,7 @@ public class CreateCustomModuleListener implements ActionListener {
             user.addModule(namestring, Float.parseFloat(creditstring));
             modules.setListData(user.modulesToStringArray());
             gui.updateSummary(summary.getComponent(0),summary.getComponent(2));
+            modules.setSelectedIndex(0);
             source.dispose();
         }
     }

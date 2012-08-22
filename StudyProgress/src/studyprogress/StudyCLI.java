@@ -53,6 +53,7 @@ public class StudyCLI {
             userinput = new Scanner(System.in, "UTF-8");
             firstdisplay = false;
             System.out.println("        //----------Päävalikko/Valitse toiminto:---------->>");
+            System.out.println("");
             System.out.println("Poistu ohjelmasta (q) | Tarkastele opintokokonaisuuksia (o) | Näytä yhteenveto (y)");
             System.out.println("Lisää opintokokonaisuus (l) | Muokkaa opintokokonaisuuksia (m) | Käynnistä graafinen käyttöliittymä (g)");
  
