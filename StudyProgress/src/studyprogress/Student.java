@@ -361,6 +361,7 @@ public class Student {
         
     }
     public void createSemesterList() {
+        semesterlist.clear();
         int year;
         String semesterstring;
         int semester;
@@ -414,7 +415,7 @@ public class Student {
         for(Semester testsemester : semesterlist) {
             listyear = testsemester.getYear();
             listsemester = testsemester.getSemester();
-            if(listyear == year && listsemester == semester) {
+            if((listyear == year) && (listsemester == semester)) {
                 return index;
             }
             index++;
