@@ -180,6 +180,7 @@ public class StudyGUI implements Runnable {
         JLabel gradeinfo = createCenteredLabel("Arvosana",0,0);
         JTextField grade = createCenteredTextField(40, 25);
         JLabel semesterinfo = createCenteredLabel("Lukukausi",0,0);
+        
         Container radiobuttons = new Container();
         radiobuttons.setLayout(new FlowLayout());
         JRadioButton fall = new JRadioButton("syksy");
@@ -201,6 +202,12 @@ public class StudyGUI implements Runnable {
         semester.add(spring);
         radiobuttons.add(fall);
         radiobuttons.add(spring);
+        addComponentsToCourseBase(base, info, nameinfo, creditinfo, yearinfo, gradeinfo, semesterinfo, alert, name, credits, year, grade, radiobuttons, buttons);
+        createframe.pack();
+        createframe.setVisible(true);
+
+    }
+    private void addComponentsToCourseBase(Container base, JLabel info, JLabel nameinfo, JLabel creditinfo, JLabel yearinfo, JLabel gradeinfo, JLabel semesterinfo, JLabel alert, JTextField name, JTextField credits, JTextField year, JTextField grade, Container radiobuttons, Container buttons) {
         base.add(info);
         base.add(nameinfo);
         base.add(name);
@@ -214,9 +221,6 @@ public class StudyGUI implements Runnable {
         base.add(radiobuttons);
         base.add(alert);
         base.add(buttons);
-        createframe.pack();
-        createframe.setVisible(true);
-
     }
     public Container drawSummary(StudyGUI gui, Student user) {
         String[] columnnames = {"lukukausi", "kurssien määrä","opintopisteet"};

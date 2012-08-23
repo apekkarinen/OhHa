@@ -242,6 +242,7 @@ public class Student {
      */
     
     public String[] modulesToStringArray() {
+        String[] empty = {""};
         try {
             int size = modulelist.size();
             Module module;
@@ -254,15 +255,14 @@ public class Student {
                 return modules;
             }
             else {
-                String[] empty = {""};
                 return empty;
             }
         } catch (Exception e) {
-            String[] empty = {""};
             return empty;
         }
     }
     public String[] moduleCoursesToStringArray(int moduleindex) {
+        String[] empty = {""};
         try {
         Module module = modulelist.get(moduleindex);          
 
@@ -275,12 +275,10 @@ public class Student {
                 return returnarray; 
             }
             else {
-                String[] empty = {"Ei kursseja"};
                 return empty;
 
             }
         } catch(Exception e) {
-            String[] empty = {"Ei kursseja"};
             return empty;
         }
     }
