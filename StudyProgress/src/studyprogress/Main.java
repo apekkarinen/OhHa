@@ -14,7 +14,13 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-       StudyCLI cli = new StudyCLI(new StudyProgressManager());
-        cli.showLogIn();
+        StudyProgressManager manager = new StudyProgressManager();
+        if(args != null && args.length > 0 && args[0].equals("gui")) {
+            StudyGUI gui = new StudyGUI(manager);
+        }
+        else {
+            StudyCLI cli = new StudyCLI(manager);
+             cli.showLogIn();
+        }
     }
 }
