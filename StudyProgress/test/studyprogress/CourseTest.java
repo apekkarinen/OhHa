@@ -61,6 +61,6 @@ public class CourseTest {
      @Test
      public void toStringCompare() {
          
-         assertTrue(course.toString().equals("Ohjelmoinnin harjoitustyö(4.0 Op.): Arvosana: 0"));
+         assertTrue(course.toString().equals("Ohjelmoinnin harjoitustyö (4.0 Op.): Arvosana: 0"));
      }
 }

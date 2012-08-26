@@ -9,3 +9,18 @@ Fysiikan matemaattiset menetelmät III
 syksy
 2013
 4
+Monte Carlo-menetelmien perusteet
+8.0
+syksy
+2015
+5
+Säteilyn dosimetria
+5.0
+kevät
+2016
+5
+Pro Gradu-tutkielma
+60.0
+syksy
+2016
+5

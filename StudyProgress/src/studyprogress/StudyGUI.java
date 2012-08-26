@@ -225,16 +225,21 @@ public class StudyGUI implements Runnable {
     public Container drawSummary(StudyGUI gui, Student user) {
         String[] columnnames = {"lukukausi", "kurssien määrä","opintopisteet"};
         Container summary = new Container();
+
         summary.setLayout(new BoxLayout(summary, BoxLayout.Y_AXIS));
+        
         
         JTextArea summarytext = new JTextArea(user.getSummaryText());
         summarytext.setMaximumSize(new Dimension(350,250));
+        Component component = Box.createVerticalStrut(20);
         
         JLabel semesterinfo = createCenteredLabel("Lukukausien tiedot",0,0);
         JTable semestertable = new JTable(new SemesterTableModel(user.createSemesterArray(), columnnames));
+        semestertable.setPreferredScrollableViewportSize(new Dimension(350,200));
         JScrollPane semesterscroller = new JScrollPane(semestertable);
-        semesterscroller.setMaximumSize(new Dimension(350,300));
+        semesterscroller.setMaximumSize(new Dimension(350,200));
         summary.add(summarytext);
+        summary.add(component);
         summary.add(semesterinfo);
         summary.add(semesterscroller);
         return summary;

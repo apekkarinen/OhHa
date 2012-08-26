@@ -56,7 +56,7 @@ public class MainButtonListener implements ActionListener {
                 user.deleteCourseFromModule(moduleindex, courseindex);
                 modules.setListData(user.modulesToStringArray());
                 courses.setListData(user.moduleCoursesToStringArray(moduleindex));
-                gui.updateSummary(summary.getComponent(0),summary.getComponent(2));
+                gui.updateSummary(summary.getComponent(0),summary.getComponent(3));
                 modules.setSelectedIndex(moduleindex);
             }
         }
