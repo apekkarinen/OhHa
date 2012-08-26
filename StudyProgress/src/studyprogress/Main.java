@@ -15,7 +15,7 @@ public class Main {
      */
     public static void main(String[] args) {
         StudyProgressManager manager = new StudyProgressManager();
-        if(args != null && args.length > 0 && args[0].equals("gui")) {
+        if(args != null && args.length > 0 && args[0].equals("g")) {
             StudyGUI gui = new StudyGUI(manager);
             gui.displayLogin();
         }
