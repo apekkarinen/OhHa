@@ -80,7 +80,7 @@ public class StudyGUI implements Runnable {
         
         JList modulelist = createList(user.modulesToStringArray());
         JScrollPane modulescroller = new JScrollPane(modulelist);
-        modulescroller.setPreferredSize(new Dimension(160, 40));
+        modulescroller.setPreferredSize(new Dimension(160, 80));
         
         JList courselist = createList(user.moduleCoursesToStringArray(modulelist.getSelectedIndex()));
         ModuleListListener modulelistener = new ModuleListListener(manager, user, this, moduleinfo, courselist);
@@ -98,10 +98,16 @@ public class StudyGUI implements Runnable {
         
         Container coursebuttons = new Container();
         coursebuttons.setLayout(new FlowLayout());
+        Container menubuttons = new Container();
+        menubuttons.setLayout(new FlowLayout());
+        Component modulesbox = Box.createVerticalStrut(40);
+        Component coursesbox = Box.createVerticalStrut(40);
         JButton addcourse = new JButton("Lisää valmis kurssi");
         JButton addcustomcourse = new JButton("Lisää oma kurssi");
         JButton deletecourse = new JButton("Poista kurssi");
-        addMainButtonListeners(buttonlistener, add, addcustom, delete, addcourse, addcustomcourse, deletecourse);
+        JButton save = new JButton("Tallenna");
+        JButton quit = new JButton("Lopeta");
+        addMainButtonListeners(buttonlistener, add, addcustom, delete, addcourse, addcustomcourse, deletecourse, save, quit);
         
         modulebuttons.add(add);
         modulebuttons.add(addcustom);
@@ -109,17 +115,21 @@ public class StudyGUI implements Runnable {
         coursebuttons.add(addcourse);
         coursebuttons.add(addcustomcourse);
         coursebuttons.add(deletecourse);
+        menubuttons.add(save);
+        menubuttons.add(quit);
         
+        modules.add(modulesbox);
         modules.add(modulelisttext);
         modules.add(modulescroller);
         modules.add(modulebuttons);
+        modules.add(coursesbox);
         modules.add(moduleinfo);
         modules.add(coursescroller);
         modules.add(coursebuttons);
+        modules.add(menubuttons);
 
-        JButton save = new JButton("Tallenna");
-        save.addActionListener(new MainButtonListener(manager, user, this, modulelist, courselist, summary));
-        modules.add(save);
+
+
         base.add(summary, BorderLayout.LINE_START);
         base.add(modules,BorderLayout.LINE_END);
 
@@ -129,13 +139,15 @@ public class StudyGUI implements Runnable {
         mainmenu.pack();
         mainmenu.setVisible(true);
     }
-    private void addMainButtonListeners(MainButtonListener buttonlistener, JButton add, JButton addcustom, JButton delete, JButton addcourse, JButton addcustomcourse, JButton deletecourse) {
+    private void addMainButtonListeners(MainButtonListener buttonlistener, JButton add, JButton addcustom, JButton delete, JButton addcourse, JButton addcustomcourse, JButton deletecourse, JButton save, JButton quit) {
         delete.addActionListener(buttonlistener);
         add.addActionListener(buttonlistener);
         addcustom.addActionListener(buttonlistener);
         addcourse.addActionListener(buttonlistener);
         addcustomcourse.addActionListener(buttonlistener);
         deletecourse.addActionListener(buttonlistener);
+        save.addActionListener(buttonlistener);
+        quit.addActionListener(buttonlistener);
     }
     
     public void displayCreateCustomModule(JList modules, Container summary) {
