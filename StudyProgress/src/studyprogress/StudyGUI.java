@@ -89,7 +89,7 @@ public class StudyGUI implements Runnable {
         coursescroller.setPreferredSize(new Dimension(160, 120));
         
         Container modulebuttons = new Container();
-        MainButtonListener buttonlistener = new MainButtonListener(manager, user, this, modulelist, courselist, summary);
+        MainButtonListener buttonlistener = new MainButtonListener(manager, user, this, mainmenu, modulelist, courselist, summary);
         modulebuttons.setLayout(new FlowLayout());
         JButton add = new JButton("Lisää valmis");
         JButton addcustom = new JButton("Lisää oma");

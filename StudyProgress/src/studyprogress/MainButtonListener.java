@@ -17,14 +17,16 @@ public class MainButtonListener implements ActionListener {
     private JList modules;
     private JList courses;
     private Container summary;
+    private JFrame source;
     
-    public MainButtonListener(StudyProgressManager manager, Student user, StudyGUI gui, JList modules, JList courses, Container summary) {
+    public MainButtonListener(StudyProgressManager manager, Student user, StudyGUI gui, JFrame source, JList modules, JList courses, Container summary) {
         this.manager = manager;
         this.user = user;
         this.gui = gui;
         this.modules = modules;
         this.courses = courses;
         this.summary = summary;
+        this.source = source;
     }
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
@@ -41,7 +43,7 @@ public class MainButtonListener implements ActionListener {
             if(moduleindex >= 0) {
                 user.deleteModule(moduleindex);
                 modules.setListData(user.modulesToStringArray());
-                gui.updateSummary(summary.getComponent(0),summary.getComponent(2));
+                gui.updateSummary(summary.getComponent(0),summary.getComponent(3));
             }
         }
         else if(buttonlabel.equals("Lisää valmis kurssi")) {
@@ -59,6 +61,10 @@ public class MainButtonListener implements ActionListener {
                 gui.updateSummary(summary.getComponent(0),summary.getComponent(3));
                 modules.setSelectedIndex(moduleindex);
             }
+        }
+        else if(buttonlabel.equals("Lopeta")) {
+            source.dispose();
+            System.exit(0);
         }
         
         else {
