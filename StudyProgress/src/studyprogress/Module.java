@@ -78,7 +78,9 @@ public class Module {
     public float getTotalCreditsCompleted() {
         float sum = 0.0f;
         for(Course course : courselist) {
-            sum += course.getCreditPoints();
+            if(course.getGrade() > 0) {
+                sum += course.getCreditPoints();
+            }
         }
         return sum;
     }
