@@ -73,6 +73,21 @@ public class StudyProgressManagerTest {
         assertEquals(0,hessu.getNumberOfModules());
         
     }
+    @Test
+    public void loadModelsAndCheckName() {
+        int nameindex = manager.modelNameListContains("Tietojenkäsittelytieteen perusopinnot");
+        assertEquals(nameindex, 0);
+    }
+    @Test
+    public void checkNumberOfModels() {
+        assertTrue(manager.getNumberOfModelModules() > 0);
+    }
+    @Test
+    public void checkFirstModelName() {
+        Module firstmodel = manager.getModelModule(0);
+        assertTrue(firstmodel.getName().equals("Tietojenkäsittelytieteen perusopinnot"));
+    }
+
 
     
         

@@ -34,7 +34,7 @@ public class MainButtonListener implements ActionListener {
         int courseindex = courses.getSelectedIndex();
         
         if(buttonlabel.equals("Lisää valmis")) {
-            
+            gui.displayAddModelModule(modules, courses, summary);
         }
         else if(buttonlabel.equals("Lisää oma")) {
             gui.displayCreateCustomModule(modules,summary);
@@ -47,7 +47,11 @@ public class MainButtonListener implements ActionListener {
             }
         }
         else if(buttonlabel.equals("Lisää valmis kurssi")) {
-            
+            String modulename = user.getModuleName(moduleindex);
+            int nameindex = manager.modelNameListContains(modulename);
+            if(nameindex >= 0) {
+                gui.displayAddModelCourse(moduleindex);
+            }
         }
         else if(buttonlabel.equals("Lisää oma kurssi")) {
             gui.displayCreateCustomCourse(courses, modules,summary);

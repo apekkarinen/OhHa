@@ -124,9 +124,12 @@ public class StudyProgressManager {
                 return modules;
             }
             else {
+                System.out.println("Model array empty!");
                 return empty;
             }
         } catch (Exception e) {
+            System.out.println("Model array empty!");
+            e.printStackTrace();
             return empty;
         }
     }
@@ -152,6 +155,16 @@ public class StudyProgressManager {
             return empty;
         }
     
+    }
+    public int modelNameListContains(String name) {
+        return modelmodulenames.indexOf(name);
+        
+    }
+    public Module getModelModule(int moduleindex) {
+        return modelmodules.get(moduleindex);
+    }
+    public int getNumberOfModelModules() {
+        return modelmodules.size();
     }
     public static void deleteFile(String filepath) {
         File file = new File(filepath);

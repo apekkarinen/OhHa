@@ -144,5 +144,10 @@ public class Module {
         }
         return modulestring;
     }
+    public static Module EmptyModuleCopy(Module module) {
+        String name = module.getName();
+        float credits = module.totalcreditsrequired;
+        return new Module(name, credits);
+    }
     
 }

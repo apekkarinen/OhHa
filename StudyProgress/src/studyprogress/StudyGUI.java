@@ -257,9 +257,32 @@ public class StudyGUI implements Runnable {
         ((SemesterTableModel)((JTable)((JViewport)((JScrollPane)scroller).getComponent(0)).getView()).getModel()).setData(user.createSemesterArray());
     }
     
-    public void displayAddModelModule() {
+    public void displayAddModelModule(JList modules, JList courses, Container summary) {
         JFrame addmodel = new JFrame("Lisää kokonaisuus");
         Container base = addmodel.getContentPane();
+        base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
+        
+        JList modellist = createList(manager.modelModulesToStringArray());
+        JScrollPane modelscroller = new JScrollPane(modellist);
+        modelscroller.setPreferredSize(new Dimension(160, 80));
+        Container buttons = createContainer(new FlowLayout());
+        JButton add = new JButton("Lisää kokonaisuus");
+        JButton back = new JButton("Takaisin");
+        CreateModelModuleListener listener = new CreateModelModuleListener(manager, this, user, addmodel, modellist, modules, courses, summary);
+        add.addActionListener(listener);
+        back.addActionListener(listener);
+        buttons.add(add);
+        buttons.add(back);
+        base.add(modelscroller);
+        base.add(buttons);
+        addmodel.pack();
+        addmodel.setVisible(true);
+
+    }
+    public void displayAddModelCourse(int moduleindex) {
+        
+        JFrame addcourse = new JFrame("Lisää kurssi");
+        Container base = addcourse.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
         Container year = createContainer(new FlowLayout());
         JLabel yearinfo = createCenteredLabel("vuosi", 60, 25);
@@ -283,20 +306,19 @@ public class StudyGUI implements Runnable {
         radiobuttons.add(fall);
         radiobuttons.add(spring);
         
-        JList modellist = createList(manager.modelModulesToStringArray());
-        JScrollPane modelscroller = new JScrollPane(modellist);
-        modelscroller.setPreferredSize(new Dimension(80, 40));
+        JList courselist = createList(manager.moduleCoursesToStringArray(moduleindex));
+        JScrollPane coursescroller = new JScrollPane(courselist);
+        coursescroller.setPreferredSize(new Dimension(160, 80));
         Container buttons = createContainer(new FlowLayout());
-        JButton add = new JButton("Lisää kokonaisuus");
+        JButton add = new JButton("Lisää kurssi");
         JButton back = new JButton("Takaisin");
         buttons.add(add);
         buttons.add(back);
-        base.add(modelscroller);
+        base.add(coursescroller);
         base.add(year);
         base.add(grade);
         base.add(radiobuttons);
         base.add(buttons);
-
     }
     
     private JList createList(Object[] data) {
@@ -307,6 +329,7 @@ public class StudyGUI implements Runnable {
             return returnlist;
         }
         else {
+            System.out.println("List data is null!");
             return new JList();
         }
     }

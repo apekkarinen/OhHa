@@ -226,6 +226,9 @@ public class Student {
      * @param moduleindex List index of the Module. Range: Integer in [0, number of Modules -1]
      * @return A String representation of the specified Module.
      */
+    public String getModuleName(int moduleindex) {
+        return modulelist.get(moduleindex).getName();
+    }
     
     public int getNumberOfSemesters() {
         return semesterlist.size();
@@ -347,7 +350,11 @@ public class Student {
                 return null;
             }
         }
-        return null;
+        else {
+            System.out.println("Kokonaisuustiedostoa ei löydy!");
+            return null;
+        }
+
     }
     
     private void writeModule(Module module) {
