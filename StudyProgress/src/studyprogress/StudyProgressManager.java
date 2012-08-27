@@ -13,10 +13,12 @@ import java.io.*;
 public class StudyProgressManager {
     
     private ArrayList<String> usernamelist;
+    private ArrayList<Module> modelmodules;
     private String userfilepath;
     private String userdirectorypath;
     private File userfile;
     private File userdirectory;
+    private File modelsfile;
 
 
  
@@ -25,10 +27,12 @@ public class StudyProgressManager {
         userfilepath = "data/users.txt";
         userfile = new File(userfilepath);
         userdirectory = new File(userdirectorypath);
+        modelsfile = new File("data/models/models.txt");
         
         if(!userdirectory.exists()) {
             userdirectory.mkdir();
         }
+        
         
         usernamelist = loadUserListFromFile();  
         
@@ -111,6 +115,20 @@ public class StudyProgressManager {
                 System.out.println("Tiedoston poistaminen epäonnistui!");
             }
         }        
+    }
+    private void loadModelModules() {
+        String modelmodulename;
+        try {
+            Scanner modulescanner = new Scanner(modelsfile, "UTF-8");
+            while(modulescanner.hasNextLine()) {
+                modelmodulename = modulescanner.nextLine();
+                Module model = Student.loadModule(modelmodulename, "data/models/"+modelmodulename+".txt");
+                modelmodules.add(model);
+            }
+            
+        } catch (Exception e) {
+            System.out.println("Virhe luettaessa mallikokonaisuuksia!");
+        }
     }
 
 }

@@ -316,7 +316,7 @@ public class Student {
         return username+"\n\n"+modulesummary+"\n"+coursesummary+"\n"+semestersummary+"\n\n"+creditsleftsummary+"\n"+pacesummary+"\n"+graduationestimate;
     }
     
-    private Module loadModule(String name, String filepath) {
+    public static Module loadModule(String name, String filepath) {
         File modulefile = new File(filepath);
         float modulecredits;
         String coursename;
