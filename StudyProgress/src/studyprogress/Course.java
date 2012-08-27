@@ -108,6 +108,21 @@ public class Course {
      * @return A String representation of this Course.
      *
      */
+    public void setSemester(String semester) {
+        if(semester.equals("syksy") || semester.equals("kevät")) {
+            this.semester = semester;
+        }
+    }
+    public void setYear(int year) {
+        if(year >= 0) {
+            this.year = year;
+        }
+    }
+    public void setGrade(int grade) {
+        if(grade >= 0 && grade <= 5) {
+            this.grade = grade;
+        }
+    }
     
     public String toString() {
         return name + " (" + creditpoints + " Op.): Arvosana: " + grade;

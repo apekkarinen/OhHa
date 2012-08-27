@@ -34,7 +34,9 @@ public class StudyProgressManager {
         }
         
         
-        usernamelist = loadUserListFromFile();  
+        usernamelist = loadUserListFromFile();
+        modelmodules = new ArrayList<Module>();
+        loadModelModules();
         
     }
     
@@ -117,6 +119,7 @@ public class StudyProgressManager {
         }        
     }
     private void loadModelModules() {
+        modelmodules.clear();
         String modelmodulename;
         try {
             Scanner modulescanner = new Scanner(modelsfile, "UTF-8");

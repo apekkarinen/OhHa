@@ -73,7 +73,7 @@ public class StudyProgressManagerTest {
         assertEquals(0,hessu.getNumberOfModules());
         
     }
+
     
         
-    
 }
