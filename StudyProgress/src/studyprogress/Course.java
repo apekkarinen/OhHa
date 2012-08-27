@@ -3,7 +3,7 @@ package studyprogress;
 
 /**
  *
- * A class containing the key data describing a single university course.
+ * Course is the class containing the key data describing a single university course.
  * 
  * @author Antti Pekkarinen
  */
@@ -101,13 +101,7 @@ public class Course {
     public int getYear() {
         return year;
     }
-    /**
-     * Returns a String representation of this Course-object containing course name,
-     * credit points and grade.
-     * 
-     * @return A String representation of this Course.
-     *
-     */
+
     public void setSemester(String semester) {
         if(semester.equals("syksy") || semester.equals("kevät")) {
             this.semester = semester;
@@ -123,7 +117,13 @@ public class Course {
             this.grade = grade;
         }
     }
-    
+        /**
+     * Returns a String representation of this Course-object containing course name,
+     * credit points and grade.
+     * 
+     * @return A String representation of this Course.
+     *
+     */
     public String toString() {
         return name + " (" + creditpoints + " Op.): Arvosana: " + grade;
     }

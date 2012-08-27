@@ -2,7 +2,7 @@
 package studyprogress;
 
 /**
- *A class containing the basic operations of the
+ *StudyProgressManager is the class containing the basic operations of the
  * StudyProgress-application, such as logging in and creating a user.
  * 
  * @author Antti Pekkarinen

@@ -4,7 +4,7 @@ package studyprogress;
 import java.util.ArrayList;
 
 /**
- *A class containing the key data describing an university
+ *Module is the class containing the key data describing an university
  * study module, such as Basic Studies in Computer Science. A study module
  * consists of different courses, so the Module class contains a list of Course-objects.
  *
@@ -86,7 +86,7 @@ public class Module {
     }
     /**
      * Calculates the current credit point weighted grade average of this Module. Courses with a grade of 0
-     * are treated as unfinished and therefore left out from this calculation.
+     * are treated as unfinished and therefore excluded from this calculation.
      * @return Average credit point weighted grade of all finished Courses in this Module.
      */
     public float getModuleAverage() {
