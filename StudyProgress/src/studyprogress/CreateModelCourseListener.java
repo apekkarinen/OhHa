@@ -43,7 +43,7 @@ public class CreateModelCourseListener implements ActionListener {
         
         if(buttonlabel.equals("Lisää kurssi")) {
             String semesterstring = semester.getSelection().getActionCommand();
-            if(!checkData(yearstring,gradestring,semesterstring)) {
+            if(checkData(yearstring,gradestring,semesterstring)) {
                 Module module = manager.getModelModule(manager.modelNameListContains(user.getModuleName(moduleindex)));
                 Course course = module.getCourse(modelcourses.getSelectedIndex());
                 course.setSemester(semesterstring);
