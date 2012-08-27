@@ -12,23 +12,70 @@ public class CreateModelCourseListener implements ActionListener {
     private StudyGUI gui;
     private Student user;
     private JFrame source;
-    private JList models;
+    private JList modelcourses;
     private JTextField year;
     private JTextField grade;
     private ButtonGroup semester;
+    private JList modules;
+    private JList courses;
+    private Container summary;
+    private int moduleindex;
     
-    public CreateModelCourseListener(StudyProgressManager manager,StudyGUI gui,Student user, JFrame source,JList models,JTextField year,JTextField grade,ButtonGroup semester ) {
+    public CreateModelCourseListener(StudyProgressManager manager,StudyGUI gui,Student user, JFrame source,JList modelcourses,JTextField year,JTextField grade,ButtonGroup semester, JList modules, JList courses, Container summary, int moduleindex) {
     this.manager = manager;
     this.gui = gui;
     this.user = user;
     this.source = source;
-    this.models = models;
+    this.modelcourses = modelcourses;
     this.year = year;
     this.grade = grade;
     this.semester = semester;
+    this.modules = modules;
+    this.courses = courses;
+    this.summary = summary;
+    this.moduleindex = moduleindex;
     }
     
     public void actionPerformed(ActionEvent e) {
+        String buttonlabel = ((JButton)e.getSource()).getText();
+        String yearstring = year.getText();
+        String gradestring = grade.getText();
         
+        if(buttonlabel.equals("Lisää kurssi")) {
+            String semesterstring = semester.getSelection().getActionCommand();
+            if(!checkData(yearstring,gradestring,semesterstring)) {
+                Module module = manager.getModelModule(manager.modelNameListContains(user.getModuleName(moduleindex)));
+                Course course = module.getCourse(modelcourses.getSelectedIndex());
+                course.setSemester(semesterstring);
+                course.setYear(Integer.parseInt(yearstring));
+                course.setGrade(Integer.parseInt(gradestring));
+                user.addCourseToModule(moduleindex, course);
+                modules.setListData(user.modulesToStringArray());
+                courses.setListData(user.moduleCoursesToStringArray(moduleindex));
+                gui.updateSummary(summary.getComponent(0),summary.getComponent(3));
+                modules.setSelectedIndex(moduleindex);
+            }
+        }
+        else {
+            source.dispose();
+        }
+    }
+    
+    public boolean checkData(String yearstring, String gradestring, String semesterstring) {
+        int year = -1;
+        int grade = -1;
+        try {
+            year = Integer.parseInt(yearstring);
+            grade = Integer.parseInt(gradestring);
+            
+        } catch (Exception e) {
+            return false;
+        }
+        if(year >= 0 && grade >= 0 && (semesterstring.equals("syksy") || semesterstring.equals("kevät"))) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

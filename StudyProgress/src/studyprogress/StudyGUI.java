@@ -259,6 +259,7 @@ public class StudyGUI implements Runnable {
     
     public void displayAddModelModule(JList modules, JList courses, Container summary) {
         JFrame addmodel = new JFrame("Lisää kokonaisuus");
+        
         Container base = addmodel.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
         
@@ -279,22 +280,14 @@ public class StudyGUI implements Runnable {
         addmodel.setVisible(true);
 
     }
-    public void displayAddModelCourse(int moduleindex) {
-        
+    public void displayAddModelCourse(int moduleindex,JList modules, JList courses, Container summary) {
         JFrame addcourse = new JFrame("Lisää kurssi");
         Container base = addcourse.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
-        Container year = createContainer(new FlowLayout());
-        JLabel yearinfo = createCenteredLabel("vuosi", 60, 25);
-        JTextField yearinput = createCenteredTextField(40,25);
-        year.add(yearinfo);
-        year.add(yearinput);
-        Container grade = createContainer(new FlowLayout());
-        JLabel gradeinfo = createCenteredLabel("arvosana", 60, 25);
-        JTextField gradeinput = createCenteredTextField(40,25);
-        grade.add(gradeinfo);
-        grade.add(gradeinput);
-        
+        JLabel yearinfo = createCenteredLabel("vuosi", 100, 25);
+        JTextField yearinput = createCenteredTextField(100,25);
+        JLabel gradeinfo = createCenteredLabel("arvosana", 100, 25);
+        JTextField gradeinput = createCenteredTextField(100,25);       
         Container radiobuttons = createContainer(new FlowLayout());
         JRadioButton fall = new JRadioButton("syksy");
         fall.setActionCommand("syksy");
@@ -306,19 +299,25 @@ public class StudyGUI implements Runnable {
         radiobuttons.add(fall);
         radiobuttons.add(spring);
         
-        JList courselist = createList(manager.moduleCoursesToStringArray(moduleindex));
+        JList courselist = createList(manager.moduleCoursesToStringArray(manager.modelNameListContains(user.getModuleName(moduleindex))));
         JScrollPane coursescroller = new JScrollPane(courselist);
-        coursescroller.setPreferredSize(new Dimension(160, 80));
+        coursescroller.setPreferredSize(new Dimension(420, 160));
         Container buttons = createContainer(new FlowLayout());
         JButton add = new JButton("Lisää kurssi");
         JButton back = new JButton("Takaisin");
+        add.addActionListener(new CreateModelCourseListener(manager, this, user, addcourse, courselist, yearinput, gradeinput, semester, modules, courses, summary, moduleindex));
+        back.addActionListener(new CreateModelCourseListener(manager, this, user, addcourse, courselist, yearinput, gradeinput, semester, modules, courses, summary, moduleindex));
         buttons.add(add);
         buttons.add(back);
         base.add(coursescroller);
-        base.add(year);
-        base.add(grade);
+        base.add(yearinfo);
+        base.add(yearinput);
+        base.add(gradeinfo);
+        base.add(gradeinput);
         base.add(radiobuttons);
         base.add(buttons);
+        addcourse.pack();
+        addcourse.setVisible(true);
     }
     
     private JList createList(Object[] data) {

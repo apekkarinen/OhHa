@@ -46,18 +46,18 @@ public class MainButtonListener implements ActionListener {
                 gui.updateSummary(summary.getComponent(0),summary.getComponent(3));
             }
         }
-        else if(buttonlabel.equals("Lisää valmis kurssi")) {
+        else if(buttonlabel.equals("Lisää valmis kurssi") && moduleindex >= 0) {
             String modulename = user.getModuleName(moduleindex);
             int nameindex = manager.modelNameListContains(modulename);
             if(nameindex >= 0) {
-                gui.displayAddModelCourse(moduleindex);
+                gui.displayAddModelCourse(moduleindex, modules, courses, summary);
             }
         }
-        else if(buttonlabel.equals("Lisää oma kurssi")) {
+        else if(buttonlabel.equals("Lisää oma kurssi") && moduleindex >= 0) {
             gui.displayCreateCustomCourse(courses, modules,summary);
         }
         
-        else if(buttonlabel.equals("Poista kurssi")) {
+        else if(buttonlabel.equals("Poista kurssi") && moduleindex >= 0 && courseindex >= 0) {
             if(courseindex >= 0 && user.getModuleSize(moduleindex) > 0) {
                 user.deleteCourseFromModule(moduleindex, courseindex);
                 modules.setListData(user.modulesToStringArray());
