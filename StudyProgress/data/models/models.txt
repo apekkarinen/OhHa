@@ -1,2 +1,3 @@
 Tietojenkäsittelytieteen perusopinnot
 Tietojenkäsittelytieteen aineopinnot
+Tietojenkäsittelytieteen syventävät opinnot

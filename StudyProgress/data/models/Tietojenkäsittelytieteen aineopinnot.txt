@@ -39,3 +39,43 @@ Kandidaatintutkielma
 syksy
 0
 0
+Harjoitustyö: Tietokantasovellus
+4.0
+syksy
+0
+0
+Harjoitustyö: Tietorakenteet ja algoritmit
+4.0
+syksy
+0
+0
+C-ohjelmointi
+4.0
+syksy
+0
+0
+Tietoturvan perusteet
+4.0
+syksy
+0
+0
+Johdatus tekoälyyn
+4.0
+syksy
+0
+0
+Tietokannan suunnittelu
+4.0
+syksy
+0
+0
+Human-Computer Interaction
+4.0
+syksy
+0
+0
+Algorithms for Bioinformatics
+4.0
+syksy
+0
+0
