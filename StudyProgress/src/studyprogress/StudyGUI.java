@@ -45,8 +45,7 @@ public class StudyGUI implements Runnable {
         JLabel helptext = new JLabel("Anna käyttäjänimesi");
         helptext.setAlignmentX(Component.CENTER_ALIGNMENT);
         
-        Container buttons = new Container();
-        buttons.setLayout(new FlowLayout());
+        Container buttons = createContainer(new FlowLayout());
         JButton loginbutton = new JButton("Kirjaudu");
         JButton createbutton = new JButton("Luo uusi käyttäjä");
         buttons.add(loginbutton);
@@ -88,16 +87,14 @@ public class StudyGUI implements Runnable {
         JScrollPane coursescroller = new JScrollPane(courselist);
         coursescroller.setPreferredSize(new Dimension(160, 120));
         
-        Container modulebuttons = new Container();
+        Container modulebuttons = createContainer(new FlowLayout());
         MainButtonListener buttonlistener = new MainButtonListener(manager, user, this, mainmenu, modulelist, courselist, summary);
-        modulebuttons.setLayout(new FlowLayout());
         JButton add = new JButton("Lisää valmis");
         JButton addcustom = new JButton("Lisää oma");
         JButton delete = new JButton("Poista");
         
         
-        Container coursebuttons = new Container();
-        coursebuttons.setLayout(new FlowLayout());
+        Container coursebuttons = createContainer(new FlowLayout());
         Container menubuttons = createContainer(new FlowLayout());
         Component modulesbox = Box.createVerticalStrut(40);
         Component coursesbox = Box.createVerticalStrut(40);
