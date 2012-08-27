@@ -98,8 +98,7 @@ public class StudyGUI implements Runnable {
         
         Container coursebuttons = new Container();
         coursebuttons.setLayout(new FlowLayout());
-        Container menubuttons = new Container();
-        menubuttons.setLayout(new FlowLayout());
+        Container menubuttons = createContainer(new FlowLayout());
         Component modulesbox = Box.createVerticalStrut(40);
         Component coursesbox = Box.createVerticalStrut(40);
         JButton addcourse = new JButton("Lisää valmis kurssi");
@@ -261,6 +260,32 @@ public class StudyGUI implements Runnable {
         ((SemesterTableModel)((JTable)((JViewport)((JScrollPane)scroller).getComponent(0)).getView()).getModel()).setData(user.createSemesterArray());
     }
     
+    public void displayAddModelModule() {
+        JFrame addmodel = new JFrame("Lisää kokonaisuus");
+        Container base = addmodel.getContentPane();
+        base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
+        Container year = createContainer(new FlowLayout());
+        Container grade = createContainer(new FlowLayout());
+        Container radiobuttons = createContainer(new FlowLayout());
+        JRadioButton fall = new JRadioButton("syksy");
+        fall.setActionCommand("syksy");
+        JRadioButton spring = new JRadioButton("kevät");
+        spring.setActionCommand("kevät");
+        ButtonGroup semester = new ButtonGroup();
+        semester.add(fall);
+        semester.add(spring);
+        radiobuttons.add(fall);
+        radiobuttons.add(spring);
+        JList modellist = createList(manager.modelModulesToStringArray());
+        JScrollPane modelscroller = new JScrollPane(modellist);
+        modelscroller.setPreferredSize(new Dimension(80, 40));
+        Container buttons = createContainer(new FlowLayout());
+        JButton add = new JButton("Lisää kokonaisuus");
+        JButton back = new JButton("Takaisin");
+        buttons.add(add);
+        buttons.add(back);
+    }
+    
     private JList createList(Object[] data) {
         if(data != null) {
             JList returnlist = new JList(data);
@@ -291,6 +316,12 @@ public class StudyGUI implements Runnable {
                label.setMaximumSize(new Dimension(maxwidth, maxheight));
            }
            return label;
+        }
+        
+        private Container createContainer(LayoutManager mgr) {
+            Container returncontainer = new Container();
+            returncontainer.setLayout(mgr);
+            return returncontainer;
         }
 
 }

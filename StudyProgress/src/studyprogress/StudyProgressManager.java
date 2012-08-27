@@ -108,6 +108,49 @@ public class StudyProgressManager {
             System.out.println("Virhe kirjoitettaessa käyttäjänimitiedostoa!");
         }
     }
+    public String[] modelModulesToStringArray() {
+    String[] empty = {""};
+        try {
+            int size = modelmodules.size();
+            Module module;
+            if(size > 0) {
+                String[] modules = new String[size];
+                for (int i = 0; i < size; i++) {
+                    module = modelmodules.get(i);
+                    modules[i] = module.getName() + ", laajuus "+module.getTotalCredits()+" op.";
+                }
+                return modules;
+            }
+            else {
+                return empty;
+            }
+        } catch (Exception e) {
+            return empty;
+        }
+    }
+
+    public String[] moduleCoursesToStringArray(int moduleindex) {
+        String[] empty = {""};
+        try {
+        Module module = modelmodules.get(moduleindex);          
+
+            int size = module.getNumberOfCourses();
+            if(size >0) {
+               String[] returnarray = new String[size];
+                for (int i = 0; i < size; i++) {
+                   returnarray[i] = module.getCourse(i).toString();
+                }
+                return returnarray; 
+            }
+            else {
+                return empty;
+
+            }
+        } catch(Exception e) {
+            return empty;
+        }
+    
+    }
     public static void deleteFile(String filepath) {
         File file = new File(filepath);
         if(file.exists()) {
