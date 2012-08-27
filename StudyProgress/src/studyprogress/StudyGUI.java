@@ -262,7 +262,16 @@ public class StudyGUI implements Runnable {
         Container base = addmodel.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
         Container year = createContainer(new FlowLayout());
+        JLabel yearinfo = createCenteredLabel("vuosi", 60, 25);
+        JTextField yearinput = createCenteredTextField(40,25);
+        year.add(yearinfo);
+        year.add(yearinput);
         Container grade = createContainer(new FlowLayout());
+        JLabel gradeinfo = createCenteredLabel("arvosana", 60, 25);
+        JTextField gradeinput = createCenteredTextField(40,25);
+        grade.add(gradeinfo);
+        grade.add(gradeinput);
+        
         Container radiobuttons = createContainer(new FlowLayout());
         JRadioButton fall = new JRadioButton("syksy");
         fall.setActionCommand("syksy");
@@ -273,6 +282,7 @@ public class StudyGUI implements Runnable {
         semester.add(spring);
         radiobuttons.add(fall);
         radiobuttons.add(spring);
+        
         JList modellist = createList(manager.modelModulesToStringArray());
         JScrollPane modelscroller = new JScrollPane(modellist);
         modelscroller.setPreferredSize(new Dimension(80, 40));
@@ -281,6 +291,12 @@ public class StudyGUI implements Runnable {
         JButton back = new JButton("Takaisin");
         buttons.add(add);
         buttons.add(back);
+        base.add(modelscroller);
+        base.add(year);
+        base.add(grade);
+        base.add(radiobuttons);
+        base.add(buttons);
+
     }
     
     private JList createList(Object[] data) {
