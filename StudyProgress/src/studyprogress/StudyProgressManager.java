@@ -14,6 +14,7 @@ public class StudyProgressManager {
     
     private ArrayList<String> usernamelist;
     private ArrayList<Module> modelmodules;
+    private ArrayList<String> modelmodulenames;
     private String userfilepath;
     private String userdirectorypath;
     private File userfile;
@@ -28,6 +29,7 @@ public class StudyProgressManager {
         userfile = new File(userfilepath);
         userdirectory = new File(userdirectorypath);
         modelsfile = new File("data/models/models.txt");
+        modelmodulenames = new ArrayList<String>();
         
         if(!userdirectory.exists()) {
             userdirectory.mkdir();
@@ -163,11 +165,13 @@ public class StudyProgressManager {
     }
     private void loadModelModules() {
         modelmodules.clear();
+        modelmodulenames.clear();
         String modelmodulename;
         try {
             Scanner modulescanner = new Scanner(modelsfile, "UTF-8");
             while(modulescanner.hasNextLine()) {
                 modelmodulename = modulescanner.nextLine();
+                modelmodulenames.add(modelmodulename);
                 Module model = Student.loadModule(modelmodulename, "data/models/"+modelmodulename+".txt");
                 modelmodules.add(model);
             }
