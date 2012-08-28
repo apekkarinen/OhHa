@@ -353,20 +353,35 @@ public class Student {
      */
     public String getSummaryText() {
         int semestersleft = (int)Math.ceil(this.semestersToGo());
+        float pace = this.getAverageCreditsPerSemester();
+        String tip = "";
         String graduationestimate;
         String username = "Yhteenveto: Käyttäjä "+name;
         String modulesummary = "Sinulla on yhteensä "+this.getNumberOfModules()+" opintokokonaisuutta.";
         String coursesummary = "Sinulla on yhteensä "+this.getTotalNumberOfCourses()+" kurssia.";
         String semestersummary = "Olet opiskellut "+this.getNumberOfSemesters()+" lukukautta.";
         String creditsleftsummary = "Sinun on vielä kerättävä "+this.getTotalCreditsRemaining()+ " op valmistuaksesi.";
-        String pacesummary = "Olet kerännyt keskimäärin "+this.getAverageCreditsPerSemester()+ " op per lukukausi.";
+        String pacesummary = "Olet kerännyt keskimäärin "+pace+ " op per lukukausi.";
         if (semestersleft >= 0) {
             graduationestimate = "Nykyisellä opiskelutahdillasi valmistut "+semestersleft +" lukukaudessa";
         }
         else {
             graduationestimate = "Et ole vielä opiskellut yhtään kurssia";
         }
-        return username+"\n\n"+modulesummary+"\n"+coursesummary+"\n"+semestersummary+"\n\n"+creditsleftsummary+"\n"+pacesummary+"\n"+graduationestimate;
+        if(pace > 0.0f && pace < 20.0f) {
+            tip = "Opiskelutahtisi on erittäin hidas \n (< 20 op/lukukausi), kerää itsesi!";
+        }
+        if(pace > 20.0f && pace < 30.0f) {
+            tip = "Opiskelutahtisi on hidas \n (< 30 op/lukukausi), nopeuta tahtia jatkossa.";
+        }
+        if(pace > 30.0f && pace < 35.0f) {
+            tip = "Opiskelutahtisi on normaali\n (30-35 op/lukukausi), olet aikataulussa!";
+        }
+        if(pace > 35.0f) {
+            tip = "Opiskelutahtisi on erinomainen\n (> 35 op/lukukausi), hyvää työtä!";
+        }
+        
+        return "\n"+username+"\n\n"+modulesummary+"\n"+coursesummary+"\n"+semestersummary+"\n\n"+creditsleftsummary+"\n"+pacesummary+"\n"+graduationestimate+"\n\n"+tip;
     }
     
     /**
