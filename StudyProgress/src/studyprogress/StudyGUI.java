@@ -152,6 +152,7 @@ public class StudyGUI implements Runnable {
         Container base = createframe.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
         JLabel info = createCenteredLabel("Syötä kokonaisuuden tiedot:",0,0);
+        Component box = Box.createVerticalStrut(25);
         
         JTextField name = createCenteredTextField(160,25);
         JTextField credits = createCenteredTextField(40,25);
@@ -163,6 +164,7 @@ public class StudyGUI implements Runnable {
         create.setAlignmentX(Component.CENTER_ALIGNMENT);
         create.addActionListener(new CreateCustomModuleListener(createframe, user, this, name, credits, info, modules, summary));
         base.add(info);
+        base.add(box);
         base.add(nameinfo);
         base.add(name);
         base.add(creditsinfo);
@@ -178,7 +180,7 @@ public class StudyGUI implements Runnable {
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
         
         JLabel info = createCenteredLabel("Syötä kurssin tiedot:\n ",0,0);
-        
+        Component box = Box.createVerticalStrut(25);
         JLabel nameinfo = createCenteredLabel("Nimi",0,0);
         JTextField name = createCenteredTextField(160, 25);
         JLabel creditinfo = createCenteredLabel("Opintopistelaajuus",0,0);
@@ -210,13 +212,14 @@ public class StudyGUI implements Runnable {
         semester.add(spring);
         radiobuttons.add(fall);
         radiobuttons.add(spring);
-        addComponentsToCourseBase(base, info, nameinfo, creditinfo, yearinfo, gradeinfo, semesterinfo, alert, name, credits, year, grade, radiobuttons, buttons);
+        addComponentsToCourseBase(base, info, box, nameinfo, creditinfo, yearinfo, gradeinfo, semesterinfo, alert, name, credits, year, grade, radiobuttons, buttons);
         createframe.pack();
         createframe.setVisible(true);
 
     }
-    private void addComponentsToCourseBase(Container base, JLabel info, JLabel nameinfo, JLabel creditinfo, JLabel yearinfo, JLabel gradeinfo, JLabel semesterinfo, JLabel alert, JTextField name, JTextField credits, JTextField year, JTextField grade, Container radiobuttons, Container buttons) {
+    private void addComponentsToCourseBase(Container base, JLabel info, Component box, JLabel nameinfo, JLabel creditinfo, JLabel yearinfo, JLabel gradeinfo, JLabel semesterinfo, JLabel alert, JTextField name, JTextField credits, JTextField year, JTextField grade, Container radiobuttons, Container buttons) {
         base.add(info);
+        base.add(box);
         base.add(nameinfo);
         base.add(name);
         base.add(creditinfo);
@@ -265,7 +268,7 @@ public class StudyGUI implements Runnable {
         
         JList modellist = createList(manager.modelModulesToStringArray());
         JScrollPane modelscroller = new JScrollPane(modellist);
-        modelscroller.setPreferredSize(new Dimension(160, 80));
+        modelscroller.setPreferredSize(new Dimension(460, 80));
         Container buttons = createContainer(new FlowLayout());
         JButton add = new JButton("Lisää kokonaisuus");
         JButton back = new JButton("Takaisin");
