@@ -163,10 +163,18 @@ public class StudyProgressManager {
     /**
      * Gets a model Module specified by list index.
      * @param moduleindex List index of the desired Module. Indices start from 0.
-     * @return The model Module specified by the index.
+     * @return The model Module specified by the index or null if index is out of range.
      */
     public Module getModelModule(int moduleindex) {
-        return modelmodules.get(moduleindex);
+        if(moduleindex >= 0) {
+            try {
+                return modelmodules.get(moduleindex);
+            }
+            catch (Exception e) {
+                return null;
+            }
+        }
+        return null;
     }
     /**
      * Gets the total number of pre-made model Modules

@@ -87,6 +87,15 @@ public class StudyProgressManagerTest {
         Module firstmodel = manager.getModelModule(0);
         assertTrue(firstmodel.getName().equals("Tietojenkäsittelytieteen perusopinnot"));
     }
+    @Test
+    public void invalidModelModuleIndex() {
+        assertNull(manager.getModelModule(-1));
+    }
+    @Test
+    public void anotherInvalidModelModuleIndex() {
+        int index = manager.getNumberOfModelModules();
+        assertNull(manager.getModelModule(index));
+    }
 
 
     
