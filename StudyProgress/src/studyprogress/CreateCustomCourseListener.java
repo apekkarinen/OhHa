@@ -7,7 +7,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 /**
- *
+ *Button listener class for graphical custom Course creation screen.
  * @author ausr
  */
 public class CreateCustomCourseListener implements ActionListener {

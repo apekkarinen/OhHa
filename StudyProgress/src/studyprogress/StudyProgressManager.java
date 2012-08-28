@@ -1,15 +1,15 @@
 
 package studyprogress;
 
+
+import java.util.*;
+import java.io.*;
 /**
  *StudyProgressManager is the class containing the basic operations of the
  * StudyProgress-application, such as logging in and creating a user.
  * 
  * @author Antti Pekkarinen
  */
-import java.util.*;
-import java.io.*;
-
 public class StudyProgressManager {
     
     private ArrayList<String> usernamelist;

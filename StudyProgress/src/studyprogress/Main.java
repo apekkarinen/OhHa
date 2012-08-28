@@ -4,6 +4,7 @@ package studyprogress;
 import javax.swing.SwingUtilities;
 
 /**
+ * Main class.
  *  @author Antti Pekkarinen
  */
 

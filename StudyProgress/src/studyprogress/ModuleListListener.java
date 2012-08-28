@@ -10,7 +10,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 /**
- *
+ *List listener class for graphical main menu's Module and Course lists.
  * @author ausr
  */
 public class ModuleListListener implements ListSelectionListener {

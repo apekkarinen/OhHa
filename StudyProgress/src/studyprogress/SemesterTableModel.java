@@ -9,7 +9,7 @@ import javax.swing.JTable;
 import javax.swing.table.AbstractTableModel;
 
 /**
- *
+ *Custom table model class for the Semester data table in the graphical main menu screen.
  * @author ausr
  */
 public class SemesterTableModel extends AbstractTableModel {

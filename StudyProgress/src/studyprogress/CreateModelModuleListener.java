@@ -4,7 +4,7 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 /**
- *
+ *Button listener class for the graphical model Module creation screen.
  * @author ausr
  */
 public class CreateModelModuleListener implements ActionListener {

@@ -1,13 +1,13 @@
 
 package studyprogress;
 
+
+import javax.swing.*;
+import java.awt.*;
 /**
  *The Graphical User Interface-class for StudyProgressManager
  * @author ausr
  */
-import javax.swing.*;
-import java.awt.*;
-
 public class StudyGUI implements Runnable {
     
     private StudyProgressManager manager;

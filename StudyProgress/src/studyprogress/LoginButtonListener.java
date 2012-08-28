@@ -1,13 +1,13 @@
 
 package studyprogress;
 
-/**
- *
- * @author ausr
- */
+
 import javax.swing.*;
 import java.awt.event.*;
-
+/**
+ *Button listener class for graphical login screen.
+ * @author ausr
+ */
 public class LoginButtonListener implements ActionListener {
     private StudyProgressManager manager;
     private Student user;

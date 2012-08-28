@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.util.ArrayList;
 import java.awt.*;
 /**
- *
+ *Button listener class for graphical main menu screen.
  * @author ausr
  */
 

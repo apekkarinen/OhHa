@@ -5,7 +5,7 @@ import java.awt.event.*;
 import java.awt.*;
 
 /**
- *
+ *Button listener class for graphical custom Module creation screen.
  * @author ausr
  */
 public class CreateCustomModuleListener implements ActionListener {

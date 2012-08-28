@@ -1,14 +1,14 @@
 
 package studyprogress;
 
+
+import java.util.*;
+import javax.swing.SwingUtilities;
 /**
  * The command line interface-class fort StudyProgressManager.
  *
  * @author Antti Pekkarinen
  */
-import java.util.*;
-import javax.swing.SwingUtilities;
-
 public class StudyCLI {
     private StudyProgressManager manager;
     private Student user;
