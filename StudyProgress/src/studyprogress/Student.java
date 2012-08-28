@@ -250,7 +250,7 @@ public class Student {
     }
     /**
      * Returns the name of a specified Module of this Student.
-     * @param moduleindex List index of the Module.
+     * @param moduleindex List index of the Module. The indices start from 0.
      * @return Name of the Module specified by parameter moduleindex.
      */
     public String getModuleName(int moduleindex) {
@@ -303,7 +303,7 @@ public class Student {
     }
     /**
      * Return an array of String representations of the Courses of a single specified Module of this Student.
-     * @param moduleindex List index of the desired Module.
+     * @param moduleindex List index of the desired Module. The indices start from 0.
      * @return Array of String representations of all Courses in the specified Module.
      */
     public String[] moduleCoursesToStringArray(int moduleindex) {
