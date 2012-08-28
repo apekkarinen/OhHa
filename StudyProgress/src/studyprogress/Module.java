@@ -75,6 +75,11 @@ public class Module {
     public int getNumberOfCourses() {
         return courselist.size();
     }
+    /**
+     * Gets the total credits awarded from all completed Courses of this Module.
+     * Courses with a grade of zero (0) are excluded from this calculation.
+     * @return The total credits awarded from all completed Courses of this Module, a float >= 0.
+     */
     public float getTotalCreditsCompleted() {
         float sum = 0.0f;
         for(Course course : courselist) {
@@ -146,6 +151,12 @@ public class Module {
         }
         return modulestring;
     }
+    /**
+     * Copies the parameter Module's total credits and name to a new Module and returns the resulting empty Module.
+     * In other words, returns a copy of the parameter Module without its Courses.
+     * @param module The Module to copy.
+     * @return An empty Module (a Module with no Courses) with the same name and credits than the parameter.
+     */
     public static Module EmptyModuleCopy(Module module) {
         String name = module.getName();
         float credits = module.totalcreditsrequired;

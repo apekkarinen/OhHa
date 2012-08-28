@@ -90,6 +90,11 @@ public class Student {
         modulelist.remove(index);
         createSemesterList();
     }
+    /**
+     * Gets the average of credit points earned in a Semester. Returns 0.0f if no Semesters
+     * have been registered for this Student.
+     * @return The average of credit points earned per Semester, a float >= 0.
+     */
     public float getAverageCreditsPerSemester() {
         float sum = getTotalCreditsCompleted();
         int numberofsemesters = this.getNumberOfSemesters();
@@ -134,6 +139,11 @@ public class Student {
         }
         return sum;
     }
+    /**
+     * Gets total credit points completed by this Student. Unfinished Courses (grade of 0)
+     * are excluded from this total.
+     * @return Total credit points completed by this Student, a float >= 0.0f.
+     */
     public float getTotalCreditsCompleted() {
         float sum = 0.0f;
         for(Module module : modulelist) {
@@ -141,18 +151,36 @@ public class Student {
         }
         return sum;
     }
+    /**
+     * Gets total credits still needed for this Student to complete all registered Modules.
+     * In other words, credit points still needed for this Student to graduate. Returns
+     * 0.0f if this Student already has more credit points than required for graduating.
+     * @return Total credit points still needed to complete all this Student's Modules.
+     */
     public float getTotalCreditsRemaining() {
         float required = 0.0f;
         float completed = getTotalCreditsCompleted();
         for(Module module : modulelist) {
             required += module.getTotalCredits();
         }
-        return required - completed;
+        if(completed > required) {
+            return 0.0f;
+        }
+        else {
+            return required - completed;
+        }
     }
+    /**
+     * Returns the number of semesters it will take for this Student to graduate
+     * provided that the Student maintains current pace in their studies.
+     * Returns -1.0f if pace is 0.01 or less or if the Student has under 0.1 credits to go.
+     * @return The number of semesters still left for graduation with current studying pace.
+     */
+    
     public float semestersToGo() {
         float remaining = getTotalCreditsRemaining();
         float pace = getAverageCreditsPerSemester();
-        if(pace > 0.01) {
+        if(pace > 0.01 && remaining > 0.1) {
             return remaining / pace;
         }
         else {
@@ -221,18 +249,27 @@ public class Student {
         return modulelist.get(moduleindex).getNumberOfCourses();
     }
     /**
+     * Returns the name of a specified Module of this Student.
+     * @param moduleindex List index of the Module.
+     * @return Name of the Module specified by parameter moduleindex.
+     */
+    public String getModuleName(int moduleindex) {
+        return modulelist.get(moduleindex).getName();
+    }
+    /**
+     * Returns the number of Semesters during which this Student has studied. Unfinished Courses are
+     * also included in this total.
+     * @return Number of Semesters during which this Student has studied.
+     */
+    public int getNumberOfSemesters() {
+        return semesterlist.size();
+    }
+        /**
      * Returns a String representation of the specified Module of this Student.
      * This representation includes all Courses of the Module.
      * @param moduleindex List index of the Module. Range: Integer in [0, number of Modules -1]
      * @return A String representation of the specified Module.
      */
-    public String getModuleName(int moduleindex) {
-        return modulelist.get(moduleindex).getName();
-    }
-    
-    public int getNumberOfSemesters() {
-        return semesterlist.size();
-    }
     public String moduleToString(int moduleindex) {
         Module module = modulelist.get(moduleindex);
         return module.getName() + " (keskiarvo "+module.getModuleAverage()+", arvosana "+module.getModuleGrade()+")\n" +module.toString();
@@ -264,6 +301,11 @@ public class Student {
             return empty;
         }
     }
+    /**
+     * Return an array of String representations of the Courses of a single specified Module of this Student.
+     * @param moduleindex List index of the desired Module.
+     * @return Array of String representations of all Courses in the specified Module.
+     */
     public String[] moduleCoursesToStringArray(int moduleindex) {
         String[] empty = {""};
         try {
@@ -301,6 +343,14 @@ public class Student {
         }
         return studentstring;
     }
+    /**
+     * Returns a short but informative summary of this Student's studies so far including
+     * total number of Modules, Courses and Semesters, credits still needed for graduation and
+     * credit average per semester.
+     * Also gives an estimate of how many semesters it will take for this Student to graduate.
+     * 
+     * @return Summary of this Student's studies so far.
+     */
     public String getSummaryText() {
         int semestersleft = (int)Math.ceil(this.semestersToGo());
         String graduationestimate;
@@ -319,6 +369,13 @@ public class Student {
         return username+"\n\n"+modulesummary+"\n"+coursesummary+"\n"+semestersummary+"\n\n"+creditsleftsummary+"\n"+pacesummary+"\n"+graduationestimate;
     }
     
+    /**
+     * Loads a Module from the specified text file. This means the Module including all its Courses.
+     * This method takes the filename parameter as is, in other words it does not append the .txt file extension.
+     * @param name Name of the Module to load.
+     * @param filepath Location of the Module to load.
+     * @return The loaded Module.
+     */
     public static Module loadModule(String name, String filepath) {
         File modulefile = new File(filepath);
         float modulecredits;
@@ -356,28 +413,12 @@ public class Student {
         }
 
     }
+    /**
+     * Creates the Semester list for this Student by parsing through the
+     * Module list and making a record of the semesters of all Courses. The resulting Semester
+     * list is sorted from oldest to newest.
+     */
     
-    private void writeModule(Module module) {
-        File modulefile = new File("data/"+name+"/"+module.getName()+".txt");
-        int numberofcourses = module.getNumberOfCourses();
-        Course course;
-        try {
-            PrintWriter writer = new PrintWriter(modulefile, "UTF-8");
-            writer.println(module.getTotalCredits());
-            for (int i = 0; i < numberofcourses ; i++) {
-                course = module.getCourse(i);
-                writer.println(course.getName());
-                writer.println(course.getCreditPoints());
-                writer.println(course.getSemester());
-                writer.println(course.getYear());
-                writer.println(course.getGrade());
-            }
-            writer.close();
-        } catch (Exception e) {
-            System.out.println("Virhe opiskelijatietojen tallennuksessa!");
-        }
-        
-    }
     public void createSemesterList() {
         semesterlist.clear();
         int year;
@@ -402,6 +443,11 @@ public class Student {
         }
         Collections.sort(semesterlist);
     }
+    /**
+     * Returns an array of String representations of Semesters, including year
+     * and time of year of the Semester.
+     * @return An array of String representations of Semesters.
+     */
     public String[][] createSemesterArray() {
         int numberofsemesters = this.getNumberOfSemesters();
         String[][] semesters = new String[numberofsemesters][3];
@@ -412,6 +458,27 @@ public class Student {
             semesters[i][2] = ""+semester.getTotalCredits();
         }
         return semesters;
+    }
+    private void writeModule(Module module) {
+        File modulefile = new File("data/"+name+"/"+module.getName()+".txt");
+        int numberofcourses = module.getNumberOfCourses();
+        Course course;
+        try {
+            PrintWriter writer = new PrintWriter(modulefile, "UTF-8");
+            writer.println(module.getTotalCredits());
+            for (int i = 0; i < numberofcourses ; i++) {
+                course = module.getCourse(i);
+                writer.println(course.getName());
+                writer.println(course.getCreditPoints());
+                writer.println(course.getSemester());
+                writer.println(course.getYear());
+                writer.println(course.getGrade());
+            }
+            writer.close();
+        } catch (Exception e) {
+            System.out.println("Virhe opiskelijatietojen tallennuksessa!");
+        }
+        
     }
     
     private int semesterListContains(int year, String semesterstring) {
