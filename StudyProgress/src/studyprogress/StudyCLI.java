@@ -54,8 +54,9 @@ public class StudyCLI {
             firstdisplay = false;
             System.out.println("        //----------Päävalikko/Valitse toiminto:---------->>");
             System.out.println("");
-            System.out.println("Poistu ohjelmasta (q) | Tarkastele opintokokonaisuuksia (o) | Näytä yhteenveto (y)");
-            System.out.println("Lisää opintokokonaisuus (l) | Muokkaa opintokokonaisuuksia (m) | Käynnistä graafinen käyttöliittymä (g)");
+            System.out.println("Poistu ohjelmasta (q) | Tarkastele opintokokonaisuuksia (o)");
+            System.out.println("Näytä yhteenveto (y) | Lisää opintokokonaisuus (l)");
+            System.out.println("Muokkaa opintokokonaisuuksia (m) | Käynnistä graafinen käyttöliittymä (g)");
  
             mainselection = userinput.nextLine();
             if(mainselection.equals("q")) {
