@@ -47,6 +47,7 @@ public class StudyCLI {
         String mainselection;
         boolean firstdisplay = true;
         System.out.println();
+        printBorder();
         System.out.println("Tervetuloa, "+user.getName()+"!");
         System.out.println();
         while(true) {
@@ -57,7 +58,7 @@ public class StudyCLI {
             System.out.println("Poistu ohjelmasta (q) | Tarkastele opintokokonaisuuksia (o)");
             System.out.println("Näytä yhteenveto (y) | Lisää opintokokonaisuus (l)");
             System.out.println("Muokkaa opintokokonaisuuksia (m) | Käynnistä graafinen käyttöliittymä (g)");
- 
+            printBorder();
             mainselection = userinput.nextLine();
             if(mainselection.equals("q")) {
                 user.writeStudentData();
@@ -98,6 +99,7 @@ public class StudyCLI {
         int selection;
         String input;
         while(true) {
+            printBorder();
             System.out.println(user);
             System.out.println("Anna opintokokonaisuuden numero kurssilistausta varten tai q poistuaksesi");
             if(userinput.hasNextInt()) {
@@ -119,6 +121,7 @@ public class StudyCLI {
         }
     }
     private void showSummary() {
+        printBorder();
         System.out.println();
         System.out.println(user.getSummaryText());
         System.out.println("");
@@ -130,6 +133,7 @@ public class StudyCLI {
         while(true) {
             String input;
             float credits;
+            printBorder();
             System.out.println("Uusi opintokokonaisuus: Anna kokonaisuuden nimi tai q poistuaksesi päävalikkoon");
             input = userinput.nextLine();
             
@@ -161,6 +165,7 @@ public class StudyCLI {
             else {
                 break;
             }
+            printBorder();
             System.out.println("Haluatko poistaa opintokokonaisuuden (po), lisätä kurssin (l) vai poistaa kurssin (pk)?");
             actionselection = userinput.nextLine();
             if(actionselection.equals("po")) {
@@ -256,6 +261,9 @@ public class StudyCLI {
             System.out.println("Tuntematon valinta, käyttäjää ei luotu.");
         }
         
+    }
+    private void printBorder() {
+        System.out.println("*>-----------------------------------------------------------------------<*");
     }
 
     
