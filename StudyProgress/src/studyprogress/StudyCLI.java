@@ -131,6 +131,7 @@ public class StudyCLI {
     }
     private void showAddModule() {
         while(true) {
+            userinput = new Scanner(System.in);
             String input;
             float credits;
             printBorder();
@@ -204,6 +205,7 @@ public class StudyCLI {
         String semester = "";
         int year = -1;
         int grade = 0;
+        userinput = new Scanner(System.in);
         System.out.println("Anna kurssin nimi:");
         name = userinput.nextLine();
         System.out.println("Anna kurssin opintopistelaajuus:");
