@@ -1,2 +1,3 @@
 Tietojenkäsittelytieteen perusopinnot
-Fysiikan perusopinnot
+Tietojenkäsittelytieteen aineopinnot
+Fysiikan aineopinnot
