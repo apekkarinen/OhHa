@@ -325,7 +325,7 @@ public class StudyGUI implements Runnable {
         addcourse.pack();
         addcourse.setVisible(true);
     }
-    
+
     private JList createList(Object[] data) {
         if(data != null) {
             JList returnlist = new JList(data);

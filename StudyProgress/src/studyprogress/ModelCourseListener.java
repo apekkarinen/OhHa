@@ -40,9 +40,14 @@ public class ModelCourseListener implements ActionListener {
         String buttonlabel = ((JButton)e.getSource()).getText();
         String yearstring = year.getText();
         String gradestring = grade.getText();
-        
+        String semesterstring;
         if(buttonlabel.equals("Lisää kurssi")) {
-            String semesterstring = semester.getSelection().getActionCommand();
+            try {
+              semesterstring = semester.getSelection().getActionCommand();  
+            } catch (Exception ex) {
+                semesterstring = null;
+            }
+            
             if(checkData(yearstring,gradestring,semesterstring)) {
                 Module module = manager.getModelModule(manager.modelNameListContains(user.getModuleName(moduleindex)));
                 Course course = module.getCourse(modelcourses.getSelectedIndex());
@@ -69,6 +74,9 @@ public class ModelCourseListener implements ActionListener {
             grade = Integer.parseInt(gradestring);
             
         } catch (Exception e) {
+            return false;
+        }
+        if(semesterstring == null) {
             return false;
         }
         if(year >= 0 && grade >= 0 && (semesterstring.equals("syksy") || semesterstring.equals("kevät"))) {

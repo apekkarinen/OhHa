@@ -76,10 +76,13 @@ public class CustomCourseListener implements ActionListener {
         }
     }
     private boolean checkCourseData(String credits, String year, String grade, String semester) {
+        float parsedcredits = -1.0f;
+        int parsedyear = -1;
+        int parsedgrade = -1;
         try {
-            Integer.parseInt(year);
-            Integer.parseInt(grade);
-            Float.parseFloat(credits);
+            parsedyear = Integer.parseInt(year);
+            parsedgrade = Integer.parseInt(grade);
+            parsedcredits = Float.parseFloat(credits);
         } catch (Exception e) {
             return false;
         }        
@@ -88,6 +91,9 @@ public class CustomCourseListener implements ActionListener {
         }
         if(!(semester.equals("syksy") || semester.equals("kevät"))) {
             return false;
+        }
+        if(parsedcredits < 0.0f || parsedyear < 0 || parsedgrade < 0) {
+        return false;
         }
         return true;
     }

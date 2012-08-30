@@ -49,7 +49,7 @@ public class CustomModuleListener implements ActionListener {
         } catch (Exception e) {
             return false;
         }
-        if(credits > 0) {
+        if(credits > 0 && !name.equals("")) {
             return true;
         }
         else {

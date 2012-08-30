@@ -26,21 +26,22 @@ public class LoginButtonListener implements ActionListener {
     }
     public void actionPerformed(ActionEvent e) {
         String username = userinput.getText();
-        
-        if(((JButton)e.getSource()).getText().equals("Kirjaudu")) {
-            user = manager.logInUser(username);
-            if(user == null) {
-                helptext.setText("Käyttäjää ei löytynyt!");
+        if(!username.equals("")) {
+            if(((JButton)e.getSource()).getText().equals("Kirjaudu")) {
+                user = manager.logInUser(username);
+                if(user == null) {
+                    helptext.setText("Käyttäjää ei löytynyt!");
+                }
+                else {
+                    source.dispose();
+                    gui.displayMainMenu(user);
+                }
             }
+
             else {
-                source.dispose();
-                gui.displayMainMenu(user);
+                manager.createNewUser(username);
+                helptext.setText("Käyttäjä "+username+ " luotu onnistuneesti. Kirjaudu sisään");
             }
-        }
-        
-        else {
-            manager.createNewUser(username);
-            helptext.setText("Käyttäjä "+username+ " luotu onnistuneesti. Kirjaudu sisään");
-        }
+         }
     }
 }
