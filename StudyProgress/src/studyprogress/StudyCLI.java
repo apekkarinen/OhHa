@@ -155,47 +155,73 @@ public class StudyCLI {
         }
     }
     private void showEditModule() {
-        int moduleselection;
+        int moduleselection = -1;
+        int numberofmodules = user.getNumberOfModules();
+        int largestmoduleindex;
         String actionselection;
-        while (true) {
-            System.out.println(user);
-            System.out.println("Valitse muokattavan opintokokonaisuuden numero: (0-"+(user.getNumberOfModules() - 1) +") tai q poistuaksesi");
-            if(userinput.hasNextInt()) {
-                moduleselection = Integer.parseInt(userinput.nextLine());
-            }
-            else {
-                break;
-            }
-            printBorder();
-            System.out.println("Haluatko poistaa opintokokonaisuuden (po), lisätä kurssin (l) vai poistaa kurssin (pk)?");
-            actionselection = userinput.nextLine();
-            if(actionselection.equals("po")) {
-                user.deleteModule(moduleselection);
-                user.writeStudentData();
-            }
-            else if(actionselection.equals("l")) {
-                showAddCourse(moduleselection);
-            }
-            else if(actionselection.equals("pk")) {
-                showDeleteCourse(moduleselection);
-            }
-            else {
-                System.out.println("Tuntematon valinta "+actionselection);
+         if(numberofmodules > 0) {
+            largestmoduleindex = numberofmodules - 1;
+            while (true) {
+                while((moduleselection < 0 )|| (moduleselection >= numberofmodules)) {
+                System.out.println(user);
+                System.out.println("Valitse muokattavan opintokokonaisuuden numero: (0-"+largestmoduleindex+") tai q poistuaksesi");
+                if(userinput.hasNextInt()) {
+                    moduleselection = Integer.parseInt(userinput.nextLine());
+                }
+                else if (userinput.nextLine().equals("q")) {
+                    break;
+                }
+                else {
+                    System.out.println("Tuntematon valinta!");
+                }
+                }
+                printBorder();
+                System.out.println("Haluatko poistaa opintokokonaisuuden (po), lisätä kurssin (l), poistaa kurssin (pk) vai poistua (q)?");
+                actionselection = userinput.nextLine();
+                if(actionselection.equals("po")) {
+                    user.deleteModule(moduleselection);
+                    user.writeStudentData();
+                }
+                else if(actionselection.equals("l")) {
+                    showAddCourse(moduleselection);
+                }
+                else if(actionselection.equals("pk")) {
+                    showDeleteCourse(moduleselection);
+                }
+                else if(actionselection.equals("q")) {
+                    break;
+                }
+                else {
+                    System.out.println("Tuntematon valinta "+actionselection);
+                }
             }
         }
+         else {
+             System.out.println("Et ole vielä lisännyt yhtään opintokokonaisuutta!");
+         }
     }
     private void showDeleteCourse(int moduleindex) {
         int selection;
-        System.out.println(user.moduleToString(moduleindex));
-        System.out.println("Minkä kurssin haluat poistaa? (numero 0-"+user.getModuleSize(moduleindex) +")");
-        if(userinput.hasNextInt()) {
-            selection = Integer.parseInt(userinput.nextLine());
-            user.deleteCourseFromModule(moduleindex, selection);
-            System.out.println("Poistettiin kurssi numero "+selection+".");
-            user.writeStudentData();
-        }
-        else {
-            System.out.println("Virheellinen valinta, kurssia ei poistettu!");
+        try {
+            int modulesize = user.getModuleSize(moduleindex);
+            System.out.println(user.moduleToString(moduleindex));
+            System.out.println("Minkä kurssin haluat poistaa? (numero 0-"+(modulesize - 1)+")");
+            if(userinput.hasNextInt()) {
+                selection = Integer.parseInt(userinput.nextLine());
+                if(selection >= 0 && selection < modulesize) {
+                    user.deleteCourseFromModule(moduleindex, selection);
+                    System.out.println("Poistettiin kurssi numero "+selection+".");
+                    user.writeStudentData();
+                }
+                else {
+                    System.out.println("Virheellinen valinta, kurssia ei poistettu!");
+                }
+            }
+            else {
+                System.out.println("Virheellinen valinta, kurssia ei poistettu!");
+            }
+        } catch(Exception e) {
+            System.out.println("Virhe kurssin poistamisessa!");
         }
         
     }
