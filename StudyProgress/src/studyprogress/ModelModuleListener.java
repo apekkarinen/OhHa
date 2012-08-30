@@ -7,7 +7,7 @@ import java.awt.*;
  *Button listener class for the graphical model Module creation screen.
  * @author ausr
  */
-public class CreateModelModuleListener implements ActionListener {
+public class ModelModuleListener implements ActionListener {
     private StudyProgressManager manager;
     private StudyGUI gui;
     private Student user;
@@ -19,7 +19,7 @@ public class CreateModelModuleListener implements ActionListener {
 
     
     
-    public CreateModelModuleListener (StudyProgressManager manager,StudyGUI gui,Student user, JFrame source,JList models,JList modules, JList courses, Container summary) {
+    public ModelModuleListener (StudyProgressManager manager,StudyGUI gui,Student user, JFrame source,JList models,JList modules, JList courses, Container summary) {
     this.manager = manager;
     this.gui = gui;
     this.user = user;

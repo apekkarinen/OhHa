@@ -165,7 +165,7 @@ public class StudyGUI implements Runnable {
         
         JButton create = new JButton("Luo kokonaisuus");
         create.setAlignmentX(Component.CENTER_ALIGNMENT);
-        create.addActionListener(new CreateCustomModuleListener(createframe, user, this, name, credits, info, modules, summary));
+        create.addActionListener(new CustomModuleListener(createframe, user, this, name, credits, info, modules, summary));
         base.add(info);
         base.add(box);
         base.add(nameinfo);
@@ -205,9 +205,9 @@ public class StudyGUI implements Runnable {
         Container buttons = new Container();
         buttons.setLayout(new FlowLayout());
         JButton add = new JButton("Luo kurssi");
-        add.addActionListener(new CreateCustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester,summary ));
+        add.addActionListener(new CustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester,summary ));
         JButton cancel = new JButton("Peruuta");
-        cancel.addActionListener(new CreateCustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester,summary ));
+        cancel.addActionListener(new CustomCourseListener(createframe, user, this, modules, courses, name, credits, year, grade, semester,summary ));
         
         buttons.add(add);
         buttons.add(cancel);
@@ -275,7 +275,7 @@ public class StudyGUI implements Runnable {
         Container buttons = createContainer(new FlowLayout());
         JButton add = new JButton("Lisää kokonaisuus");
         JButton back = new JButton("Takaisin");
-        CreateModelModuleListener listener = new CreateModelModuleListener(manager, this, user, addmodel, modellist, modules, courses, summary);
+        ModelModuleListener listener = new ModelModuleListener(manager, this, user, addmodel, modellist, modules, courses, summary);
         add.addActionListener(listener);
         back.addActionListener(listener);
         buttons.add(add);
@@ -311,8 +311,8 @@ public class StudyGUI implements Runnable {
         Container buttons = createContainer(new FlowLayout());
         JButton add = new JButton("Lisää kurssi");
         JButton back = new JButton("Takaisin");
-        add.addActionListener(new CreateModelCourseListener(manager, this, user, addcourse, courselist, yearinput, gradeinput, semester, modules, courses, summary, moduleindex));
-        back.addActionListener(new CreateModelCourseListener(manager, this, user, addcourse, courselist, yearinput, gradeinput, semester, modules, courses, summary, moduleindex));
+        add.addActionListener(new ModelCourseListener(manager, this, user, addcourse, courselist, yearinput, gradeinput, semester, modules, courses, summary, moduleindex));
+        back.addActionListener(new ModelCourseListener(manager, this, user, addcourse, courselist, yearinput, gradeinput, semester, modules, courses, summary, moduleindex));
         buttons.add(add);
         buttons.add(back);
         base.add(coursescroller);

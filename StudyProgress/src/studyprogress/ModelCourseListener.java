@@ -7,7 +7,7 @@ import java.awt.*;
  *Button listener class for the graphical model Course creation screen.
  * @author ausr
  */
-public class CreateModelCourseListener implements ActionListener {
+public class ModelCourseListener implements ActionListener {
     private StudyProgressManager manager;
     private StudyGUI gui;
     private Student user;
@@ -21,7 +21,7 @@ public class CreateModelCourseListener implements ActionListener {
     private Container summary;
     private int moduleindex;
     
-    public CreateModelCourseListener(StudyProgressManager manager,StudyGUI gui,Student user, JFrame source,JList modelcourses,JTextField year,JTextField grade,ButtonGroup semester, JList modules, JList courses, Container summary, int moduleindex) {
+    public ModelCourseListener(StudyProgressManager manager,StudyGUI gui,Student user, JFrame source,JList modelcourses,JTextField year,JTextField grade,ButtonGroup semester, JList modules, JList courses, Container summary, int moduleindex) {
     this.manager = manager;
     this.gui = gui;
     this.user = user;

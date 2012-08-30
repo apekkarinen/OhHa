@@ -10,7 +10,7 @@ import java.awt.*;
  *Button listener class for graphical custom Course creation screen.
  * @author ausr
  */
-public class CreateCustomCourseListener implements ActionListener {
+public class CustomCourseListener implements ActionListener {
     private Student user;
     private StudyGUI gui;
     private JList modules;
@@ -23,7 +23,7 @@ public class CreateCustomCourseListener implements ActionListener {
     private JFrame source;
     private Container summary;
     
-    public CreateCustomCourseListener(JFrame source, Student user, StudyGUI gui, JList modules, JList courses, JTextField name, JTextField credits, JTextField year, JTextField grade, ButtonGroup semester, Container summary) {
+    public CustomCourseListener(JFrame source, Student user, StudyGUI gui, JList modules, JList courses, JTextField name, JTextField credits, JTextField year, JTextField grade, ButtonGroup semester, Container summary) {
         this.user = user;
         this.gui = gui;
         this.modules = modules;

@@ -8,7 +8,7 @@ import java.awt.*;
  *Button listener class for graphical custom Module creation screen.
  * @author ausr
  */
-public class CreateCustomModuleListener implements ActionListener {
+public class CustomModuleListener implements ActionListener {
     private Student user;
     private StudyGUI gui;
     private JTextField name;
@@ -18,7 +18,7 @@ public class CreateCustomModuleListener implements ActionListener {
     private JFrame source;
     private Container summary;
     
-    public CreateCustomModuleListener(JFrame source, Student user, StudyGUI gui, JTextField name, JTextField credits, JLabel info, JList modules, Container summary) {
+    public CustomModuleListener(JFrame source, Student user, StudyGUI gui, JTextField name, JTextField credits, JLabel info, JList modules, Container summary) {
         this.user = user;
         this.gui = gui;
         this.name = name;
