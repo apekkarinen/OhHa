@@ -40,8 +40,10 @@ public class StudyGUI implements Runnable {
         Container base = login.getContentPane();
         base.setLayout(new BoxLayout(base, BoxLayout.Y_AXIS));
         
+        Component box  = Box.createVerticalStrut(25);
         JTextField userinput = new JTextField();
         userinput.setAlignmentX(Component.CENTER_ALIGNMENT);
+        userinput.setMaximumSize(new Dimension(160,25));
         JLabel helptext = new JLabel("Anna käyttäjänimesi");
         helptext.setAlignmentX(Component.CENTER_ALIGNMENT);
         
@@ -53,6 +55,7 @@ public class StudyGUI implements Runnable {
         loginbutton.addActionListener(new LoginButtonListener(this, manager, user, login, userinput, helptext));
         createbutton.addActionListener(new LoginButtonListener(this, manager, user, login, userinput, helptext));
         
+        base.add(box);
         base.add(userinput);
         base.add(helptext);
         base.add(buttons);
