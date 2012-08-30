@@ -97,6 +97,7 @@ public class StudyCLI {
     }
     private void showViewModules() {
         int selection;
+        int numberofmodules = user.getNumberOfModules();
         String input;
         while(true) {
             printBorder();
@@ -104,9 +105,14 @@ public class StudyCLI {
             System.out.println("Anna opintokokonaisuuden numero kurssilistausta varten tai q poistuaksesi");
             if(userinput.hasNextInt()) {
                 selection = Integer.parseInt(userinput.nextLine());
-                System.out.println(user.moduleToString(selection));
-                System.out.println("Paina Enter palataksesi edelliseen valikkoon");
-                userinput.nextLine();
+                if(selection < numberofmodules && selection >= 0) {
+                    System.out.println(user.moduleToString(selection));
+                    System.out.println("Paina Enter palataksesi edelliseen valikkoon");
+                    userinput.nextLine();
+                }
+                else {
+                    System.out.println("Virheellinen kokonaisuuden numero!");
+                }
             }
             else {
                 input = userinput.nextLine();
@@ -132,25 +138,35 @@ public class StudyCLI {
     private void showAddModule() {
         while(true) {
             userinput = new Scanner(System.in);
-            String input;
+            String name;
             float credits;
             printBorder();
             System.out.println("Uusi opintokokonaisuus: Anna kokonaisuuden nimi tai q poistuaksesi päävalikkoon");
-            input = userinput.nextLine();
+            name = userinput.nextLine();
             
-            if(input.equals("q")) {
+            if(name.equals("q")) {
                 break;
             }
-            
-            System.out.println("Anna kokonaisuuden laajuus opintopisteinä");
-            if(userinput.hasNextFloat()) {
-                credits = Float.parseFloat(userinput.nextLine());
-                user.addModule(input, credits);
-                user.writeStudentData();
-                System.out.println("Lisätty kokonaisuus " +input +" ("+credits+"Op)");
+            else if(name.equals("")) {
+                System.out.println("Kokonaisuuden nimi ei voi olla tyhjä!");
             }
             else {
-                System.out.println("Virheellinen laajuus, kokonaisuutta ei lisätty.");
+
+                System.out.println("Anna kokonaisuuden laajuus opintopisteinä");
+                if(userinput.hasNextFloat()) {
+                    credits = Float.parseFloat(userinput.nextLine());
+                    if(credits > 0) {
+                        user.addModule(name, credits);
+                        user.writeStudentData();
+                        System.out.println("Lisätty kokonaisuus " +name +" ("+credits+"Op)");
+                    }
+                    else {
+                        System.out.println("Virheellinen laajuus, opintopisteitä oltava enemmän kuin 0");
+                    }
+                }
+                else {
+                    System.out.println("Virheellinen laajuus, kokonaisuutta ei lisätty.");
+                }
             }
         }
     }
