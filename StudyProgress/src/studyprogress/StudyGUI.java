@@ -13,16 +13,30 @@ public class StudyGUI implements Runnable {
     private StudyProgressManager manager;
     private Student user;
     
+    /**
+     *Class constructor. This constructor sets user field to null. 
+     * @param manager The StudyProgressManager this StudyGUI uses.
+     */
+    
     public StudyGUI(StudyProgressManager manager) {
         this.manager = manager;
         this.user = null;
     }
+    /**
+     * Alternate class constructor. Also specifies the user field.
+     * @param manager The StudyProgressManager this StudyGUI uses.
+     * @param user The logged-in user Student.
+     */
     
     public StudyGUI(StudyProgressManager manager, Student user) {
         this.manager = manager;
         this.user = user;
     }
-    
+    /**
+     * Run-method from interface runnable. If user has not yet logged in, shows the
+     * login screen. Otherwise shows the main menu.
+     */
+    @Override
     public void run() {
         
         if(user == null) {
@@ -32,7 +46,9 @@ public class StudyGUI implements Runnable {
             displayMainMenu(user);
         }
     }
-    
+    /**
+     * Displays the graphical login screen.
+     */
     public void displayLogin() {
         JFrame login = new JFrame("Kirjaudu sisään tai luo uusi käyttäjä");
         login.setPreferredSize(new Dimension(300, 150));
@@ -65,7 +81,10 @@ public class StudyGUI implements Runnable {
  
         login.setVisible(true);
     }
-    
+    /**
+     * Displays the graphical main menu screen.
+     * @param user Logged-in user.
+     */
     public void displayMainMenu(Student user) {
         this.user = user;
         JFrame mainmenu = new JFrame("Päävalikko: Kirjautunut käyttäjänä "+this.user.getName());
@@ -138,6 +157,18 @@ public class StudyGUI implements Runnable {
         mainmenu.pack();
         mainmenu.setVisible(true);
     }
+    /**
+     * Helper method for adding button listeners to all buttons of the main menu.
+     * @param buttonlistener The button listener to add.
+     * @param add JButton for adding a model Module.
+     * @param addcustom JButton for adding a custom Module.
+     * @param delete JButton for deleting a Module.
+     * @param addcourse JButton for adding a model course. 
+     * @param addcustomcourse JButton for adding a custom Course.
+     * @param deletecourse JButton for deleting a Course.
+     * @param save JButton for saving all changes to disk.
+     * @param quit JButton for quitting the program.
+     */
     private void addMainButtonListeners(MainButtonListener buttonlistener, JButton add, JButton addcustom, JButton delete, JButton addcourse, JButton addcustomcourse, JButton deletecourse, JButton save, JButton quit) {
         delete.addActionListener(buttonlistener);
         add.addActionListener(buttonlistener);
@@ -148,7 +179,11 @@ public class StudyGUI implements Runnable {
         save.addActionListener(buttonlistener);
         quit.addActionListener(buttonlistener);
     }
-    
+    /**
+     * Displays the graphical create custom Module -screen.
+     * @param modules JList displaying the Module info.
+     * @param summary JTextField containing the summary text.
+     */
     public void displayCreateCustomModule(JList modules, Container summary) {
         JFrame createframe = new JFrame("Luo oma opintokokonaisuus");
         createframe.setPreferredSize(new Dimension(520,160));
@@ -176,6 +211,12 @@ public class StudyGUI implements Runnable {
         createframe.pack();
         createframe.setVisible(true);
     }
+    /**
+     * Displays the graphical create custom Course -screen.
+     * @param courses JList displaying the Course data.
+     * @param modules JList displaying the Module data.
+     * @param summary JTextField displaying the summary text.
+     */
     public void displayCreateCustomCourse(JList courses, JList modules, Container summary) {
         JFrame createframe = new JFrame("Luo oma kurssi");
         createframe.setPreferredSize(new Dimension(440,300));
@@ -201,7 +242,6 @@ public class StudyGUI implements Runnable {
         JRadioButton spring = new JRadioButton("kevät");
         spring.setActionCommand("kevät");
         ButtonGroup semester = new ButtonGroup();
-        JLabel alert = createCenteredLabel("",0,0);
         Container buttons = new Container();
         buttons.setLayout(new FlowLayout());
         JButton add = new JButton("Luo kurssi");
@@ -215,12 +255,29 @@ public class StudyGUI implements Runnable {
         semester.add(spring);
         radiobuttons.add(fall);
         radiobuttons.add(spring);
-        addComponentsToCourseBase(base, info, box, nameinfo, creditinfo, yearinfo, gradeinfo, semesterinfo, alert, name, credits, year, grade, radiobuttons, buttons);
+        addComponentsToCourseBase(base, info, box, nameinfo, creditinfo, yearinfo, gradeinfo, semesterinfo, name, credits, year, grade, radiobuttons, buttons);
         createframe.pack();
         createframe.setVisible(true);
 
     }
-    private void addComponentsToCourseBase(Container base, JLabel info, Component box, JLabel nameinfo, JLabel creditinfo, JLabel yearinfo, JLabel gradeinfo, JLabel semesterinfo, JLabel alert, JTextField name, JTextField credits, JTextField year, JTextField grade, Container radiobuttons, Container buttons) {
+    /**
+     * Helper method for adding all of the Components to create custom Course - screen's base container. 
+     * @param base The base Container to add all Components to.
+     * @param info Info text.
+     * @param box Invisible box used to separate the info text from other Components.
+     * @param nameinfo Name info text.
+     * @param creditinfo Credit info text.
+     * @param yearinfo Year info text.
+     * @param gradeinfo Grade info text.
+     * @param semesterinfo Semester info text.
+     * @param name Name field.
+     * @param credits Credits field.
+     * @param year Year field.
+     * @param grade Grade field.
+     * @param radiobuttons Radiobuttons-Container.
+     * @param buttons Buttons-Container.
+     */
+    private void addComponentsToCourseBase(Container base, JLabel info, Component box, JLabel nameinfo, JLabel creditinfo, JLabel yearinfo, JLabel gradeinfo, JLabel semesterinfo, JTextField name, JTextField credits, JTextField year, JTextField grade, Container radiobuttons, Container buttons) {
         base.add(info);
         base.add(box);
         base.add(nameinfo);
@@ -233,9 +290,14 @@ public class StudyGUI implements Runnable {
         base.add(grade);
         base.add(semesterinfo);
         base.add(radiobuttons);
-        base.add(alert);
         base.add(buttons);
     }
+    /**
+     * Creates the summary Container for main menu screen.
+     * @param gui StudyGUI for which to draw.
+     * @param user Logged-in user.
+     * @return The summary Container.
+     */
     public Container drawSummary(StudyGUI gui, Student user) {
         String[] columnnames = {"lukukausi", "kurssien määrä","opintopisteet"};
         Container summary = new Container();
