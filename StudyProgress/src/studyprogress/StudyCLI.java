@@ -13,13 +13,18 @@ public class StudyCLI {
     private StudyProgressManager manager;
     private Student user;
     private Scanner userinput;
-    
+    /**
+     * Class constructor.
+     * @param manager The StudyProgressManager this StudyCLI uses.
+     */
     public StudyCLI(StudyProgressManager manager) {
         this.manager = manager;
         this.user = null;
         this.userinput = new Scanner(System.in, "UTF-8");
     }
-    
+    /**
+     * Displays the login screen.
+     */
     public void showLogIn() {
         int helpindex = 0;
         String selection;
@@ -42,7 +47,9 @@ public class StudyCLI {
             }
         }
     }
-    
+    /**
+     * Displays the main menu.
+     */
     private void showMainMenu() {
         String mainselection;
         boolean firstdisplay = true;
@@ -70,6 +77,10 @@ public class StudyCLI {
         }
         
     }
+    /**
+     * Reacts to different user commands from main menu.
+     * @param selection Command given by user in the main menu screen.
+     */
     private void mainMenuAction(String selection) {
         
         if(selection.equals("o")) {
@@ -95,6 +106,9 @@ public class StudyCLI {
         }
         
     }
+    /**
+     * Displays the view Modules-screen.
+     */
     private void showViewModules() {
         int selection;
         int numberofmodules = user.getNumberOfModules();
@@ -126,6 +140,10 @@ public class StudyCLI {
             
         }
     }
+    /**
+     * Displays the summary screen. The summary contains information
+     * about the user's studies.
+     */
     private void showSummary() {
         printBorder();
         System.out.println();
@@ -135,6 +153,9 @@ public class StudyCLI {
         System.out.println("Paina enter palataksesi edelliseen valikkoon");
         userinput.nextLine();
     }
+    /**
+     * Displays the add Module - screen.
+     */
     private void showAddModule() {
         while(true) {
             userinput = new Scanner(System.in);
@@ -170,6 +191,9 @@ public class StudyCLI {
             }
         }
     }
+    /**
+     * Displays the edit module - screen.
+     */
     private void showEditModule() {
         int moduleselection = -1;
         int numberofmodules = user.getNumberOfModules();
@@ -216,6 +240,10 @@ public class StudyCLI {
              System.out.println("Et ole vielä lisännyt yhtään opintokokonaisuutta!");
          }
     }
+    /**
+     * Displays the edit Module - screen.
+     * @param moduleindex Index of the Module to edit.
+     */
     private void showDeleteCourse(int moduleindex) {
         int selection;
         try {
@@ -241,6 +269,10 @@ public class StudyCLI {
         }
         
     }
+    /**
+     * Displays the add Course to a Module - screen.
+     * @param moduleindex Index of the Module to add to.
+     */
     private void showAddCourse(int moduleindex) {
         String name = "";
         float credits = -1.0f;
@@ -287,7 +319,11 @@ public class StudyCLI {
             System.out.println("Virheellisiä arvoja kurssin tiedoissa, luonti epäonnistui!");
         }
     }
-    
+    /**
+     * Displays the new user creation screen when login is attempted as a user
+     * and the username is not found.
+     * @param username Username input by the user.
+     */
     private void promptForNewUserCreation(String username) {
         String selection;
         System.out.println("Käyttäjää nimeltä "+username+" ei löydy, haluatko luoda uuden käyttäjän tällä nimellä? (k/e)");
@@ -306,6 +342,9 @@ public class StudyCLI {
         }
         
     }
+    /**
+     * Prints a simple border to System.out.
+     */
     private void printBorder() {
         System.out.println("*>-----------------------------------------------------------------------<*");
     }

@@ -108,6 +108,7 @@ public class Semester implements Comparable<Semester> {
      * @param semester The Semester to compare this Semester to.
      * @return -1 if this Semester is earlier than the parameter, 0 if equal, 1 if later.
      */
+    @Override
     public int compareTo(Semester semester) {
         if(this.year < semester.year) {
             return -1;

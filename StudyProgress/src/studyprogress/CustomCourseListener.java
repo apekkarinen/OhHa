@@ -36,7 +36,7 @@ public class CustomCourseListener implements ActionListener {
         this.source = source;
         this.summary = summary;
     }
-    
+    @Override
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
         int moduleindex = modules.getSelectedIndex();

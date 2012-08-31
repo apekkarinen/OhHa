@@ -21,19 +21,19 @@ public class SemesterTableModel extends AbstractTableModel {
         this.columnnames = columnnames;
     }
     
-    
+    @Override
     public int getColumnCount() {
         return columnnames.length;
     }
-
+    @Override
     public int getRowCount() {
         return data.length;
     }
-
+    @Override
     public String getColumnName(int column) {
         return columnnames[column];
     }
-
+    @Override
     public Object getValueAt(int row, int column) {
         try {
             return data[row][column];
@@ -41,6 +41,7 @@ public class SemesterTableModel extends AbstractTableModel {
             return "";
         }
     }
+    @Override
     public Class getColumnClass(int column) {
         return getValueAt(0, column).getClass();
     }

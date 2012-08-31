@@ -28,6 +28,7 @@ public class MainButtonListener implements ActionListener {
         this.summary = summary;
         this.source = source;
     }
+    @Override
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
         int moduleindex = modules.getSelectedIndex();

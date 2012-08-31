@@ -35,7 +35,7 @@ public class ModelCourseListener implements ActionListener {
     this.summary = summary;
     this.moduleindex = moduleindex;
     }
-    
+    @Override
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
         String yearstring = year.getText();

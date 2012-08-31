@@ -28,6 +28,7 @@ public class CustomModuleListener implements ActionListener {
         this.source = source;
         this.summary = summary;
     }
+    @Override
     public void actionPerformed(ActionEvent e) {
         String namestring = name.getText();
         String creditstring = credits.getText();

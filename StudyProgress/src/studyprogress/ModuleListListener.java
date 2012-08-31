@@ -27,7 +27,7 @@ public class ModuleListListener implements ListSelectionListener {
         this.info = info;
         this.courses = courses;
     }
-    
+    @Override
     public void valueChanged(ListSelectionEvent e) {
         JList list = (JList)e.getSource();
         int selectedindex  = list.getSelectedIndex();

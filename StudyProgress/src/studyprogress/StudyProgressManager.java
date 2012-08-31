@@ -199,6 +199,10 @@ public class StudyProgressManager {
             }
         }        
     }
+    /**
+     * Loads the user name list from the users text file.
+     * @return List of all user names.
+     */
     private ArrayList<String> loadUserListFromFile() {
         
         String username;
@@ -219,7 +223,9 @@ public class StudyProgressManager {
         }
         return usernames;
     }
-    
+    /**
+     * Writes the user name list to the users text file.
+     */
     private void writeUserNameList() {
         String username;
         int userlistsize = usernamelist.size();
@@ -235,6 +241,9 @@ public class StudyProgressManager {
             System.out.println("Virhe kirjoitettaessa käyttäjänimitiedostoa!");
         }
     }
+    /**
+     * Loads the list of model Modules from models.txt file.
+     */
     private void loadModelModules() {
         modelmodules.clear();
         modelmodulenames.clear();

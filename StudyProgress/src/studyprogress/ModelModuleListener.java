@@ -30,7 +30,7 @@ public class ModelModuleListener implements ActionListener {
     this.summary = summary;
 
     }
-    
+    @Override
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
         if(buttonlabel.equals("Lisää kokonaisuus")) {

@@ -474,6 +474,10 @@ public class Student {
         }
         return semesters;
     }
+    /**
+     * Writes the data of a given Module to disk.
+     * @param module The Module to write.
+     */
     private void writeModule(Module module) {
         File modulefile = new File("data/"+name+"/"+module.getName()+".txt");
         int numberofcourses = module.getNumberOfCourses();
@@ -495,7 +499,13 @@ public class Student {
         }
         
     }
-    
+    /**
+     * Checks whether the semester list contains a specified semester and
+     * if it does, returns the list index of the semester. If it doesn't, returns -1.
+     * @param year Year of the semester.
+     * @param semesterstring Time of year of the semester.
+     * @return List index of the semester if found on the list or -1 if not found.
+     */
     private int semesterListContains(int year, String semesterstring) {
         int listyear;
         int listsemester;
