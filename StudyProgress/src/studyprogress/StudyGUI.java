@@ -14,7 +14,7 @@ public class StudyGUI implements Runnable {
     private Student user;
     
     /**
-     *Class constructor. This constructor sets user field to null. 
+     *Class constructor, sets user field to null. 
      * @param manager The StudyProgressManager this StudyGUI uses.
      */
     
@@ -23,7 +23,7 @@ public class StudyGUI implements Runnable {
         this.user = null;
     }
     /**
-     * Alternate class constructor. Also specifies the user field.
+     * Alternate class constructor, specifies the user field.
      * @param manager The StudyProgressManager this StudyGUI uses.
      * @param user The logged-in user Student.
      */
@@ -319,12 +319,22 @@ public class StudyGUI implements Runnable {
         summary.add(semesterinfo);
         summary.add(semesterscroller);
         return summary;
-}
+    }
+    /**
+     * Updates the contents of the summary Container.
+     * @param text The summary text field to update.
+     * @param scroller The semester summary scroller to update.
+     */
     public void updateSummary(Component text, Component scroller) {
         ((JTextArea)text).setText(user.getSummaryText());
         ((SemesterTableModel)((JTable)((JViewport)((JScrollPane)scroller).getComponent(0)).getView()).getModel()).setData(user.createSemesterArray());
     }
-    
+    /**
+     * Displays the graphical add model Module - screen.
+     * @param modules The JList containing Module info.
+     * @param courses The JList containing Course info.
+     * @param summary The summary Container.
+     */
     public void displayAddModelModule(JList modules, JList courses, Container summary) {
         JFrame addmodel = new JFrame("Lisää kokonaisuus");
         
@@ -348,6 +358,13 @@ public class StudyGUI implements Runnable {
         addmodel.setVisible(true);
 
     }
+    /**
+     * Displays the graphical add model Course - screen.
+     * @param moduleindex Index of the Module to add the Course to.
+     * @param modules The JList containing Module info.
+     * @param courses The JList containing Course info.
+     * @param summary The summary Container.
+     */
     public void displayAddModelCourse(int moduleindex,JList modules, JList courses, Container summary) {
         JFrame addcourse = new JFrame("Lisää kurssi");
         Container base = addcourse.getContentPane();
@@ -387,7 +404,12 @@ public class StudyGUI implements Runnable {
         addcourse.pack();
         addcourse.setVisible(true);
     }
-
+    /**
+     * Helper method to create a JList with vertical layout
+     * and single selection.
+     * @param data The contents of the list in an array.
+     * @return The JList containing the data from the parameter array.
+     */
     private JList createList(Object[] data) {
         if(data != null) {
             JList returnlist = new JList(data);
@@ -400,6 +422,12 @@ public class StudyGUI implements Runnable {
             return new JList();
         }
     }
+    /**
+     * Helper method for creating a centered JTextField
+     * @param maxwidth Maximum width of the text field.
+     * @param maxheight Maximum height of the text field. 
+     * @return A Centered JTextfield.
+     */
         private JTextField createCenteredTextField(int maxwidth, int maxheight) {
            JTextField field =  new JTextField();
            field.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -412,6 +440,13 @@ public class StudyGUI implements Runnable {
                return field;
            }
         }
+        /**
+         * Helper method for creating a centered JLabel.
+         * @param text Text contents of the JLabel to create.
+         * @param maxwidth Maximum width of the JLabel.
+         * @param maxheight Maximum height of the JLabel.
+         * @return A centered JLabel.
+         */
         private JLabel createCenteredLabel(String text, int maxwidth, int maxheight) {
            JLabel label = new JLabel(text);
            label.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -420,7 +455,11 @@ public class StudyGUI implements Runnable {
            }
            return label;
         }
-        
+        /**
+         * A helper method for creating a Container with a given layout.
+         * @param mgr The layout manager for the Container.
+         * @return The new Container.
+         */
         private Container createContainer(LayoutManager mgr) {
             Container returncontainer = new Container();
             returncontainer.setLayout(mgr);
