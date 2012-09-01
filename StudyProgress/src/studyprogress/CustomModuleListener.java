@@ -17,7 +17,17 @@ public class CustomModuleListener implements ActionListener {
     private JList modules;
     private JFrame source;
     private Container summary;
-    
+    /**
+     * Class constructor.
+     * @param source The JFrame from which the action initiated.
+     * @param user The logged-in user.
+     * @param gui The StudyGUI using this listener.
+     * @param name The name text field.
+     * @param credits The credits text field.
+     * @param info The info text label.
+     * @param modules The JList containing Module info.
+     * @param summary The summary Container.
+     */
     public CustomModuleListener(JFrame source, Student user, StudyGUI gui, JTextField name, JTextField credits, JLabel info, JList modules, Container summary) {
         this.user = user;
         this.gui = gui;
@@ -28,6 +38,10 @@ public class CustomModuleListener implements ActionListener {
         this.source = source;
         this.summary = summary;
     }
+    /**
+     * The action performed method.
+     * @param e The action event.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String namestring = name.getText();
@@ -43,6 +57,12 @@ public class CustomModuleListener implements ActionListener {
             source.dispose();
         }
     }
+    /**
+     * Helper method for checking Module data.
+     * @param name Name of the Module input by the user.
+     * @param creditstring Credit points input by the user.
+     * @return True if data follows the rules, otherwise false.
+     */
     private boolean checkModuleData(String name, String creditstring) {
         float credits = -1.0f;
         try {
