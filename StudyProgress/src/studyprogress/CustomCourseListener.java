@@ -22,7 +22,20 @@ public class CustomCourseListener implements ActionListener {
     private ButtonGroup semester;
     private JFrame source;
     private Container summary;
-    
+    /**
+     * Class constructor.
+     * @param source The JFrame from which the action initiated.
+     * @param user The logged-in user.
+     * @param gui The StudyGUI using this listener.
+     * @param modules JList containing Module info.
+     * @param courses JList containing Course info.
+     * @param name Name text field.
+     * @param credits Credits text field.
+     * @param year Year text field.
+     * @param grade Grade text field.
+     * @param semester Semester text field.
+     * @param summary Summary Container.
+     */
     public CustomCourseListener(JFrame source, Student user, StudyGUI gui, JList modules, JList courses, JTextField name, JTextField credits, JTextField year, JTextField grade, ButtonGroup semester, Container summary) {
         this.user = user;
         this.gui = gui;
@@ -36,6 +49,10 @@ public class CustomCourseListener implements ActionListener {
         this.source = source;
         this.summary = summary;
     }
+    /**
+     * Method to run in case of action.
+     * @param e The action event.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
@@ -75,6 +92,14 @@ public class CustomCourseListener implements ActionListener {
             source.dispose();
         }
     }
+    /**
+     * Helper method for checking Course data.
+     * @param credits Course credits.
+     * @param year Course year.
+     * @param grade Course grade.
+     * @param semester Course semester.
+     * @return True if Course data follows all rules, otherwise false.
+     */
     private boolean checkCourseData(String credits, String year, String grade, String semester) {
         float parsedcredits = -1.0f;
         int parsedyear = -1;
