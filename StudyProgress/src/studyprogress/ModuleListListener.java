@@ -14,11 +14,33 @@ import java.awt.event.*;
  * @author ausr
  */
 public class ModuleListListener implements ListSelectionListener {
+    
+    /**
+     * The StudyProgressManager using this listener.
+     * Is never null.
+     */
     private StudyProgressManager manager;
+    /**
+     * The logged-in user.
+     * Is never null.
+     */
     private Student user;
+    /**
+     * The StudyGUI using this listener.
+     * Is never null.
+     */
     private StudyGUI gui;
+    /**
+     * The info text label.
+     * Is never null.
+     */
     private JLabel info;
+    /**
+     * The JList containing Course info.
+     * Is never null.
+     */
     private JList courses;
+    
     /**
      * Class constructor.
      * @param manager The StudyProgressManager using this listener.

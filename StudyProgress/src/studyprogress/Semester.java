@@ -8,11 +8,31 @@ package studyprogress;
  * @author ausr
  */
 public class Semester implements Comparable<Semester> {
+    /**
+     * The year of this Semester.
+     * Negative values not allowed.
+     */
     private int year;
+    /**
+     * Time of year of this Semester.
+     * Either 0 for fall or 1 for spring.
+     */
     private int semester;
+    /**
+     * Total number of Courses the user has had in this Semester.
+     */
     private int numberofcourses;
+    /**
+     * Total credit points the user has achieved in this Semester.
+     */
     private float totalcredits;
+    /**
+     * Constant for signaling that the time of year for a Semester is fall.
+     */
     public static final int FALL = 0;
+    /**
+     * Constant for signaling that the time of year for a Semester is spring.
+     */
     public static final int SPRING = 1;
     
     /**

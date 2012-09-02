@@ -13,9 +13,20 @@ import java.util.ArrayList;
  * @see Course
  */
 public class Module {
-    
+    /**
+     * The name of this Module.
+     * Is never null.
+     */
     private String name;
+    /**
+     * Total credits required for completing this Module.
+     * Negative values are not allowed.
+     */
     private float totalcreditsrequired;
+    /**
+     * List of all Courses in this Module.
+     * Is never null.
+     */
     private ArrayList<Course> courselist;
     
     /**
