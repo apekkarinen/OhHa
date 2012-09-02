@@ -18,7 +18,17 @@ public class ModelModuleListener implements ActionListener {
     private Container summary;
 
     
-    
+    /**
+     * Class constructor.
+     * @param manager The StudyProgressManager using this listener.
+     * @param gui The StudyGUI using this listener.
+     * @param user The logged-in user.
+     * @param source The JFrame from which the action initiated.
+     * @param models The JList containing the model Module info.
+     * @param modules The JList containing the Module info.
+     * @param courses The JList containing the Course info.
+     * @param summary The summary container.
+     */
     public ModelModuleListener (StudyProgressManager manager,StudyGUI gui,Student user, JFrame source,JList models,JList modules, JList courses, Container summary) {
     this.manager = manager;
     this.gui = gui;
@@ -30,6 +40,10 @@ public class ModelModuleListener implements ActionListener {
     this.summary = summary;
 
     }
+    /**
+     * This method runs in case an action is registered by the listener.
+     * @param e The action event.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();

@@ -33,7 +33,7 @@ public class LoginButtonListener implements ActionListener {
         this.source = source;
     }
     /**
-     * Method to run in case an action is registered by the listener.
+     * This method runs in case an action is registered by the listener.
      * @param e The action event.
      */
     @Override

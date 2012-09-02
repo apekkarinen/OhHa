@@ -50,7 +50,7 @@ public class CustomCourseListener implements ActionListener {
         this.summary = summary;
     }
     /**
-     * Method to run in case an action is registered by the listener.
+     * This method runs in case an action is registered by the listener.
      * @param e The action event.
      */
     @Override
