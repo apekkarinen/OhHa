@@ -11,16 +11,58 @@ import java.awt.*;
  * @author ausr
  */
 public class CustomCourseListener implements ActionListener {
+    /**
+     * The logged-in user. Cannot be null.
+     */
     private Student user;
+    /**
+     * The StudyGUI using this listener.
+     * Is never null.
+     */
     private StudyGUI gui;
+    /**
+     * JList containing Module info.
+     * Is never null.
+     */
     private JList modules;
+    /**
+     * JList containing Course info.
+     * Is never null.
+     */
     private JList courses;
+    /**
+     * Course name text field.
+     * Is never null.
+     */
     private JTextField name;
+    /**
+     * Course credits text field.
+     * Is never null.
+     */
     private JTextField credits;
+    /**
+     * Course year text field.
+     * Is never null.
+     */
     private JTextField year;
+    /**
+     * Course grade text field.
+     */
     private JTextField grade;
+    /**
+     * Course semester button group.
+     * Is never null.
+     */
     private ButtonGroup semester;
+    /**
+     * The JFrame from which the action initiated.
+     * Is never null.
+     */
     private JFrame source;
+    /**
+     * The summary container.
+     * Is never null.
+     */
     private Container summary;
     /**
      * Class constructor.
