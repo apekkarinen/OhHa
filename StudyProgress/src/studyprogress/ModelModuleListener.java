@@ -8,13 +8,44 @@ import java.awt.*;
  * @author ausr
  */
 public class ModelModuleListener implements ActionListener {
+    /**
+     * The StudyProgressManager using this listener.
+     * Is never null.
+     */
     private StudyProgressManager manager;
+    /**
+     * The StudyGUI using this listener.
+     * Is never null.
+     */
     private StudyGUI gui;
+    /**
+     * The logged-in user.
+     * Is never null.
+     */
     private Student user;
+    /**
+     * The JFrame from which the action initiated.
+     * Is never null.
+     */
     private JFrame source;
+    /**
+     * The JList containing model Module info.
+     * Is never null.
+     */
     private JList models;
+    /**
+     * The JList containing Module info.
+     * Is never null.
+     */
     private JList modules;
+    /**
+     * The JList containing Course info.
+     * Is never null.
+     */
     private JList courses;
+    /**
+     * The summary Container.
+     */
     private Container summary;
 
     

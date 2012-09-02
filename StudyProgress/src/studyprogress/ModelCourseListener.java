@@ -8,17 +8,64 @@ import java.awt.*;
  * @author ausr
  */
 public class ModelCourseListener implements ActionListener {
+    /**
+     * The StudyProgressManager using this listener.
+     * Is never null.
+     */
     private StudyProgressManager manager;
+    /**
+     * The StudyGUI using this listener.
+     * Is never null.
+     */
     private StudyGUI gui;
+    /**
+     * The logged-in user.
+     * Is never null.
+     */
     private Student user;
+    /**
+     * The JFrame from which the action initiated.
+     * Is never null.
+     */
     private JFrame source;
+    /**
+     * The JList containing model Course info.
+     * Is never null.
+     */
     private JList modelcourses;
+    /**
+     * The user input text field for Course year.
+     * Is never null.
+     */
     private JTextField year;
+    /**
+     * The user input text field for Course grade.
+     * Is never null.
+     */
     private JTextField grade;
+    /**
+     * The user input buttongroup for semester.
+     * Is never null.
+     */
     private ButtonGroup semester;
+    /**
+     * The JList containing Module info.
+     * Is never null.
+     */
     private JList modules;
+    /**
+     * The JList containing Course info.
+     * Is never null.
+     */
     private JList courses;
+    /**
+     * The summary Container.
+     * Is never null.
+     */
     private Container summary;
+    /**
+     * The index of the Module to add Course to.
+     */
     private int moduleindex;
     /**
      * Class constructor.
