@@ -20,7 +20,21 @@ public class ModelCourseListener implements ActionListener {
     private JList courses;
     private Container summary;
     private int moduleindex;
-    
+    /**
+     * Class constructor.
+     * @param manager The StudyProgressManager using this listener.
+     * @param gui The StudyGUI using this listener.
+     * @param user The logged-in user.
+     * @param source The JFrame from which the action initiated.
+     * @param modelcourses The JList containing model Course info.
+     * @param year The year text field.
+     * @param grade The grade text field.
+     * @param semester The semester button group.
+     * @param modules The JList containing Module info.
+     * @param courses The JList containing Course info.
+     * @param summary The summary container.
+     * @param moduleindex Index of the Module to add Course to.
+     */
     public ModelCourseListener(StudyProgressManager manager,StudyGUI gui,Student user, JFrame source,JList modelcourses,JTextField year,JTextField grade,ButtonGroup semester, JList modules, JList courses, Container summary, int moduleindex) {
     this.manager = manager;
     this.gui = gui;
@@ -35,6 +49,10 @@ public class ModelCourseListener implements ActionListener {
     this.summary = summary;
     this.moduleindex = moduleindex;
     }
+    /**
+     * Method to run in case an action is registered by the listener.
+     * @param e The action event.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();
@@ -65,7 +83,13 @@ public class ModelCourseListener implements ActionListener {
             source.dispose();
         }
     }
-    
+    /**
+     * Helper method for checking user input Course data.
+     * @param yearstring The year input by user.
+     * @param gradestring The grade input by user.
+     * @param semesterstring The semester input by user using the semester button group.
+     * @return True if data follows the rules for a Course, otherwise false.
+     */
     public boolean checkData(String yearstring, String gradestring, String semesterstring) {
         int year = -1;
         int grade = -1;
