@@ -13,7 +13,17 @@ import javax.swing.table.AbstractTableModel;
  * @author Antti Pekkarinen
  */
 public class SemesterTableModel extends AbstractTableModel {
+    /**
+     * Column names for this model's JTable.
+     * Is never null.
+     */
     private String[] columnnames;
+    /**
+     * Data contents for this model's JTable.
+     * Is never null, may contain components that are null.
+     * If one or more components are null, the method
+     * getValueAt in this class will return empty Strings in their place.
+     */
     private Object[][] data;
     
     /**
