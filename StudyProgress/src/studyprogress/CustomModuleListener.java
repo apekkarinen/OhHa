@@ -9,13 +9,45 @@ import java.awt.*;
  * @author ausr
  */
 public class CustomModuleListener implements ActionListener {
+    /**
+     * The logged-in user.
+     * Is never null.
+     */
     private Student user;
+    /**
+     * The StudyGUI using this listener.
+     * Is never null.
+     */
     private StudyGUI gui;
+    /**
+     * The Module name text field.
+     * Is never null.
+     */
     private JTextField name;
+    /**
+     * The Module credits text field.
+     * Is never null.
+     */
     private JTextField credits;
+    /**
+     * Info text label.
+     * Is never null.
+     */
     private JLabel info;
+    /**
+     * The JList containing Module info.
+     * Is never null.
+     */
     private JList modules;
+    /**
+     * The JFrame from which the action initiated.
+     * Is never null.
+     */
     private JFrame source;
+    /**
+     * The summary container.
+     * Is never null.
+     */
     private Container summary;
     /**
      * Class constructor.
