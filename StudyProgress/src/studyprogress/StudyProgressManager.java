@@ -28,10 +28,30 @@ public class StudyProgressManager {
      * Is never null. May be empty.
      */
     private ArrayList<String> modelmodulenames;
+    /**
+     * User file path.
+     * Is never null.
+     */
     private String userfilepath;
+    /**
+     * User directory path.
+     * Is never null.
+     */
     private String userdirectorypath;
+    /**
+     * User file.
+     * Is never null.
+     */
     private File userfile;
+    /**
+     * User directory.
+     * Is never null.
+     */
     private File userdirectory;
+    /**
+     * Model Modules file.
+     * Is never null.
+     */
     private File modelsfile;
     
     /**
