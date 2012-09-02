@@ -9,11 +9,37 @@ import java.awt.event.*;
  * @author ausr
  */
 public class LoginButtonListener implements ActionListener {
+    /**
+     * The StudyProgressManager using this listener.
+     * Is never null.
+     */
     private StudyProgressManager manager;
+    /**
+     * The logged-in user.
+     * Can be null, in which case the user has not yet logged in.
+     * The methods of this class will work regardless of this variable being either null
+     * or not null.
+     */
     private Student user;
+    /**
+     * The JFrame from which the action initiated.
+     * Is never null.
+     */
     private JFrame source;
+    /**
+     * Text field for user-input username.
+     * Is never null.
+     */
     private JTextField userinput;
+    /**
+     * The help text label.
+     * Is never null.
+     */
     private JLabel helptext;
+    /**
+     * The StudyGUI using this listener.
+     * Is never null.
+     */
     private StudyGUI gui;
     /**
      * Class constructor.

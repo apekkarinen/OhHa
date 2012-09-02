@@ -10,13 +10,40 @@ import java.awt.*;
  */
 
 public class MainButtonListener implements ActionListener {
+    /**
+     * The StudyProgressManager using this listener.
+     * Is never null.
+     */
     private StudyProgressManager manager;
+    /**
+     * The logged-in user.
+     * Is never null.
+     */
     private Student user;
-
+    /**
+     * The StudyGUI using this listener.
+     * Is never null.
+     */
     private StudyGUI gui;
+    /**
+     * JList containing Module info.
+     * Is never null.
+     */
     private JList modules;
+    /**
+     * JList containing Course info.
+     * Is never null.
+     */
     private JList courses;
+    /**
+     * The summary Container.
+     * Is never null.
+     */
     private Container summary;
+    /**
+     * The JFrame from which the action initiated.
+     * Is never null.
+     */
     private JFrame source;
     /**
      * Class constructor.
