@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.awt.*;
 /**
  *Button listener class for graphical main menu screen.
- * @author ausr
+ * @author Antti Pekkarinen
  */
 
 public class MainButtonListener implements ActionListener {
@@ -18,7 +18,16 @@ public class MainButtonListener implements ActionListener {
     private JList courses;
     private Container summary;
     private JFrame source;
-    
+    /**
+     * Class constructor.
+     * @param manager The StudyProgressManager using this listener.
+     * @param user The logged-in user.
+     * @param gui The StudyGUI using this listener.
+     * @param source The JFrame from which the action initiated.
+     * @param modules The JList containing Module info.
+     * @param courses The JList containing Course info.
+     * @param summary The summary Container.
+     */
     public MainButtonListener(StudyProgressManager manager, Student user, StudyGUI gui, JFrame source, JList modules, JList courses, Container summary) {
         this.manager = manager;
         this.user = user;
@@ -28,6 +37,10 @@ public class MainButtonListener implements ActionListener {
         this.summary = summary;
         this.source = source;
     }
+    /**
+     * Method to run in case an action is registered by the listener.
+     * @param e The action event.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonlabel = ((JButton)e.getSource()).getText();

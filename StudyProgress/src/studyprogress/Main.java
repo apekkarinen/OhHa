@@ -11,8 +11,8 @@ import javax.swing.SwingUtilities;
 public class Main {
 
     /**
-     * Main class.
-     * @param args the command line arguments
+     * Main method.
+     * @param args The command line arguments.
      */
     public static void main(String[] args) {
         StudyProgressManager manager = new StudyProgressManager();

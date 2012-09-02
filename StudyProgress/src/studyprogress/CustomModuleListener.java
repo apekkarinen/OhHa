@@ -39,7 +39,7 @@ public class CustomModuleListener implements ActionListener {
         this.summary = summary;
     }
     /**
-     * The action performed method.
+     * Method to run in case an action is registered by the listener.
      * @param e The action event.
      */
     @Override

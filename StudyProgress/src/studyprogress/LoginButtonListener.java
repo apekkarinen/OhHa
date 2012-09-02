@@ -15,7 +15,15 @@ public class LoginButtonListener implements ActionListener {
     private JTextField userinput;
     private JLabel helptext;
     private StudyGUI gui;
-    
+    /**
+     * Class constructor.
+     * @param gui The StudyGUI using this listener.
+     * @param manager The StudyProgressManager using this listener.
+     * @param user The logged-in user.
+     * @param source JFrame from which the action initiated.
+     * @param userinput User input text field.
+     * @param helptext Help text JLabel.
+     */
     public LoginButtonListener(StudyGUI gui, StudyProgressManager manager, Student user, JFrame source, JTextField userinput, JLabel helptext) {
         this.gui = gui;
         this.manager = manager;
@@ -24,6 +32,10 @@ public class LoginButtonListener implements ActionListener {
         this.helptext = helptext;
         this.source = source;
     }
+    /**
+     * Method to run in case an action is registered by the listener.
+     * @param e The action event.
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         String username = userinput.getText();
