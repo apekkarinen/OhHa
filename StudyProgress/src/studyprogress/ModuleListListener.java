@@ -19,7 +19,14 @@ public class ModuleListListener implements ListSelectionListener {
     private StudyGUI gui;
     private JLabel info;
     private JList courses;
-    
+    /**
+     * Class constructor.
+     * @param manager The StudyProgressManager using this listener.
+     * @param user The logged-in user.
+     * @param gui The StudyGUI using this listener.
+     * @param info The info text label.
+     * @param courses The JList containing Course info.
+     */
     public ModuleListListener(StudyProgressManager manager, Student user, StudyGUI gui, JLabel info, JList courses) {
         this.manager = manager;
         this.user = user;
@@ -27,6 +34,10 @@ public class ModuleListListener implements ListSelectionListener {
         this.info = info;
         this.courses = courses;
     }
+    /**
+     * Changes the Course list data if the Module list selection changes.
+     * @param e The list selection event.
+     */
     @Override
     public void valueChanged(ListSelectionEvent e) {
         JList list = (JList)e.getSource();
