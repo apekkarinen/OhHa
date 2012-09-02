@@ -9,11 +9,29 @@ package studyprogress;
  */
 
 public class Course {
-    
+    /**
+     * Name of this Course.
+     */
     private String name;
+    /**
+     * Credit points of this Course. Negative values
+     * are not allowed.
+     */
     private float creditpoints;
+    /**
+     * Grade of the Course.
+     * Negative values are not allowed.
+     */
     private int grade;
+    /**
+     * Time of year of this Course.
+     * Possible values are "syksy" and "kevät".
+     */
     private String semester;
+    /**
+     * Year of this Course.
+     * Negative values are not allowed.
+     */
     private int year;
     
     /**
