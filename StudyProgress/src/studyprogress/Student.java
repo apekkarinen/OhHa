@@ -17,10 +17,30 @@ import java.io.*;
 
 public class Student {
     
+    /**
+     * The name of this Student.
+     * Is never null.
+     */
     private String name;
+    /**
+     * List of all Modules of this Student.
+     * Is never null.
+     */
     private ArrayList<Module> modulelist;
+    /**
+     * List of all Semesters of this Student.
+     * Is never null.
+     */
     private ArrayList<Semester> semesterlist;
+    /**
+     * This Student's directory on disk.
+     * Is never null.
+     */
     private File studentdirectory;
+    /*
+     * The Module file of this Student.
+     * Is never null.
+     */
     private File modulesfile;
     
     /**

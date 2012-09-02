@@ -12,8 +12,21 @@ import java.io.*;
  */
 public class StudyProgressManager {
     
+    /**
+     * List of user names of all existing users.
+     * Can be null if loading the user name list fails.
+     * If null, expect the logInUser-method of this class to terminate the program.
+     */
     private ArrayList<String> usernamelist;
+    /**
+     * List of all pre-made model Modules.
+     * Is never null. May be empty.
+     */
     private ArrayList<Module> modelmodules;
+    /**
+     * List of names of all pre-made model Modules.
+     * Is never null. May be empty.
+     */
     private ArrayList<String> modelmodulenames;
     private String userfilepath;
     private String userdirectorypath;
@@ -24,30 +37,38 @@ public class StudyProgressManager {
     /**
      * Class constructor. Checks if the user directory exists and if it doesn't,
      * tries to create it. If creating the user directory fails, terminates the program
-     * with exit status 1.
+     * with exit status 1. If any other exceptions are thrown when loading the essential
+     * program data, this method also terminates the execution with status 1.
      */
  
     public StudyProgressManager() {
-        userdirectorypath = "data";
-        userfilepath = "data/users.txt";
-        userfile = new File(userfilepath);
-        userdirectory = new File(userdirectorypath);
-        modelsfile = new File("data/models/models.txt");
-        modelmodulenames = new ArrayList<String>();
-        
-        if(!userdirectory.exists()) {
-            try {
-                 userdirectory.mkdir();
-            } catch (Exception e) {
-                System.out.println("Käyttäjäkansiota ei voida luoda, tarkista kirjoitusoikeutesi ohjelman suoritushakemistoon!");
-                System.exit(1);
+        try {
+            userdirectorypath = "data";
+            userfilepath = "data/users.txt";
+            userfile = new File(userfilepath);
+            userdirectory = new File(userdirectorypath);
+            modelsfile = new File("data/models/models.txt");
+            modelmodulenames = new ArrayList<String>();
+
+            if(!userdirectory.exists()) {
+                try {
+                     userdirectory.mkdir();
+                } catch (Exception e) {
+                    System.out.println("Käyttäjäkansiota ei voida luoda, tarkista kirjoitusoikeutesi ohjelman suoritushakemistoon!");
+                    System.exit(1);
+                }
             }
+
+            usernamelist = loadUserListFromFile();
+            modelmodules = new ArrayList<Module>();
+            loadModelModules();
+        
+        } catch (Exception fatal) {
+            System.out.println("Ohjelman datatiedostojen luku epäonnistui, lopetetaan.");
+            System.exit(1);
         }
         
-        
-        usernamelist = loadUserListFromFile();
-        modelmodules = new ArrayList<Module>();
-        loadModelModules();
+       
         
     }
     
@@ -59,11 +80,17 @@ public class StudyProgressManager {
      */
     
     public Student logInUser(String username) {
-        if(usernamelist.contains(username)) {
-            return new Student(username);
-            
-        }
-        else {
+        try {
+            if(usernamelist.contains(username)) {
+                return new Student(username);
+
+            }
+            else {
+                return null;
+            }
+        } catch (Exception e) {
+            System.out.println("Käyttäjänimitietoja ei voi lukea, lopetetaan ohjelma.");
+            System.exit(1);
             return null;
         }
     }

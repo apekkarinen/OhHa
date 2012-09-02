@@ -10,7 +10,15 @@ import java.awt.*;
  */
 public class StudyGUI implements Runnable {
     
+    /**
+     * The StudyProgressManager using this GUI.
+     * Is never null.
+     */
     private StudyProgressManager manager;
+    /**
+     * The logged-in user.
+     * Is null when a user has not yet logged in.
+     */
     private Student user;
     
     /**

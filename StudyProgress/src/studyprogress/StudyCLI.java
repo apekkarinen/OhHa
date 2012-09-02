@@ -10,8 +10,20 @@ import javax.swing.SwingUtilities;
  * @author Antti Pekkarinen
  */
 public class StudyCLI {
+    /**
+     * The StudyProgressManager using this command line interface.
+     * Is never null.
+     */
     private StudyProgressManager manager;
+    /**
+     * The logged-in user.
+     * Is null when a user has not yet logged in.
+     */
     private Student user;
+    /**
+     * Scanner used by this CLI to obtain user input.
+     * Is never null.
+     */
     private Scanner userinput;
     /**
      * Class constructor.
