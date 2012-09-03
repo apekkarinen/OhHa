@@ -83,4 +83,14 @@ public class CourseTest {
          Course fourthcourse = new Course("Ohjelmoinnin jatkokurssi", 4.0f, "syksy", 2012, biggrade);
          assertEquals(fourthcourse.getGrade(), 0);
      }
+     @Test
+     public void checkYearSetToNegative() {
+         anothercourse.setYear(-1);
+         assertEquals(anothercourse.getYear(), 0);
+     }
+     @Test
+     public void checkGradeSetToSix() {
+         anothercourse.setGrade(6);
+         assertEquals(anothercourse.getGrade(), 0);
+     }
 }
