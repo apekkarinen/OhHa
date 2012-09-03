@@ -17,6 +17,7 @@ import static org.junit.Assert.*;
  */
 public class CourseTest {
         Course course;
+        Course anothercourse;
     
     public CourseTest() {
     }
@@ -32,6 +33,7 @@ public class CourseTest {
     @Before
     public void setUp() {
         course = new Course("Ohjelmoinnin harjoitustyö", 4, "syksy", 2012);
+        anothercourse = new Course("Ohjelmoinnin perusteet", -1.0f, "syksy", -1, -1);
     }
     
     @After
@@ -55,12 +57,30 @@ public class CourseTest {
      }
      @Test
      public void constructorSetCoursegrade() {
-         Course course2 = new Course("Ohjelmoinnin harjoitustyö", 4.0f, "syksy", 2012, 5);
-         assertEquals(5 , course2.getGrade());
+         Course thirdcourse = new Course("Ohjelmoinnin harjoitustyö", 4.0f, "syksy", 2012, 5);
+         assertEquals(5 , thirdcourse.getGrade());
      }
      @Test
      public void toStringCompare() {
          
          assertTrue(course.toString().equals("Ohjelmoinnin harjoitustyö (4.0 Op.): Arvosana: 0"));
+     }
+     @Test
+     public void checkNegativeCredits() {
+         assertEquals(anothercourse.getCreditPoints(), 0.0f, 0.01);
+     }
+     @Test
+     public void checkNegativeYear() {
+         assertEquals(anothercourse.getYear(), 0);
+     }
+     @Test
+     public void checkNegativeGrade() {
+         assertEquals(anothercourse.getGrade(), 0);
+     }
+     @Test
+     public void checkGradeTooBig() {
+         int biggrade = 6;
+         Course fourthcourse = new Course("Ohjelmoinnin jatkokurssi", 4.0f, "syksy", 2012, biggrade);
+         assertEquals(fourthcourse.getGrade(), 0);
      }
 }
