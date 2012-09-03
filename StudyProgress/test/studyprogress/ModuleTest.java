@@ -16,6 +16,7 @@ import static org.junit.Assert.*;
  */
 public class ModuleTest {
     Module module;
+    Module anothermodule;
 
     public ModuleTest() {
     }
@@ -31,6 +32,7 @@ public class ModuleTest {
     @Before
     public void setUp() {
         module = new Module("Perusopinnot", 25.0f);
+        anothermodule = new Module("Aineopinnot", -1.0f);
     }
     
     @After
@@ -84,6 +86,10 @@ public class ModuleTest {
         module.addCourse(course);
         module.addCourse(anothercourse);
         assertEquals(5, module.getModuleGrade());
+    }
+    @Test
+    public void checkNegativeCredits() {
+        assertEquals(anothermodule.getTotalCredits(), 0.0f, 0.01);
     }
     
     
