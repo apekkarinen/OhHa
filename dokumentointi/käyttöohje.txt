@@ -1,0 +1,52 @@
+Ohjelmoinnin harjoitustyö
+kesä 2012
+avoin yliopisto
+
+Antti Pekkarinen
+
+Opintojen seurantajärjestelmä: KÄYTTÖOHJE
+
+Opintojen seurantajärjestelmä on opiskelijalle tarkoitettu ohjelma, jolla
+käyttäjä voi pitää kirjaa opintojensa edistymisestä ja arvosanoistaan.
+Ohjelmassa on sekä graafinen että tekstipohjainen käyttöliittymä.
+
+TEKSTIPOHJAINEN KÄYTTÖLIITTYMÄ:
+
+Kirjautuminen ja uuden käyttäjän luonti:
+	Tekstipohjaisen käyttöliittymän käynnistyessä käyttäjän on joko syötettävä käyttäjänimensä kirjautuakseen sisään ohjelmaan tai luodakseen uuden käyttäjän, mikäli syötettyä käyttäjänimeä ei vielä ole. Uuden käyttäjän luontia tarjotaan automaattisesti, mikäli syötettyä käyttäjänimeä ei löydy.
+
+Päävalikko:
+	Tekstipohjaisessa päävalikossa on tarjolla seuraavat valinnat:
+	-Poistu (q)
+		Poistuu ohjelmasta.
+	-Tarkastele opintokokonaisuuksia (o)
+		Näyttää listan opintokokonaisuuksista ja valinnan mukaan listaa
+		valitun kokonaisuuden kurssit.
+	-Näytä yhteenveto (y)
+		Näyttää lyhyen yhteenvedon opintojen edistymisestä ja arvosanoista
+		sekä valmistumisaikatauluarvion.
+	-Lisää opintokokonaisuus (l)
+		Siirtyy opintokokonaisuuden lisäämiseen, jossa käyttäjä voi luoda 			omia opintokokonaisuuksia.
+	-Muokkaa opintokokonaisuuksia (m)
+		Siirtyy opintokokonaisuuksien muokkausvalikkoon, jossa voi poistaa
+		kokonaisuuksia ja lisätä sekä poistaa kursseja kokonaisuuksista.
+    -Käynnistä graafinen käyttöliittymä (g)
+		Avaa graafisen käyttöliittymän päävalikkonäkymän.
+
+GRAAFINEN KÄYTTÖLIITTYMÄ:
+	Graafinen käyttöliittymä on mahdollista käynnistää tekstipohjaisen
+käyttöliittymän päävalikosta sekä suoraan komentoriviltä parametrilla g.
+
+Kirjautuminen ja uuden käyttäjän luonti:
+	Graafisen käyttöliittymän kirjautumisikkunassa käyttäjän on joko syötettävä käyttäjänimensä kirjautuakseen sisään ohjelmaan tai luodakseen uuden käyttäjän, mikäli syötettyä käyttäjänimeä ei vielä ole. Uuden käyttäjän luontia tarjotaan automaattisesti, mikäli syötettyä käyttäjänimeä ei löydy.
+
+Päävalikko:
+	Päävalikkonäkymässä vasemmalla on yhteenvetoteksti ja lukukausierittely-
+taulukko, ja oikella ylhäällä lista opintokokonaisuuksista. Oikealla alhaalla
+on lista ylemmältä listalta valitun kokonaisuuden sisältämistä kursseista.
+
+Listojen alla oleville toimintapainikkeilla on mahdollista lisätä ja poistaa sekä kokonaisuuksia (ylemmät painikkeet) että kursseja (alemmat painikkeet).
+Graafisessa käyttöliittymässä on myös mahdollista lisätä valmiiksi määriteltyjä kokonaisuuksia ja kursseja listalta. (painikkeet "lisää valmis" ja "lisää valmis kurssi".
+
+HUOMAA!
+Muista tallentaa muutoksesi käyttäessäsi graafista käyttöliittymää painamalla "tallenna"-painiketta.
