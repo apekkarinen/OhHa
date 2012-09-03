@@ -80,7 +80,7 @@ public class ModuleTest {
         assertEquals(1, module.getModuleGrade());
     }
     @Test
-    public void isGradeOverFive() {
+    public void isGradeFive() {
         Course course = new Course("Ohjelmoinnin harjoitustyö", 4, "syksy", 2012, 5);
         Course anothercourse = new Course("Ohjelmistojen mallintaminen", 4, "syksy", 2012, 5);
         module.addCourse(course);
