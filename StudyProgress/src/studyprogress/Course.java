@@ -73,6 +73,14 @@ public class Course {
         else {
             this.grade = 0;
         }
+        if(creditpoints >= 0 && year >= 0) {
+            this.creditpoints = creditpoints;
+            this.year = year;
+        }
+        else {
+            this.creditpoints = 0;
+            this.year = 0;
+        }
     }
     /**
      * 
